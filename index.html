@@ -1568,13 +1568,13 @@
         </div>
       </div>
 
-      <!-- 배달 플랫폼 버튼 -->
+      <!-- 배달 플랫폼 버튼 (앱 딥링크) -->
       <div class="hero-platforms">
-        <a href="https://www.coupangeats.com/search?query=안양 호야당" target="_blank" rel="noopener" class="hero-platform-btn coupang">
-          <span>🛵</span> 쿠팡이츠 주문
+        <a href="#" onclick="openCoupangEats(); return false;" class="hero-platform-btn coupang">
+          <span>🛵</span> 쿠팡이츠
         </a>
-        <a href="https://baemin.me/안양호야당" target="_blank" rel="noopener" class="hero-platform-btn baemin">
-          <span>🍽️</span> 배달의민족 주문
+        <a href="#" onclick="openBaemin(); return false;" class="hero-platform-btn baemin">
+          <span>🍽️</span> 배달의민족
         </a>
       </div>
 
@@ -2092,6 +2092,51 @@
     });
 
   })();
+  </script>
+
+  <!-- 앱 딥링크 스크립트 -->
+  <script>
+  // 쿠팡이츠 앱 열기
+  function openCoupangEats() {
+    const appScheme = 'coupangeats://search?keyword=호야당';
+    const webUrl = 'https://www.coupangeats.com/search?query=안양 호야당';
+    const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+
+    // Android Chrome에서는 intent:// 사용
+    if (/android/i.test(navigator.userAgent) && /chrome/i.test(navigator.userAgent)) {
+      window.location.href = intentUrl;
+    } else {
+      // 그 외: 앱 스킴 시도 후 fallback
+      const start = Date.now();
+      window.location.href = appScheme;
+      setTimeout(function() {
+        if (Date.now() - start < 2000) {
+          window.location.href = webUrl;
+        }
+      }, 1500);
+    }
+  }
+
+  // 배달의민족 앱 열기
+  function openBaemin() {
+    const appScheme = 'baemin://';
+    const webUrl = 'https://www.baemin.com/';
+    const intentUrl = 'intent://#Intent;scheme=baemin;package=com.woowahan.baemin;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+
+    // Android Chrome에서는 intent:// 사용
+    if (/android/i.test(navigator.userAgent) && /chrome/i.test(navigator.userAgent)) {
+      window.location.href = intentUrl;
+    } else {
+      // 그 외: 앱 스킴 시도 후 fallback
+      const start = Date.now();
+      window.location.href = appScheme;
+      setTimeout(function() {
+        if (Date.now() - start < 2000) {
+          window.location.href = webUrl;
+        }
+      }, 1500);
+    }
+  }
   </script>
 
 </body>
