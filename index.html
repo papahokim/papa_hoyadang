@@ -982,6 +982,78 @@
       transform: translateY(-2px);
     }
 
+    /* Story Entry Section */
+    .story-entry {
+      padding: 6rem 2rem;
+      background: var(--soft-black);
+      text-align: center;
+    }
+
+    .story-entry-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .story-entry-title {
+      font-family: var(--f-korean);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 3rem;
+    }
+
+    .story-entry-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .story-entry-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .story-entry-btn:hover {
+      background: rgba(201, 169, 98, 0.1);
+      border-color: var(--gold);
+    }
+
+    .story-btn-icon {
+      font-size: 1.5rem;
+    }
+
+    .story-btn-arrow {
+      opacity: 0.5;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .story-entry-btn:hover .story-btn-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      .story-entry-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .story-entry-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 768px) {
       .menu-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 0 2rem; }
       .menu-subtitle { text-align: left; }
@@ -1372,6 +1444,25 @@
       border-color: var(--gold);
     }
 
+    .footer-platforms {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-platform-btn {
+      padding: 0.75rem 1.25rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      transition: all 0.3s;
+    }
+
+    .footer-platform-btn:hover {
+      background: rgba(201, 169, 98, 0.15);
+      border-color: var(--gold);
+    }
+
     .footer-copy {
       font-size: 0.75rem;
       color: rgba(255,255,255,0.3);
@@ -1745,6 +1836,26 @@
     </a>
   </section>
 
+  <!-- Story Entry -->
+  <section class="story-entry">
+    <div class="story-entry-content">
+      <p class="story-entry-eyebrow reveal">Our Story</p>
+      <h2 class="story-entry-title reveal reveal-delay-1">이야기를 들려드립니다</h2>
+      <div class="story-entry-buttons reveal reveal-delay-2">
+        <a href="/blog/" class="story-entry-btn">
+          <span class="story-btn-icon">📖</span>
+          <span>고로께 설명서</span>
+          <span class="story-btn-arrow">→</span>
+        </a>
+        <a href="/storybook/" class="story-entry-btn">
+          <span class="story-btn-icon">🎨</span>
+          <span>그림책 스토리</span>
+          <span class="story-btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Philosophy -->
   <section class="philosophy">
     <div class="philosophy-bg">
@@ -1878,6 +1989,10 @@
         <p>경기도 안양시 만안구 와룡로 12-1</p>
         <p><a href="tel:1670-9827">1670-9827</a></p>
         <p>매일 6:00-21:00 (수 23시까지)</p>
+      </div>
+      <div class="footer-platforms">
+        <a href="#" onclick="openCoupangEats(); return false;" class="footer-platform-btn">🛵 쿠팡이츠</a>
+        <a href="#" onclick="openBaemin(); return false;" class="footer-platform-btn">🍽️ 배달의민족</a>
       </div>
       <p class="footer-copy">© 2026 호야당. All rights reserved.</p>
     </div>
