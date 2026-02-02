@@ -455,7 +455,7 @@
 
     .hero-title-line {
       display: block;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero-title-line span {
@@ -470,8 +470,9 @@
     .hero-title-line:nth-child(2) span { animation-delay: 2.8s; }
 
     .hero-title-main {
-      font-size: clamp(5rem, 18vw, 15rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(3.5rem, 15vw, 12rem);
+      letter-spacing: -0.02em;
+      word-break: keep-all;
     }
 
     .hero-title-sub {
@@ -1556,6 +1557,7 @@
       .nav-logo { font-size: 1.25rem; }
       .nav-logo-badge { display: none; }
       .hero-content { padding: 0 1.5rem; }
+      .hero-title-main { font-size: 3rem; }
       .hero-floor-tag { margin-bottom: 2rem; }
       .hero-floor-num { font-size: 2rem; }
       .hero-info { flex-direction: column; gap: 1.5rem; }
