@@ -455,7 +455,7 @@
 
     .hero-title-line {
       display: block;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero-title-line span {
@@ -470,8 +470,9 @@
     .hero-title-line:nth-child(2) span { animation-delay: 2.8s; }
 
     .hero-title-main {
-      font-size: clamp(5rem, 18vw, 15rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(3.5rem, 15vw, 12rem);
+      letter-spacing: -0.02em;
+      word-break: keep-all;
     }
 
     .hero-title-sub {
@@ -1556,6 +1557,7 @@
       .nav-logo { font-size: 1.25rem; }
       .nav-logo-badge { display: none; }
       .hero-content { padding: 0 1.5rem; }
+      .hero-title-main { font-size: 3rem; }
       .hero-floor-tag { margin-bottom: 2rem; }
       .hero-floor-num { font-size: 2rem; }
       .hero-info { flex-direction: column; gap: 1.5rem; }
@@ -1622,7 +1624,6 @@
     <ul class="nav-links">
       <li><a href="#about" class="nav-link" data-text="About"><span>About</span></a></li>
       <li><a href="#menu" class="nav-link" data-text="Menu"><span>Menu</span></a></li>
-      <li><a href="#location" class="nav-link" data-text="Visit"><span>Visit</span></a></li>
     </ul>
   </nav>
 
@@ -1857,52 +1858,6 @@
   </section>
 
   <!-- Philosophy -->
-  <section class="philosophy">
-    <div class="philosophy-bg">
-      <span class="philosophy-bg-char">호</span>
-    </div>
-    <div class="philosophy-content reveal">
-      <blockquote class="philosophy-quote">
-        "좋은 빵은 <span class="gold">손</span>에서 나옵니다.<br>
-        그 손에는 <span class="gold">20년</span>의<br>
-        시간이 담겨 있습니다."
-      </blockquote>
-      <p class="philosophy-author">— 호야당 Master Baker</p>
-    </div>
-  </section>
-
-
-  <!-- Location -->
-  <section class="location" id="location">
-    <div class="location-content">
-      <h2 class="reveal">Visit Us</h2>
-      <div class="location-item reveal reveal-delay-1">
-        <p class="location-label">Address</p>
-        <p class="location-value">
-          경기도 안양시 만안구 와룡로 12-1<br>
-          <span style="opacity: 0.5; font-size: 0.875rem;">안양역 도보 5분</span>
-        </p>
-      </div>
-      <div class="location-item reveal reveal-delay-2">
-        <p class="location-label">Hours</p>
-        <p class="location-value">
-          월~목 6:30-21:00 · 금~토 6:00-21:00<br>
-          수 6:30-23:00 · 일 7:00-21:00<br>
-          일요일 휴무
-        </p>
-      </div>
-      <div class="location-item reveal reveal-delay-3">
-        <p class="location-label">Contact</p>
-        <p class="location-value">
-          <a href="tel:1670-9827">1670-9827</a>
-        </p>
-      </div>
-    </div>
-    <div class="location-visual reveal reveal-delay-4">
-      <div class="location-pin"></div>
-    </div>
-  </section>
-
   <!-- Footer — Elevator System -->
   <footer class="footer" id="elevator">
     <div class="elevator-section">
