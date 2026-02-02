@@ -1,17 +1,17 @@
 {
-  "name": "好爺堂 — Con las manos",
-  "short_name": "好爺堂",
-  "description": "Tu cocina. Sabor coreano. 당신의 주방. 한국의 맛. K-Food recipes with pan, airfryer & microwave.",
+  "name": "호야당 — 고로께 베이커리",
+  "short_name": "호야당",
+  "description": "안양 석수동, 20년 전통 수제 베이커리. 파스타, 버거, 고로케, 샌드위치.",
   "start_url": "/",
   "id": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "browser"],
   "orientation": "portrait",
-  "background_color": "#FFFAF5",
-  "theme_color": "#D4A853",
-  "lang": "es",
+  "background_color": "#0D3320",
+  "theme_color": "#0D3320",
+  "lang": "ko",
   "dir": "ltr",
-  "categories": ["food", "education", "lifestyle"],
+  "categories": ["food", "lifestyle"],
   "icons": [
     {
       "src": "assets/icons/icon.svg",
@@ -33,17 +33,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Recetas",
-      "short_name": "Recetas",
-      "description": "Ver todas las recetas",
-      "url": "/#recetas",
-      "icons": [{ "src": "assets/icons/icon.svg", "sizes": "96x96" }]
-    },
-    {
-      "name": "Herramientas",
-      "short_name": "Tools",
-      "description": "Guía de herramientas",
-      "url": "/#herramientas",
+      "name": "메뉴",
+      "short_name": "메뉴",
+      "description": "전체 메뉴 보기",
+      "url": "/menu/",
       "icons": [{ "src": "assets/icons/icon.svg", "sizes": "96x96" }]
     }
   ],

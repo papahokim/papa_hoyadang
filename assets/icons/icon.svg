@@ -6,8 +6,8 @@
     </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="512" height="512" fill="#FFFAF5"/>
+  <!-- Background - Dark Green -->
+  <rect width="512" height="512" fill="#0D3320"/>
 
   <!-- Abstract concentric circles -->
   <circle cx="256" cy="220" r="140" fill="none" stroke="url(#warmGold)" stroke-width="2" opacity="0.3"/>
@@ -18,11 +18,11 @@
   <!-- Center dot -->
   <circle cx="256" cy="220" r="8" fill="#D4A853"/>
 
-  <!-- 好爺堂 Text -->
+  <!-- 호야당 Text -->
   <text x="256" y="420"
-        font-family="Noto Serif KR, serif"
-        font-size="64"
-        font-weight="600"
-        fill="#1A1A1A"
-        text-anchor="middle">好爺堂</text>
+        font-family="Noto Sans KR, sans-serif"
+        font-size="72"
+        font-weight="700"
+        fill="#FFFFFF"
+        text-anchor="middle">호야당</text>
 </svg>
