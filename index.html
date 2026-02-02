@@ -892,51 +892,65 @@
       scroll-snap-align: start;
       position: relative;
       overflow: hidden;
-      background: var(--black);
-      transition: transform 0.6s var(--ease-out-expo);
+      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      transition: transform 0.6s var(--ease-out-expo), border-color 0.3s;
     }
 
     .menu-card:hover {
       transform: translateY(-10px);
+      border-color: var(--gold);
     }
 
     .menu-card-visual {
-      aspect-ratio: 3/4;
+      aspect-ratio: 4/3;
       overflow: hidden;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(212,168,83,0.15) 0%, transparent 100%);
     }
 
-    .menu-card-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1s var(--ease-out-expo);
+    .menu-card-visual .menu-card-num {
+      position: relative;
+      top: auto;
+      left: auto;
+      font-size: 4rem;
+      margin-bottom: 1rem;
     }
 
-    .menu-card:hover .menu-card-visual img {
-      transform: scale(1.1);
-    }
-
-    .menu-card-num {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      font-family: var(--f-display);
-      font-size: 0.875rem;
-      font-style: italic;
+    .menu-card-visual .menu-card-tag {
+      position: relative;
+      top: auto;
+      right: auto;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--gold);
+      border-radius: 100px;
       color: var(--gold);
+      font-family: var(--f-display);
     }
 
-    .menu-card-tag {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 0.5rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.5rem;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: rgba(255,255,255,0.8);
+    .menu-card-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+      padding: 0 1rem;
+    }
+
+    .menu-card-highlights span {
+      font-size: 0.6875rem;
+      padding: 0.25rem 0.75rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 100px;
+      color: rgba(255,255,255,0.7);
     }
 
     .menu-card-info {
@@ -1757,11 +1771,16 @@
         <div class="menu-card-visual">
           <span class="menu-card-num">🍝</span>
           <span class="menu-card-tag">9,000원~</span>
+          <div class="menu-card-highlights">
+            <span>뇨끼</span>
+            <span>알리오올리오</span>
+            <span>로제</span>
+          </div>
         </div>
         <div class="menu-card-info">
           <div>
             <h3 class="menu-card-name">파스타</h3>
-            <p class="menu-card-desc">알리오올리오, 크림, 로제, 뇨끼</p>
+            <p class="menu-card-desc">20가지 이상의 파스타 메뉴</p>
           </div>
         </div>
       </a>
@@ -1770,11 +1789,16 @@
         <div class="menu-card-visual">
           <span class="menu-card-num">🍔</span>
           <span class="menu-card-tag">4,500원~</span>
+          <div class="menu-card-highlights">
+            <span>소고기치즈</span>
+            <span>새우버거</span>
+            <span>핫도그</span>
+          </div>
         </div>
         <div class="menu-card-info">
           <div>
             <h3 class="menu-card-name">버거 & 핫도그</h3>
-            <p class="menu-card-desc">소고기, 새우, 비건, 핫도그</p>
+            <p class="menu-card-desc">수제 패티 버거 + 세트메뉴</p>
           </div>
         </div>
       </a>
@@ -1783,11 +1807,16 @@
         <div class="menu-card-visual">
           <span class="menu-card-num">🥟</span>
           <span class="menu-card-tag">2,500원~</span>
+          <div class="menu-card-highlights">
+            <span>소불고기</span>
+            <span>크림치즈</span>
+            <span>단팥</span>
+          </div>
         </div>
         <div class="menu-card-info">
           <div>
             <h3 class="menu-card-name">고로케</h3>
-            <p class="menu-card-desc">소불고기, 크림치즈, 단팥</p>
+            <p class="menu-card-desc">20년 손맛 시그니처</p>
           </div>
         </div>
       </a>
@@ -1796,11 +1825,16 @@
         <div class="menu-card-visual">
           <span class="menu-card-num">🥪</span>
           <span class="menu-card-tag">2,500원~</span>
+          <div class="menu-card-highlights">
+            <span>소금빵</span>
+            <span>BLT</span>
+            <span>잠봉뵈르</span>
+          </div>
         </div>
         <div class="menu-card-info">
           <div>
-            <h3 class="menu-card-name">샌드위치 & 소금빵</h3>
-            <p class="menu-card-desc">BLT, 연어, 잠봉뵈르</p>
+            <h3 class="menu-card-name">샌드위치 & 빵</h3>
+            <p class="menu-card-desc">갓 구운 소금빵 + 샌드위치</p>
           </div>
         </div>
       </a>
@@ -1809,11 +1843,16 @@
         <div class="menu-card-visual">
           <span class="menu-card-num">🍚</span>
           <span class="menu-card-tag">12,000원~</span>
+          <div class="menu-card-highlights">
+            <span>감바스</span>
+            <span>치킨</span>
+            <span>김치소세지</span>
+          </div>
         </div>
         <div class="menu-card-info">
           <div>
             <h3 class="menu-card-name">필라프</h3>
-            <p class="menu-card-desc">감바스, 치킨, 김치소세지</p>
+            <p class="menu-card-desc">든든한 한 끼 라이스</p>
           </div>
         </div>
       </a>
@@ -1822,6 +1861,11 @@
         <div class="menu-card-visual">
           <span class="menu-card-num">☕</span>
           <span class="menu-card-tag">2,000원~</span>
+          <div class="menu-card-highlights">
+            <span>아메리카노</span>
+            <span>라떼</span>
+            <span>에이드</span>
+          </div>
         </div>
         <div class="menu-card-info">
           <div>
