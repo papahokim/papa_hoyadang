@@ -843,42 +843,46 @@
     function openCoupangEats(e) {
       e.preventDefault();
 
-      const webUrl = 'https://www.coupangeats.com/search?query=안양 호야당';
+      // 앱 없으면 스토어로
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.eats';
+      const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
 
       if (isAndroid) {
-        // Android Intent
-        const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+        // Android Intent - 앱 없으면 플레이스토어
+        const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
         window.location.href = intentUrl;
       } else if (isIOS) {
-        // iOS Universal Link / App Scheme
+        // iOS - 앱 시도 후 앱스토어
         window.location.href = 'coupangeats://search?keyword=호야당';
         setTimeout(function() {
-          window.location.href = webUrl;
+          window.location.href = iosStore;
         }, 1500);
       } else {
-        // Desktop
-        window.open(webUrl, '_blank');
+        // Desktop - 안내 메시지
+        alert('쿠팡이츠 앱에서 "호야당"을 검색해주세요!');
       }
     }
 
     function openBaemin(e) {
       e.preventDefault();
 
-      const webUrl = 'https://www.baemin.com/';
+      // 앱 없으면 스토어로
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.woowahan.baemin';
+      const iosStore = 'https://apps.apple.com/kr/app/id378084485';
 
       if (isAndroid) {
-        // Android Intent
-        const intentUrl = 'intent://#Intent;scheme=baemin;package=com.woowahan.baemin;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+        // Android Intent - 앱 없으면 플레이스토어
+        const intentUrl = 'intent://#Intent;scheme=baemin;package=com.woowahan.baemin;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
         window.location.href = intentUrl;
       } else if (isIOS) {
-        // iOS
+        // iOS - 앱 시도 후 앱스토어
         window.location.href = 'baemin://';
         setTimeout(function() {
-          window.location.href = webUrl;
+          window.location.href = iosStore;
         }, 1500);
       } else {
-        // Desktop
-        window.open(webUrl, '_blank');
+        // Desktop - 안내 메시지
+        alert('배달의민족 앱에서 "호야당"을 검색해주세요!');
       }
     }
 
