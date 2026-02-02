@@ -3,52 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>메뉴 | 好爺堂</title>
+  <title>MENU | 好爺堂</title>
   <meta name="description" content="호야당 전체 메뉴 - 파스타, 버거, 고로케, 샌드위치, 음료">
-  <meta name="theme-color" content="#FFFAF5">
+  <meta name="theme-color" content="#0D0D0D">
   <link rel="icon" href="/assets/icons/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --harina: #FFFAF5;
-      --masa: #F5E6D3;
+      --bg-primary: #0D0D0D;
+      --bg-secondary: #141414;
+      --bg-card: #1A1A1A;
+      --bg-hover: #222;
       --dorado: #D4A853;
-      --carbon: #1A1A1A;
-      --text-secondary: #666;
-      --accent-red: #E31837;
-      --accent-green: #2AC1BC;
-      --accent-orange: #FF6B35;
-      --accent-blue: #40A9FF;
+      --dorado-dim: rgba(212, 168, 83, 0.15);
+      --text-primary: #F5F5F5;
+      --text-secondary: rgba(255,255,255,0.6);
+      --text-muted: rgba(255,255,255,0.4);
+      --border: rgba(255,255,255,0.08);
+      --accent-signature: #D4A853;
+      --accent-best: #E8B86D;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Noto Sans KR', -apple-system, sans-serif;
-      background: var(--harina);
-      color: var(--carbon);
+      background: var(--bg-primary);
+      color: var(--text-primary);
       line-height: 1.6;
-      padding-bottom: 80px;
+      min-height: 100vh;
+      padding-bottom: 100px;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; text-decoration: none; }
 
     /* Header */
     .header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: var(--harina);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      padding: 16px 20px;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      height: 60px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
     }
 
     .back-btn {
@@ -57,79 +71,215 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--masa);
-      border-radius: 10px;
-      font-size: 20px;
+      color: var(--text-secondary);
+      font-size: 24px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover {
+      color: var(--dorado);
     }
 
     .header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+    }
+
+    .header-logo {
       font-family: 'Noto Serif KR', serif;
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 16px;
+      color: var(--dorado);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--dorado);
+      letter-spacing: 0.1em;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--dorado);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
     }
 
     /* Category Nav */
     .category-nav {
       position: sticky;
-      top: 73px;
+      top: 60px;
       z-index: 99;
-      background: var(--harina);
-      padding: 12px 20px;
+      background: rgba(13,13,13,0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 16px 20px;
       overflow-x: auto;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: none;
     }
 
     .category-nav::-webkit-scrollbar { display: none; }
 
     .category-chip {
       display: inline-block;
-      padding: 8px 16px;
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--border);
       border-radius: 100px;
       font-size: 13px;
-      font-weight: 600;
-      margin-right: 8px;
-      transition: all 0.2s;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-right: 10px;
+      transition: all 0.3s ease;
     }
 
-    .category-chip:active,
+    .category-chip:hover {
+      border-color: var(--dorado);
+      color: var(--dorado);
+    }
+
     .category-chip.active {
       background: var(--dorado);
-      color: #fff;
       border-color: var(--dorado);
+      color: var(--bg-primary);
+      font-weight: 500;
     }
 
-    /* Section */
-    .menu-section {
-      padding: 32px 20px;
+    /* Main Content */
+    .main-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .section-header {
+    /* Accordion Section */
+    .accordion-section {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .accordion-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--carbon);
+      justify-content: space-between;
+      padding: 24px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      opacity: 0.8;
+    }
+
+    .accordion-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .section-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dorado-dim);
+      border-radius: 12px;
       font-size: 24px;
     }
 
-    .section-title {
+    .section-info h2 {
       font-family: 'Noto Serif KR', serif;
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
     }
 
-    .section-subtitle {
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-left: auto;
+    .section-info .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .accordion-arrow {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-section.open .accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-section.open .accordion-content {
+      max-height: 5000px;
+    }
+
+    .accordion-inner {
+      padding-bottom: 24px;
     }
 
     /* Menu Item */
@@ -138,70 +288,125 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
 
     .menu-item:last-child {
       border-bottom: none;
     }
 
+    .menu-left {
+      flex: 1;
+      padding-right: 16px;
+    }
+
+    .menu-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
     .menu-name {
       font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
       font-weight: 600;
-      margin-bottom: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-best {
+      background: linear-gradient(135deg, var(--accent-best), var(--dorado));
+      color: var(--bg-primary);
+    }
+
+    .badge-signature {
+      background: transparent;
+      border: 1px solid var(--dorado);
+      color: var(--dorado);
+    }
+
+    .badge-new {
+      background: #E8B86D;
+      color: var(--bg-primary);
     }
 
     .menu-desc {
       font-size: 12px;
-      color: var(--text-secondary);
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     .menu-price {
-      font-size: 15px;
-      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
       color: var(--dorado);
       white-space: nowrap;
-      margin-left: 16px;
-    }
-
-    /* Recommend Badge */
-    .recommend-badge {
-      display: inline-block;
-      padding: 2px 6px;
-      background: var(--accent-red);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      border-radius: 4px;
-      margin-left: 6px;
-      vertical-align: middle;
     }
 
     /* Set Menu */
     .set-menu {
-      background: var(--masa);
+      background: var(--bg-card);
       border-radius: 12px;
       padding: 16px;
-      margin-bottom: 12px;
+      margin: 12px 0;
+      border: 1px solid var(--border);
+    }
+
+    .set-menu .menu-item {
+      padding: 0;
+      border-bottom: none;
     }
 
     .set-menu .menu-name {
-      color: var(--accent-orange);
+      color: var(--dorado);
     }
 
-    .set-original-price {
-      font-size: 12px;
-      color: var(--text-secondary);
+    .set-prices {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .original-price {
+      font-size: 13px;
+      color: var(--text-muted);
       text-decoration: line-through;
-      margin-left: 8px;
     }
 
-    /* Floating Order Button */
+    /* Subcategory */
+    .subcategory {
+      margin-top: 20px;
+    }
+
+    .subcategory-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      padding-bottom: 12px;
+      margin-bottom: 4px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* Floating Order */
     .floating-order {
       position: fixed;
-      bottom: 20px;
+      bottom: 24px;
       left: 20px;
       right: 20px;
+      max-width: 400px;
+      margin: 0 auto;
       display: flex;
       gap: 12px;
       z-index: 100;
@@ -209,28 +414,130 @@
 
     .order-btn {
       flex: 1;
-      padding: 16px;
-      border-radius: 14px;
+      padding: 16px 20px;
+      border-radius: 100px;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
     .order-btn.coupang {
-      background: var(--accent-red);
+      background: #00A0E0;
       color: #fff;
+    }
+
+    .order-btn.coupang:hover {
+      background: #0090CC;
+      transform: translateY(-2px);
     }
 
     .order-btn.baemin {
-      background: var(--accent-green);
+      background: #2AC1BC;
       color: #fff;
     }
 
-    /* Divider */
-    .divider {
-      height: 8px;
-      background: var(--masa);
+    .order-btn.baemin:hover {
+      background: #25ABA7;
+      transform: translateY(-2px);
+    }
+
+    /* Recommend Section - Special */
+    .recommend-section {
+      background: var(--bg-secondary);
+      padding: 32px 20px;
+      margin: 0 -20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .recommend-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .recommend-icon {
+      font-size: 28px;
+    }
+
+    .recommend-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .recommend-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-left: auto;
+    }
+
+    .recommend-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .recommend-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .recommend-card:hover {
+      border-color: var(--dorado);
+      transform: translateX(4px);
+    }
+
+    .recommend-card .menu-desc {
+      margin-top: 6px;
+    }
+
+    /* Footer info */
+    .footer-info {
+      text-align: center;
+      padding: 40px 20px 60px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer-info .brand {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      color: var(--dorado);
+      margin-bottom: 8px;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .accordion-section {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .hero-title { font-size: 26px; }
+      .hero-stats { gap: 24px; }
+      .stat-number { font-size: 24px; }
+      .section-icon { width: 40px; height: 40px; font-size: 20px; }
+      .section-info h2 { font-size: 16px; }
     }
   </style>
 </head>
@@ -238,9 +545,35 @@
 
   <!-- Header -->
   <header class="header">
-    <a href="/" class="back-btn">←</a>
-    <h1 class="header-title">메뉴판</h1>
+    <a href="/" class="back-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </a>
+    <span class="header-title">MENU</span>
+    <span class="header-logo">好爺堂</span>
   </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-label">SINCE 2006</p>
+    <h1 class="hero-title">메뉴판</h1>
+    <p class="hero-subtitle">Handcrafted Daily</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">20</div>
+        <div class="stat-label">YEARS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">80+</div>
+        <div class="stat-label">MENU</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">PASSION</div>
+      </div>
+    </div>
+  </section>
 
   <!-- Category Navigation -->
   <nav class="category-nav">
@@ -254,569 +587,736 @@
     <a href="#drink" class="category-chip">음료</a>
   </nav>
 
-  <!-- 사장님 추천메뉴 -->
-  <section id="recommend" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">⭐</span>
-      <h2 class="section-title">사장님 추천</h2>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">뇨끼(감자)파스타<span class="recommend-badge">BEST</span></div>
-        <div class="menu-desc">쫄깃한 감자 뇨끼의 진한 풍미</div>
+  <main class="main-content">
+
+    <!-- 사장님 추천 -->
+    <section id="recommend" class="recommend-section">
+      <div class="recommend-header">
+        <span class="recommend-icon">&#9733;</span>
+        <h2 class="recommend-title">사장님 추천</h2>
+        <span class="recommend-subtitle">Chef's Pick</span>
       </div>
-      <div class="menu-price">15,000원</div>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">우삼겹알리오올리오파스타<span class="recommend-badge">BEST</span></div>
-        <div class="menu-desc">고소한 우삼겹과 마늘의 조화</div>
-      </div>
-      <div class="menu-price">14,000원</div>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">아메리카노</div>
-        <div class="menu-desc">진한 원두의 깔끔한 맛</div>
-      </div>
-      <div class="menu-price">2,000원</div>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">소불고기고로케<span class="recommend-badge">시그니처</span></div>
-        <div class="menu-desc">20년 손맛 고로케</div>
-      </div>
-      <div class="menu-price">3,000원</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 파스타 -->
-  <section id="pasta" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🍝</span>
-      <h2 class="section-title">파스타</h2>
-      <span class="section-subtitle">Pasta</span>
-    </div>
-
-    <!-- 오일 파스타 -->
-    <div class="menu-item">
-      <div><div class="menu-name">알리오올리오파스타</div></div>
-      <div class="menu-price">9,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">베이컨알리오올리오파스타</div></div>
-      <div class="menu-price">12,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">해산물알리오올리오파스타</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">우삼겹알리오올리오파스타</div></div>
-      <div class="menu-price">14,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">엔초비알리오올리오파스타</div></div>
-      <div class="menu-price">15,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">명란오일파스타</div></div>
-      <div class="menu-price">15,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">봉골레파스타</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">감바스알아히오</div></div>
-      <div class="menu-price">16,000원</div>
-    </div>
-
-    <!-- 토마토/로제 -->
-    <div class="menu-item">
-      <div><div class="menu-name">토마토파스타</div></div>
-      <div class="menu-price">11,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">해산물토마토파스타</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">해산물로제파스타</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">볼로네제파스타</div></div>
-      <div class="menu-price">14,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">오징어먹물해산물파스타</div></div>
-      <div class="menu-price">15,000원</div>
-    </div>
-
-    <!-- 크림 -->
-    <div class="menu-item">
-      <div><div class="menu-name">베이컨크림파스타</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">매콤새우크림파스타</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">투움바파스타</div></div>
-      <div class="menu-price">18,000원</div>
-    </div>
-
-    <!-- 시그니처 -->
-    <div class="menu-item">
-      <div><div class="menu-name">뇨끼(감자)파스타</div></div>
-      <div class="menu-price">15,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">스파이시상하이해물파스타</div></div>
-      <div class="menu-price">14,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">김치렐리쉬삼겹파스타</div></div>
-      <div class="menu-price">15,000원</div>
-    </div>
-
-    <!-- 세트 -->
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">파스타세트 A</div>
-          <div class="menu-desc">베이컨크림 or 알리오올리오 + 고로케 + 아메리카노</div>
+      <div class="recommend-grid">
+        <div class="recommend-card">
+          <div class="menu-left">
+            <div class="menu-name-row">
+              <span class="menu-name">뇨끼(감자)파스타</span>
+              <span class="badge badge-best">BEST</span>
+            </div>
+            <p class="menu-desc">쫄깃한 감자 뇨끼의 진한 풍미</p>
+          </div>
+          <span class="menu-price">15,000</span>
         </div>
-        <div class="menu-price">15,000원</div>
-      </div>
-    </div>
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">파스타세트 B</div>
-          <div class="menu-desc">뇨끼파스타 + 뱅쇼/아이스</div>
+        <div class="recommend-card">
+          <div class="menu-left">
+            <div class="menu-name-row">
+              <span class="menu-name">우삼겹알리오올리오</span>
+              <span class="badge badge-best">BEST</span>
+            </div>
+            <p class="menu-desc">고소한 우삼겹과 마늘의 조화</p>
+          </div>
+          <span class="menu-price">14,000</span>
         </div>
-        <div class="menu-price">17,000원</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 버거류 -->
-  <section id="burger" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🍔</span>
-      <h2 class="section-title">버거 & 핫도그</h2>
-      <span class="section-subtitle">Burgers</span>
-    </div>
-
-    <div class="menu-item">
-      <div><div class="menu-name">소고기치즈버거</div></div>
-      <div class="menu-price">4,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">스파이시소고기치즈버거</div></div>
-      <div class="menu-price">5,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">리얼새우버거</div></div>
-      <div class="menu-price">5,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">비건치즈버거</div></div>
-      <div class="menu-price">5,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">베이컨에그치즈버거</div></div>
-      <div class="menu-price">6,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">하와이언베이컨소고기버거</div></div>
-      <div class="menu-price">6,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">하와이언치킨버거</div></div>
-      <div class="menu-price">7,000원</div>
-    </div>
-
-    <!-- 감자튀김 -->
-    <div class="menu-item">
-      <div><div class="menu-name">케이준감자튀김</div></div>
-      <div class="menu-price">2,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">허쉬브라운감자튀김</div></div>
-      <div class="menu-price">1,500원</div>
-    </div>
-
-    <!-- 버거 세트 -->
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">버거세트 A</div>
-          <div class="menu-desc">소고기치즈버거 + 감자튀김 + 콜라</div>
+        <div class="recommend-card">
+          <div class="menu-left">
+            <div class="menu-name-row">
+              <span class="menu-name">소불고기고로케</span>
+              <span class="badge badge-signature">SIGNATURE</span>
+            </div>
+            <p class="menu-desc">20년 손맛 고로케</p>
+          </div>
+          <span class="menu-price">3,000</span>
         </div>
-        <div class="menu-price">7,500원</div>
-      </div>
-    </div>
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">버거세트 B</div>
-          <div class="menu-desc">소고기치즈버거 + 감자튀김 + 콜라제로</div>
-        </div>
-        <div class="menu-price">7,500원</div>
-      </div>
-    </div>
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">버거세트 C</div>
-          <div class="menu-desc">베이컨에그치즈버거 + 감자튀김 + 콜라</div>
-        </div>
-        <div class="menu-price">9,000원</div>
-      </div>
-    </div>
-
-    <!-- 핫도그 -->
-    <div class="menu-item">
-      <div><div class="menu-name">보스톤아메리칸핫도그</div></div>
-      <div class="menu-price">3,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">페페로니칠리핫도그</div><div class="menu-desc">매콤 소세지</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">소불고기핫도그</div></div>
-      <div class="menu-price">4,500원</div>
-    </div>
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">핫도그세트 A</div>
-        </div>
-        <div class="menu-price">6,000원</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 샌드위치 & 빵 -->
-  <section id="sandwich" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🥪</span>
-      <h2 class="section-title">샌드위치 & 브레드</h2>
-      <span class="section-subtitle">Sandwich & Bread</span>
-    </div>
-
-    <div class="menu-item">
-      <div><div class="menu-name">햄치즈클럽샌드위치</div></div>
-      <div class="menu-price">6,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">BLT 샌드위치</div></div>
-      <div class="menu-price">6,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">바질페스토치킨샌드위치</div></div>
-      <div class="menu-price">6,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">크랜베리치킨샌드위치</div></div>
-      <div class="menu-price">6,500원</div>
-    </div>
-
-    <!-- 소금빵 -->
-    <div class="menu-item">
-      <div><div class="menu-name">소금빵 (플레인)</div></div>
-      <div class="menu-price">2,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">소금빵 앙버터</div></div>
-      <div class="menu-price">3,800원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">샐러드소금빵</div></div>
-      <div class="menu-price">4,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">소금빵 잠봉뵈르</div></div>
-      <div class="menu-price">6,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">소금빵 연어샌드위치</div></div>
-      <div class="menu-price">7,500원</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 필라프 -->
-  <section id="rice" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🍚</span>
-      <h2 class="section-title">필라프 & 라이스</h2>
-      <span class="section-subtitle">Pilaf & Rice</span>
-    </div>
-
-    <div class="menu-item">
-      <div><div class="menu-name">감바스필라프</div></div>
-      <div class="menu-price">12,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">치킨필라프</div></div>
-      <div class="menu-price">12,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">김치소세지필라프</div></div>
-      <div class="menu-price">12,000원</div>
-    </div>
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">필라프세트 A</div>
-        </div>
-        <div class="menu-price">14,000원</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 사이드 -->
-  <section id="side" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🍗</span>
-      <h2 class="section-title">사이드 디쉬</h2>
-      <span class="section-subtitle">Side Dish</span>
-    </div>
-
-    <div class="menu-item">
-      <div><div class="menu-name">돈까스</div></div>
-      <div class="menu-price">6,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">생선까스 (2개)</div></div>
-      <div class="menu-price">3,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">텐더세트</div></div>
-      <div class="menu-price">5,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">버팔로윙봉세트</div></div>
-      <div class="menu-price">6,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">윙봉텐더세트</div></div>
-      <div class="menu-price">7,500원</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 고로케 -->
-  <section id="croquette" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🥟</span>
-      <h2 class="section-title">고로케</h2>
-      <span class="section-subtitle">Croquettes</span>
-    </div>
-
-    <div class="menu-item">
-      <div><div class="menu-name">단팥고로케</div></div>
-      <div class="menu-price">2,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">크림치즈고로케</div></div>
-      <div class="menu-price">2,800원</div>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">소불고기고로케<span class="recommend-badge">시그니처</span></div>
-      </div>
-      <div class="menu-price">3,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">매운고기잡채고로케</div></div>
-      <div class="menu-price">2,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">고로케소세지빵</div></div>
-      <div class="menu-price">2,800원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">새우멘보샤 (4개 1set)</div></div>
-      <div class="menu-price">13,000원</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 음료 -->
-  <section id="drink" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">☕</span>
-      <h2 class="section-title">음료</h2>
-      <span class="section-subtitle">Beverages</span>
-    </div>
-
-    <!-- 커피 -->
-    <div class="menu-item">
-      <div><div class="menu-name">아메리카노</div></div>
-      <div class="menu-price">2,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">카페라떼</div></div>
-      <div class="menu-price">3,300원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">바닐라라떼</div></div>
-      <div class="menu-price">3,800원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">카페모카</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">카라멜마끼아또</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">아샷추 (아이스티커피)</div></div>
-      <div class="menu-price">3,500원</div>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">마자그란 (레몬커피)</div>
-        <div class="menu-desc">Only ICE</div>
-      </div>
-      <div class="menu-price">4,000원</div>
-    </div>
-
-    <!-- 라떼/프라페 -->
-    <div class="menu-item">
-      <div><div class="menu-name">고구마라떼</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">과일라떼</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">자바칩프라푸치노</div></div>
-      <div class="menu-price">4,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">검은콩미숫가루프라페</div></div>
-      <div class="menu-price">4,500원</div>
-    </div>
-
-    <!-- 논커피 -->
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">버블티</div>
-        <div class="menu-desc">Only ICE</div>
-      </div>
-      <div class="menu-price">3,500원</div>
-    </div>
-    <div class="menu-item">
-      <div>
-        <div class="menu-name">생과일에이드</div>
-        <div class="menu-desc">Only ICE</div>
-      </div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">팥빙수무디 (컵팥빙수)</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">수박주스</div></div>
-      <div class="menu-price">4,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">감(홍시)주스</div></div>
-      <div class="menu-price">3,500원</div>
-    </div>
-
-    <!-- 병음료 -->
-    <div class="menu-item">
-      <div><div class="menu-name">코카콜라제로</div></div>
-      <div class="menu-price">2,000원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">웰치스 (포도)</div></div>
-      <div class="menu-price">1,500원</div>
-    </div>
-    <div class="menu-item">
-      <div><div class="menu-name">사이다</div></div>
-      <div class="menu-price">1,200원</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- 하나만 메뉴 -->
-  <section class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🎁</span>
-      <h2 class="section-title">하나만 세트</h2>
-      <span class="section-subtitle">Special Deal</span>
-    </div>
-
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">브런치박스</div>
-        </div>
-        <div>
-          <span class="menu-price">11,400원</span>
-          <span class="set-original-price">14,300원</span>
+        <div class="recommend-card">
+          <div class="menu-left">
+            <div class="menu-name-row">
+              <span class="menu-name">아메리카노</span>
+            </div>
+            <p class="menu-desc">진한 원두의 깔끔한 맛</p>
+          </div>
+          <span class="menu-price">2,000</span>
         </div>
       </div>
-    </div>
-    <div class="set-menu">
-      <div class="menu-item">
-        <div>
-          <div class="menu-name">해피파스타세트</div>
+    </section>
+
+    <!-- 파스타 -->
+    <section id="pasta" class="accordion-section open">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#127837;</div>
+          <div class="section-info">
+            <h2>파스타</h2>
+            <span class="subtitle">Pasta</span>
+          </div>
         </div>
-        <div>
-          <span class="menu-price">11,900원</span>
-          <span class="set-original-price">14,900원</span>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+
+          <div class="subcategory">
+            <div class="subcategory-title">OIL PASTA</div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">알리오올리오</div>
+              </div>
+              <span class="menu-price">9,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">베이컨알리오올리오</div>
+              </div>
+              <span class="menu-price">12,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">해산물알리오올리오</div>
+              </div>
+              <span class="menu-price">13,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name-row">
+                  <span class="menu-name">우삼겹알리오올리오</span>
+                  <span class="badge badge-best">BEST</span>
+                </div>
+              </div>
+              <span class="menu-price">14,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">엔초비알리오올리오</div>
+              </div>
+              <span class="menu-price">15,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">명란오일파스타</div>
+              </div>
+              <span class="menu-price">15,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">봉골레</div>
+              </div>
+              <span class="menu-price">13,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">감바스알아히오</div>
+              </div>
+              <span class="menu-price">16,000</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">TOMATO &amp; ROSE</div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">토마토파스타</div>
+              </div>
+              <span class="menu-price">11,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">해산물토마토</div>
+              </div>
+              <span class="menu-price">13,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">해산물로제</div>
+              </div>
+              <span class="menu-price">13,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">볼로네제</div>
+              </div>
+              <span class="menu-price">14,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">오징어먹물해산물</div>
+              </div>
+              <span class="menu-price">15,000</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">CREAM</div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">베이컨크림</div>
+              </div>
+              <span class="menu-price">13,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">매콤새우크림</div>
+              </div>
+              <span class="menu-price">13,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">투움바</div>
+              </div>
+              <span class="menu-price">18,000</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">SIGNATURE</div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name-row">
+                  <span class="menu-name">뇨끼(감자)파스타</span>
+                  <span class="badge badge-best">BEST</span>
+                </div>
+              </div>
+              <span class="menu-price">15,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">스파이시상하이해물</div>
+              </div>
+              <span class="menu-price">14,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">김치렐리쉬삼겹</div>
+              </div>
+              <span class="menu-price">15,000</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">SET MENU</div>
+            <div class="set-menu">
+              <div class="menu-item">
+                <div class="menu-left">
+                  <div class="menu-name">파스타세트 A</div>
+                  <p class="menu-desc">베이컨크림 or 알리오올리오 + 고로케 + 아메리카노</p>
+                </div>
+                <span class="menu-price">15,000</span>
+              </div>
+            </div>
+            <div class="set-menu">
+              <div class="menu-item">
+                <div class="menu-left">
+                  <div class="menu-name">파스타세트 B</div>
+                  <p class="menu-desc">뇨끼파스타 + 뱅쇼/아이스</p>
+                </div>
+                <span class="menu-price">17,000</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Floating Order Button -->
+    <!-- 버거 -->
+    <section id="burger" class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#127828;</div>
+          <div class="section-info">
+            <h2>버거 &amp; 핫도그</h2>
+            <span class="subtitle">Burgers &amp; Hot Dogs</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+
+          <div class="subcategory">
+            <div class="subcategory-title">BURGERS</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">소고기치즈버거</div></div>
+              <span class="menu-price">4,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">스파이시소고기치즈버거</div></div>
+              <span class="menu-price">5,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">리얼새우버거</div></div>
+              <span class="menu-price">5,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">비건치즈버거</div></div>
+              <span class="menu-price">5,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">베이컨에그치즈버거</div></div>
+              <span class="menu-price">6,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">하와이언베이컨소고기버거</div></div>
+              <span class="menu-price">6,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">하와이언치킨버거</div></div>
+              <span class="menu-price">7,000</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">FRIES</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">케이준감자튀김</div></div>
+              <span class="menu-price">2,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">허쉬브라운감자튀김</div></div>
+              <span class="menu-price">1,500</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">SET MENU</div>
+            <div class="set-menu">
+              <div class="menu-item">
+                <div class="menu-left">
+                  <div class="menu-name">버거세트 A</div>
+                  <p class="menu-desc">소고기치즈버거 + 감자튀김 + 콜라</p>
+                </div>
+                <span class="menu-price">7,500</span>
+              </div>
+            </div>
+            <div class="set-menu">
+              <div class="menu-item">
+                <div class="menu-left">
+                  <div class="menu-name">버거세트 B</div>
+                  <p class="menu-desc">소고기치즈버거 + 감자튀김 + 콜라제로</p>
+                </div>
+                <span class="menu-price">7,500</span>
+              </div>
+            </div>
+            <div class="set-menu">
+              <div class="menu-item">
+                <div class="menu-left">
+                  <div class="menu-name">버거세트 C</div>
+                  <p class="menu-desc">베이컨에그치즈버거 + 감자튀김 + 콜라</p>
+                </div>
+                <span class="menu-price">9,000</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">HOT DOGS</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">보스톤아메리칸핫도그</div></div>
+              <span class="menu-price">3,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">페페로니칠리핫도그</div>
+                <p class="menu-desc">매콤 소세지</p>
+              </div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">소불고기핫도그</div></div>
+              <span class="menu-price">4,500</span>
+            </div>
+            <div class="set-menu">
+              <div class="menu-item">
+                <div class="menu-left"><div class="menu-name">핫도그세트 A</div></div>
+                <span class="menu-price">6,000</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 샌드위치 -->
+    <section id="sandwich" class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#129386;</div>
+          <div class="section-info">
+            <h2>샌드위치 &amp; 브레드</h2>
+            <span class="subtitle">Sandwich &amp; Bread</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+
+          <div class="subcategory">
+            <div class="subcategory-title">SANDWICH</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">햄치즈클럽샌드위치</div></div>
+              <span class="menu-price">6,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">BLT 샌드위치</div></div>
+              <span class="menu-price">6,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">바질페스토치킨샌드위치</div></div>
+              <span class="menu-price">6,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">크랜베리치킨샌드위치</div></div>
+              <span class="menu-price">6,500</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">SALT BREAD</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">소금빵 (플레인)</div></div>
+              <span class="menu-price">2,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">소금빵 앙버터</div></div>
+              <span class="menu-price">3,800</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">샐러드소금빵</div></div>
+              <span class="menu-price">4,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">소금빵 잠봉뵈르</div></div>
+              <span class="menu-price">6,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">소금빵 연어샌드위치</div></div>
+              <span class="menu-price">7,500</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 필라프 -->
+    <section id="rice" class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#127834;</div>
+          <div class="section-info">
+            <h2>필라프 &amp; 라이스</h2>
+            <span class="subtitle">Pilaf &amp; Rice</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">감바스필라프</div></div>
+            <span class="menu-price">12,000</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">치킨필라프</div></div>
+            <span class="menu-price">12,000</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">김치소세지필라프</div></div>
+            <span class="menu-price">12,000</span>
+          </div>
+          <div class="set-menu">
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">필라프세트 A</div></div>
+              <span class="menu-price">14,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 사이드 -->
+    <section id="side" class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#127831;</div>
+          <div class="section-info">
+            <h2>사이드 디쉬</h2>
+            <span class="subtitle">Side Dish</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">돈까스</div></div>
+            <span class="menu-price">6,500</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">생선까스 (2개)</div></div>
+            <span class="menu-price">3,500</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">텐더세트</div></div>
+            <span class="menu-price">5,000</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">버팔로윙봉세트</div></div>
+            <span class="menu-price">6,000</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">윙봉텐더세트</div></div>
+            <span class="menu-price">7,500</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 고로케 -->
+    <section id="croquette" class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#129370;</div>
+          <div class="section-info">
+            <h2>고로케</h2>
+            <span class="subtitle">Croquettes</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">단팥고로케</div></div>
+            <span class="menu-price">2,500</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">크림치즈고로케</div></div>
+            <span class="menu-price">2,800</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left">
+              <div class="menu-name-row">
+                <span class="menu-name">소불고기고로케</span>
+                <span class="badge badge-signature">SIGNATURE</span>
+              </div>
+            </div>
+            <span class="menu-price">3,000</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">매운고기잡채고로케</div></div>
+            <span class="menu-price">2,500</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">고로케소세지빵</div></div>
+            <span class="menu-price">2,800</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-left"><div class="menu-name">새우멘보샤 (4개 1set)</div></div>
+            <span class="menu-price">13,000</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 음료 -->
+    <section id="drink" class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#9749;</div>
+          <div class="section-info">
+            <h2>음료</h2>
+            <span class="subtitle">Beverages</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+
+          <div class="subcategory">
+            <div class="subcategory-title">COFFEE</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">아메리카노</div></div>
+              <span class="menu-price">2,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">카페라떼</div></div>
+              <span class="menu-price">3,300</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">바닐라라떼</div></div>
+              <span class="menu-price">3,800</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">카페모카</div></div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">카라멜마끼아또</div></div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">아샷추 (아이스티커피)</div></div>
+              <span class="menu-price">3,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">마자그란 (레몬커피)</div>
+                <p class="menu-desc">Only ICE</p>
+              </div>
+              <span class="menu-price">4,000</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">LATTE &amp; FRAPPE</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">고구마라떼</div></div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">과일라떼</div></div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">자바칩프라푸치노</div></div>
+              <span class="menu-price">4,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">검은콩미숫가루프라페</div></div>
+              <span class="menu-price">4,500</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">NON-COFFEE</div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">버블티</div>
+                <p class="menu-desc">Only ICE</p>
+              </div>
+              <span class="menu-price">3,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">생과일에이드</div>
+                <p class="menu-desc">Only ICE</p>
+              </div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">팥빙수무디 (컵팥빙수)</div></div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">수박주스</div></div>
+              <span class="menu-price">4,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">감(홍시)주스</div></div>
+              <span class="menu-price">3,500</span>
+            </div>
+          </div>
+
+          <div class="subcategory">
+            <div class="subcategory-title">BOTTLE</div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">코카콜라제로</div></div>
+              <span class="menu-price">2,000</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">웰치스 (포도)</div></div>
+              <span class="menu-price">1,500</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-left"><div class="menu-name">사이다</div></div>
+              <span class="menu-price">1,200</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 하나만 세트 -->
+    <section class="accordion-section">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <div class="accordion-left">
+          <div class="section-icon">&#127873;</div>
+          <div class="section-info">
+            <h2>하나만 세트</h2>
+            <span class="subtitle">Special Deal</span>
+          </div>
+        </div>
+        <div class="accordion-arrow">&#9662;</div>
+      </div>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <div class="set-menu">
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">브런치박스</div>
+              </div>
+              <div class="set-prices">
+                <span class="original-price">14,300</span>
+                <span class="menu-price">11,400</span>
+              </div>
+            </div>
+          </div>
+          <div class="set-menu">
+            <div class="menu-item">
+              <div class="menu-left">
+                <div class="menu-name">해피파스타세트</div>
+              </div>
+              <div class="set-prices">
+                <span class="original-price">14,900</span>
+                <span class="menu-price">11,900</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-info">
+      <div class="brand">好爺堂</div>
+      <p>Since 2006 &middot; Anyang, Korea</p>
+      <p>Handcrafted Daily</p>
+    </footer>
+
+  </main>
+
+  <!-- Floating Order -->
   <div class="floating-order">
-    <a href="https://www.coupangeats.com/search?query=안양 호야당" target="_blank" rel="noopener" class="order-btn coupang">
+    <a href="javascript:void(0)" onclick="openCoupangEats()" class="order-btn coupang">
       쿠팡이츠
     </a>
-    <a href="https://baemin.me/안양호야당" target="_blank" rel="noopener" class="order-btn baemin">
+    <a href="javascript:void(0)" onclick="openBaemin()" class="order-btn baemin">
       배달의민족
     </a>
   </div>
 
   <script>
-    // Category chip active state on scroll
-    const sections = document.querySelectorAll('.menu-section[id]');
+    // Accordion toggle
+    function toggleAccordion(header) {
+      const section = header.parentElement;
+      section.classList.toggle('open');
+    }
+
+    // Category chip active state
+    const sections = document.querySelectorAll('.accordion-section[id], .recommend-section[id]');
     const chips = document.querySelectorAll('.category-chip');
 
     function updateActiveChip() {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        if (scrollY >= sectionTop) {
-          current = section.getAttribute('id');
+      let current = 'recommend';
+      const scrollPos = window.scrollY + 200;
+
+      document.querySelectorAll('[id]').forEach(section => {
+        if (section.offsetTop <= scrollPos) {
+          const id = section.getAttribute('id');
+          if (id) current = id;
         }
       });
 
@@ -830,16 +1330,66 @@
 
     window.addEventListener('scroll', updateActiveChip);
 
-    // Smooth scroll for category chips
+    // Smooth scroll
     chips.forEach(chip => {
       chip.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(chip.getAttribute('href'));
+        const targetId = chip.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const section = target.closest('.accordion-section');
+          if (section && !section.classList.contains('open')) {
+            section.classList.add('open');
+          }
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
         }
       });
     });
+
+    // Deeplink functions
+    // TODO: 매장 ID 받으면 coupangeats://store/{ID} 로 변경
+    function openCoupangEats() {
+      const appScheme = 'coupangeats://search?keyword=호야당';
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.eats';
+      const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
+      const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+
+      const ua = navigator.userAgent.toLowerCase();
+      const isAndroid = ua.indexOf('android') > -1;
+      const isIOS = /iphone|ipad|ipod/.test(ua);
+
+      if (isAndroid) {
+        window.location.href = intentUrl;
+      } else if (isIOS) {
+        window.location.href = appScheme;
+        setTimeout(() => { window.location.href = iosStore; }, 1500);
+      } else {
+        window.open('https://www.coupangeats.com/search?query=안양 호야당', '_blank');
+      }
+    }
+
+    // TODO: 가게 번호 받으면 baeminkr://shop/{번호} 로 변경
+    function openBaemin() {
+      const appScheme = 'baemin://';
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.sampleapp.baemin';
+      const iosStore = 'https://apps.apple.com/kr/app/id378084485';
+      const intentUrl = 'intent://#Intent;scheme=baemin;package=com.sampleapp.baemin;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+
+      const ua = navigator.userAgent.toLowerCase();
+      const isAndroid = ua.indexOf('android') > -1;
+      const isIOS = /iphone|ipad|ipod/.test(ua);
+
+      if (isAndroid) {
+        window.location.href = intentUrl;
+      } else if (isIOS) {
+        window.location.href = appScheme;
+        setTimeout(() => { window.location.href = iosStore; }, 1500);
+      } else {
+        window.open('https://baemin.me/', '_blank');
+      }
+    }
   </script>
 
 </body>
