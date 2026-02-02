@@ -16,7 +16,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -888,95 +888,158 @@
     .menu-gallery:active { cursor: grabbing; }
 
     .menu-card {
-      flex: 0 0 380px;
+      flex: 0 0 340px;
       scroll-snap-align: start;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      transition: transform 0.6s var(--ease-out-expo), border-color 0.3s;
+      background: #1e3322;
+      background-image:
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.02) 0%, transparent 50%),
+        linear-gradient(180deg, #243828 0%, #1a2a1e 100%);
+      border: 6px solid #4a3728;
+      border-radius: 2px;
+      box-shadow:
+        inset 0 0 80px rgba(0,0,0,0.4),
+        inset 0 2px 0 rgba(255,255,255,0.05),
+        0 8px 32px rgba(0,0,0,0.5);
+      transition: transform 0.5s ease;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
     }
 
     .menu-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--gold);
+      transform: translateY(-6px);
     }
 
     .menu-card-visual {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      position: relative;
+      padding: 2rem 1.5rem;
+      min-height: 280px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, rgba(212,168,83,0.15) 0%, transparent 100%);
-    }
-
-    .menu-card-visual .menu-card-num {
       position: relative;
-      top: auto;
-      left: auto;
-      font-size: 4rem;
-      margin-bottom: 1rem;
     }
 
-    .menu-card-visual .menu-card-tag {
-      position: relative;
-      top: auto;
-      right: auto;
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      padding: 0.5rem 1rem;
-      border: 2px solid var(--gold);
-      border-radius: 100px;
-      color: var(--gold);
-      font-family: var(--f-display);
-    }
-
-    .menu-card-highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 1rem;
-      padding: 0 1rem;
-    }
-
-    .menu-card-highlights span {
-      font-size: 0.6875rem;
-      padding: 0.25rem 0.75rem;
-      background: rgba(255,255,255,0.08);
-      border-radius: 100px;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .menu-card-info {
-      padding: 1.5rem;
+    .menu-card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .menu-card-num {
+      font-size: 2.5rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    }
+
+    .menu-card-tag {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 1.1rem;
+      color: #f0e6d0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      padding: 0.25rem 0.75rem;
+      border: 1px dashed rgba(240,230,208,0.4);
+      border-radius: 4px;
+    }
+
+    .chalk-menu {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chalk-title {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 2rem;
+      color: #fff8e7;
+      text-shadow: 0 0 8px rgba(255,255,255,0.2);
+      margin-bottom: 0.75rem;
+      opacity: 0;
+    }
+
+    .chalk-divider {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,248,230,0.5), transparent);
+      margin: 0.5rem 0;
+    }
+
+    .chalk-item {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 1.2rem;
+      color: rgba(255,248,230,0.85);
+      text-shadow: 0 0 4px rgba(255,255,255,0.15);
+      margin: 0.3rem 0;
+      padding-left: 1rem;
+      position: relative;
+      opacity: 0;
+    }
+
+    .chalk-item::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: rgba(255,248,230,0.5);
+    }
+
+    /* Chalk writing animation */
+    .chalk-title.animate {
+      animation: chalkWrite 0.5s ease-out forwards;
+    }
+
+    .chalk-divider.animate {
+      animation: chalkLine 0.4s ease-out forwards;
+    }
+
+    .chalk-item.animate {
+      animation: chalkWrite 0.4s ease-out forwards;
+    }
+
+    @keyframes chalkWrite {
+      0% {
+        opacity: 0;
+        transform: translateX(-8px);
+        filter: blur(2px);
+      }
+      60% {
+        filter: blur(0.5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes chalkLine {
+      0% { width: 0; opacity: 0; }
+      100% { width: 80%; opacity: 1; }
+    }
+
+    .menu-card-info {
+      padding: 1rem 1.5rem;
+      background: rgba(0,0,0,0.2);
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     .menu-card-name {
-      font-family: var(--f-display);
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 1.4rem;
+      color: #f0e6d0;
       margin-bottom: 0.25rem;
     }
 
     .menu-card-desc {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .menu-card-price {
-      font-family: var(--f-display);
-      font-size: 1.25rem;
-      font-style: italic;
-      color: var(--gold);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
     }
 
     .menu-view-all-btn {
@@ -1767,111 +1830,128 @@
     </div>
 
     <div class="menu-gallery" id="menuGallery">
-      <a href="/menu/#pasta" class="menu-card">
+      <a href="/menu/#pasta" class="menu-card" data-chalk>
         <div class="menu-card-visual">
-          <span class="menu-card-num">🍝</span>
-          <span class="menu-card-tag">9,000원~</span>
-          <div class="menu-card-highlights">
-            <span>뇨끼</span>
-            <span>알리오올리오</span>
-            <span>로제</span>
+          <div class="menu-card-header">
+            <span class="menu-card-num">🍝</span>
+            <span class="menu-card-tag">9,000원~</span>
+          </div>
+          <div class="chalk-menu">
+            <div class="chalk-title">파스타</div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-item">뇨끼 (감자)</div>
+            <div class="chalk-item">우삼겹 알리오올리오</div>
+            <div class="chalk-item">해산물 로제</div>
+            <div class="chalk-item">크림 파스타</div>
           </div>
         </div>
         <div class="menu-card-info">
-          <div>
-            <h3 class="menu-card-name">파스타</h3>
-            <p class="menu-card-desc">20가지 이상의 파스타 메뉴</p>
-          </div>
+          <h3 class="menu-card-name">PASTA</h3>
+          <p class="menu-card-desc">20가지 이상의 파스타</p>
         </div>
       </a>
 
-      <a href="/menu/#burger" class="menu-card">
+      <a href="/menu/#burger" class="menu-card" data-chalk>
         <div class="menu-card-visual">
-          <span class="menu-card-num">🍔</span>
-          <span class="menu-card-tag">4,500원~</span>
-          <div class="menu-card-highlights">
-            <span>소고기치즈</span>
-            <span>새우버거</span>
-            <span>핫도그</span>
+          <div class="menu-card-header">
+            <span class="menu-card-num">🍔</span>
+            <span class="menu-card-tag">4,500원~</span>
+          </div>
+          <div class="chalk-menu">
+            <div class="chalk-title">버거</div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-item">소고기 치즈버거</div>
+            <div class="chalk-item">리얼 새우버거</div>
+            <div class="chalk-item">베이컨 에그</div>
+            <div class="chalk-item">아메리칸 핫도그</div>
           </div>
         </div>
         <div class="menu-card-info">
-          <div>
-            <h3 class="menu-card-name">버거 & 핫도그</h3>
-            <p class="menu-card-desc">수제 패티 버거 + 세트메뉴</p>
-          </div>
+          <h3 class="menu-card-name">BURGER</h3>
+          <p class="menu-card-desc">수제 패티 + 세트메뉴</p>
         </div>
       </a>
 
-      <a href="/menu/#croquette" class="menu-card">
+      <a href="/menu/#croquette" class="menu-card" data-chalk>
         <div class="menu-card-visual">
-          <span class="menu-card-num">🥟</span>
-          <span class="menu-card-tag">2,500원~</span>
-          <div class="menu-card-highlights">
-            <span>소불고기</span>
-            <span>크림치즈</span>
-            <span>단팥</span>
+          <div class="menu-card-header">
+            <span class="menu-card-num">🥟</span>
+            <span class="menu-card-tag">2,500원~</span>
+          </div>
+          <div class="chalk-menu">
+            <div class="chalk-title">고로케</div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-item">소불고기 ★시그니처</div>
+            <div class="chalk-item">크림치즈</div>
+            <div class="chalk-item">단팥</div>
+            <div class="chalk-item">고기잡채</div>
           </div>
         </div>
         <div class="menu-card-info">
-          <div>
-            <h3 class="menu-card-name">고로케</h3>
-            <p class="menu-card-desc">20년 손맛 시그니처</p>
-          </div>
+          <h3 class="menu-card-name">CROQUETTE</h3>
+          <p class="menu-card-desc">20년 손맛</p>
         </div>
       </a>
 
-      <a href="/menu/#sandwich" class="menu-card">
+      <a href="/menu/#sandwich" class="menu-card" data-chalk>
         <div class="menu-card-visual">
-          <span class="menu-card-num">🥪</span>
-          <span class="menu-card-tag">2,500원~</span>
-          <div class="menu-card-highlights">
-            <span>소금빵</span>
-            <span>BLT</span>
-            <span>잠봉뵈르</span>
+          <div class="menu-card-header">
+            <span class="menu-card-num">🥪</span>
+            <span class="menu-card-tag">2,500원~</span>
+          </div>
+          <div class="chalk-menu">
+            <div class="chalk-title">샌드위치</div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-item">소금빵 플레인</div>
+            <div class="chalk-item">BLT 샌드위치</div>
+            <div class="chalk-item">잠봉뵈르</div>
+            <div class="chalk-item">연어 샌드위치</div>
           </div>
         </div>
         <div class="menu-card-info">
-          <div>
-            <h3 class="menu-card-name">샌드위치 & 빵</h3>
-            <p class="menu-card-desc">갓 구운 소금빵 + 샌드위치</p>
-          </div>
+          <h3 class="menu-card-name">SANDWICH</h3>
+          <p class="menu-card-desc">갓 구운 소금빵</p>
         </div>
       </a>
 
-      <a href="/menu/#rice" class="menu-card">
+      <a href="/menu/#rice" class="menu-card" data-chalk>
         <div class="menu-card-visual">
-          <span class="menu-card-num">🍚</span>
-          <span class="menu-card-tag">12,000원~</span>
-          <div class="menu-card-highlights">
-            <span>감바스</span>
-            <span>치킨</span>
-            <span>김치소세지</span>
+          <div class="menu-card-header">
+            <span class="menu-card-num">🍚</span>
+            <span class="menu-card-tag">12,000원~</span>
+          </div>
+          <div class="chalk-menu">
+            <div class="chalk-title">필라프</div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-item">감바스 필라프</div>
+            <div class="chalk-item">치킨 필라프</div>
+            <div class="chalk-item">김치소세지</div>
           </div>
         </div>
         <div class="menu-card-info">
-          <div>
-            <h3 class="menu-card-name">필라프</h3>
-            <p class="menu-card-desc">든든한 한 끼 라이스</p>
-          </div>
+          <h3 class="menu-card-name">PILAF</h3>
+          <p class="menu-card-desc">든든한 한 끼</p>
         </div>
       </a>
 
-      <a href="/menu/#drink" class="menu-card">
+      <a href="/menu/#drink" class="menu-card" data-chalk>
         <div class="menu-card-visual">
-          <span class="menu-card-num">☕</span>
-          <span class="menu-card-tag">2,000원~</span>
-          <div class="menu-card-highlights">
-            <span>아메리카노</span>
-            <span>라떼</span>
-            <span>에이드</span>
+          <div class="menu-card-header">
+            <span class="menu-card-num">☕</span>
+            <span class="menu-card-tag">2,000원~</span>
+          </div>
+          <div class="chalk-menu">
+            <div class="chalk-title">음료</div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-item">아메리카노</div>
+            <div class="chalk-item">카페라떼</div>
+            <div class="chalk-item">생과일 에이드</div>
+            <div class="chalk-item">프라푸치노</div>
           </div>
         </div>
         <div class="menu-card-info">
-          <div>
-            <h3 class="menu-card-name">음료</h3>
-            <p class="menu-card-desc">커피, 에이드, 프라페</p>
-          </div>
+          <h3 class="menu-card-name">DRINKS</h3>
+          <p class="menu-card-desc">커피, 에이드, 프라페</p>
         </div>
       </a>
     </div>
@@ -2205,6 +2285,49 @@
       });
     });
 
+  })();
+
+  // Chalk writing animation
+  (function() {
+    const chalkCards = document.querySelectorAll('.menu-card[data-chalk]');
+
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px'
+    };
+
+    const animateChalk = (card) => {
+      const title = card.querySelector('.chalk-title');
+      const divider = card.querySelector('.chalk-divider');
+      const items = card.querySelectorAll('.chalk-item');
+
+      let delay = 0;
+
+      if (title) {
+        setTimeout(() => title.classList.add('animate'), delay);
+        delay += 300;
+      }
+
+      if (divider) {
+        setTimeout(() => divider.classList.add('animate'), delay);
+        delay += 200;
+      }
+
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('animate'), delay + (i * 150));
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = 'true';
+          animateChalk(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    chalkCards.forEach(card => observer.observe(card));
   })();
   </script>
 
