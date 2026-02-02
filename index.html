@@ -535,6 +535,79 @@
       to { opacity: 1; }
     }
 
+    /* 배달 플랫폼 버튼 */
+    .hero-platforms {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: heroReveal 1s var(--ease-out-expo) 2.5s forwards;
+    }
+
+    .hero-platform-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-platform-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .hero-platform-btn.coupang {
+      background: #E31837;
+      color: #fff;
+    }
+
+    .hero-platform-btn.baemin {
+      background: #2AC1BC;
+      color: #fff;
+    }
+
+    .hero-quick-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: heroReveal 1s var(--ease-out-expo) 2.8s forwards;
+    }
+
+    .hero-quick-btn {
+      padding: 0.75rem 1.25rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--white);
+      transition: all 0.2s;
+    }
+
+    .hero-quick-btn:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .hero-platforms {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+      }
+      .hero-platform-btn {
+        justify-content: center;
+      }
+      .hero-quick-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
     .hero-scroll-cta {
       position: absolute;
       bottom: 4rem;
@@ -1475,6 +1548,23 @@
           <p class="hero-info-label">Location</p>
           <p class="hero-info-value">Anyang, Korea</p>
         </div>
+      </div>
+
+      <!-- 배달 플랫폼 버튼 -->
+      <div class="hero-platforms">
+        <a href="https://www.coupangeats.com/search?query=안양 호야당" target="_blank" rel="noopener" class="hero-platform-btn coupang">
+          <span>🛵</span> 쿠팡이츠 주문
+        </a>
+        <a href="https://baemin.me/안양호야당" target="_blank" rel="noopener" class="hero-platform-btn baemin">
+          <span>🍽️</span> 배달의민족 주문
+        </a>
+      </div>
+
+      <!-- 빠른 액션 -->
+      <div class="hero-quick-actions">
+        <a href="tel:1670-9827" class="hero-quick-btn">📞 전화</a>
+        <a href="https://map.naver.com/v5/search/경기도 안양시 만안구 와룡로 12-1 호야당" target="_blank" class="hero-quick-btn">📍 지도</a>
+        <a href="/menu/" class="hero-quick-btn">📋 메뉴</a>
       </div>
     </div>
 
