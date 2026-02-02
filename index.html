@@ -254,6 +254,16 @@
       transform: scale(0.98);
     }
 
+    .menu-card-icon {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--masa);
+      font-size: 48px;
+    }
+
     .menu-card-image {
       width: 100%;
       aspect-ratio: 1;
@@ -286,6 +296,18 @@
       font-weight: 600;
       text-align: center;
       color: var(--carbon);
+    }
+
+    .menu-view-all {
+      display: block;
+      margin-top: 24px;
+      padding: 14px;
+      background: var(--carbon);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
     }
 
     /* ============================================
@@ -464,43 +486,40 @@
       <h2 class="section-title">Menu</h2>
       <div class="menu-grid">
 
-        <a href="/story/scene-01.html" class="menu-card">
-          <img src="/assets/menu/tteokbokki-donut.jpg" alt="K-컵떡볶이 도넛" class="menu-card-image" loading="lazy">
+        <a href="/menu/#pasta" class="menu-card">
+          <div class="menu-card-icon">🍝</div>
           <div class="menu-card-body">
-            <div class="menu-card-name">K-컵떡볶이 도넛</div>
-            <div class="menu-card-desc">불 · 매움 · 야시장</div>
-            <span class="menu-card-btn">스토리 보기 →</span>
+            <div class="menu-card-name">파스타</div>
+            <div class="menu-card-desc">9,000원~</div>
           </div>
         </a>
 
-        <a href="/story/scene-02.html" class="menu-card">
-          <img src="/assets/menu/mochi-donut.jpg" alt="K-모찌 도넛" class="menu-card-image" loading="lazy">
+        <a href="/menu/#burger" class="menu-card">
+          <div class="menu-card-icon">🍔</div>
           <div class="menu-card-body">
-            <div class="menu-card-name">K-모찌 도넛</div>
-            <div class="menu-card-desc">쫀득 · 폭발 · 터지는 속</div>
-            <span class="menu-card-btn">스토리 보기 →</span>
+            <div class="menu-card-name">버거 & 핫도그</div>
+            <div class="menu-card-desc">3,500원~</div>
           </div>
         </a>
 
-        <a href="/story/scene-03.html" class="menu-card">
-          <img src="/assets/menu/donut-burger.jpg" alt="K-도넛 버거" class="menu-card-image" loading="lazy">
+        <a href="/menu/#croquette" class="menu-card">
+          <div class="menu-card-icon">🥟</div>
           <div class="menu-card-body">
-            <div class="menu-card-name">K-도넛 버거</div>
-            <div class="menu-card-desc">단짠 · 과잉 · 파인애플</div>
-            <span class="menu-card-btn">스토리 보기 →</span>
+            <div class="menu-card-name">고로케</div>
+            <div class="menu-card-desc">2,500원~</div>
           </div>
         </a>
 
-        <a href="/story/scene-04.html" class="menu-card">
-          <img src="/assets/menu/toast-bar.jpg" alt="K-토스트 바" class="menu-card-image" loading="lazy">
+        <a href="/menu/#sandwich" class="menu-card">
+          <div class="menu-card-icon">🥪</div>
           <div class="menu-card-body">
-            <div class="menu-card-name">K-토스트 바</div>
-            <div class="menu-card-desc">철판 · 연기 · 손맛</div>
-            <span class="menu-card-btn">스토리 보기 →</span>
+            <div class="menu-card-name">샌드위치</div>
+            <div class="menu-card-desc">2,500원~</div>
           </div>
         </a>
 
       </div>
+      <a href="/menu/" class="menu-view-all">전체 메뉴 보기 →</a>
     </div>
   </section>
 
