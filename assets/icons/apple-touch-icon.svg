@@ -1,28 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
   <defs>
-    <linearGradient id="appleGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#D4A853"/>
-      <stop offset="100%" style="stop-color:#B8956F"/>
+    <linearGradient id="crust" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8A838"/>
+      <stop offset="50%" stop-color="#D4892A"/>
+      <stop offset="100%" stop-color="#B8741E"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8A0"/>
+      <stop offset="100%" stop-color="#F5D060"/>
     </linearGradient>
   </defs>
 
-  <!-- Background - Dark Green -->
-  <rect width="180" height="180" fill="#0D3320" rx="40"/>
+  <!-- Background -->
+  <rect width="180" height="180" fill="#1B4332" rx="36"/>
 
-  <!-- Abstract concentric circles -->
-  <circle cx="90" cy="70" r="45" fill="none" stroke="url(#appleGold)" stroke-width="1.5" opacity="0.3"/>
-  <circle cx="90" cy="70" r="33" fill="none" stroke="url(#appleGold)" stroke-width="1.5" opacity="0.5"/>
-  <circle cx="90" cy="70" r="21" fill="none" stroke="url(#appleGold)" stroke-width="1.5" opacity="0.7"/>
-  <circle cx="90" cy="70" r="9" fill="none" stroke="url(#appleGold)" stroke-width="1.5" opacity="0.9"/>
+  <!-- Croquette body -->
+  <ellipse cx="90" cy="70" rx="50" ry="34" fill="url(#crust)" transform="rotate(-15 90 70)"/>
 
-  <!-- Center dot -->
-  <circle cx="90" cy="70" r="3" fill="#D4A853"/>
+  <!-- Cream filling -->
+  <ellipse cx="77" cy="73" rx="20" ry="14" fill="url(#cream)" transform="rotate(-15 77 73)"/>
+  <ellipse cx="77" cy="73" rx="16" ry="11" fill="#FFF5CC" transform="rotate(-15 77 73)"/>
 
-  <!-- 호야당 Text -->
-  <text x="90" y="145"
-        font-family="Noto Sans KR, sans-serif"
-        font-size="26"
-        font-weight="700"
-        fill="#FFFFFF"
-        text-anchor="middle">호야당</text>
+  <!-- Crust texture -->
+  <g fill="#C67B1A" opacity="0.5">
+    <circle cx="100" cy="55" r="2"/>
+    <circle cx="115" cy="65" r="1.5"/>
+    <circle cx="108" cy="78" r="2"/>
+    <circle cx="120" cy="72" r="1.5"/>
+  </g>
+
+  <!-- 호야당 text -->
+  <text x="90" y="145" font-family="'Noto Sans KR', sans-serif" font-size="28" font-weight="700" fill="#F5F1E6" text-anchor="middle">호야당</text>
 </svg>
