@@ -964,6 +964,24 @@
       color: var(--gold);
     }
 
+    .menu-view-all-btn {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 1rem 2.5rem;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .menu-view-all-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 768px) {
       .menu-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 0 2rem; }
       .menu-subtitle { text-align: left; }
@@ -1638,101 +1656,93 @@
   <!-- Menu -->
   <section class="menu" id="menu">
     <div class="menu-header">
-      <h2 class="menu-title reveal">Our Breads</h2>
-      <p class="menu-subtitle reveal reveal-delay-1">매일 아침 갓 구운 빵.<br>당일 생산, 당일 판매.</p>
+      <h2 class="menu-title reveal">Our Menu</h2>
+      <p class="menu-subtitle reveal reveal-delay-1">파스타 · 버거 · 고로케 · 샌드위치<br>매일 신선하게 준비합니다.</p>
     </div>
 
     <div class="menu-gallery" id="menuGallery">
-      <article class="menu-card">
+      <a href="/menu/#pasta" class="menu-card">
         <div class="menu-card-visual">
-          <span class="menu-card-num">01</span>
-          <span class="menu-card-tag">Signature</span>
-          <img src="assets/icons/K-모찌 도넛.png" alt="소금빵">
+          <span class="menu-card-num">🍝</span>
+          <span class="menu-card-tag">9,000원~</span>
         </div>
         <div class="menu-card-info">
           <div>
-            <h3 class="menu-card-name">소금빵</h3>
-            <p class="menu-card-desc">Salt Bread</p>
+            <h3 class="menu-card-name">파스타</h3>
+            <p class="menu-card-desc">알리오올리오, 크림, 로제, 뇨끼</p>
           </div>
-          <span class="menu-card-price">₩2,500</span>
         </div>
-      </article>
+      </a>
 
-      <article class="menu-card">
+      <a href="/menu/#burger" class="menu-card">
         <div class="menu-card-visual">
-          <span class="menu-card-num">02</span>
-          <span class="menu-card-tag">Classic</span>
-          <img src="assets/icons/K-컵떡볶이 도넛.png" alt="소보로">
+          <span class="menu-card-num">🍔</span>
+          <span class="menu-card-tag">4,500원~</span>
         </div>
         <div class="menu-card-info">
           <div>
-            <h3 class="menu-card-name">소보로</h3>
-            <p class="menu-card-desc">Streusel</p>
+            <h3 class="menu-card-name">버거 & 핫도그</h3>
+            <p class="menu-card-desc">소고기, 새우, 비건, 핫도그</p>
           </div>
-          <span class="menu-card-price">₩2,000</span>
         </div>
-      </article>
+      </a>
 
-      <article class="menu-card">
+      <a href="/menu/#croquette" class="menu-card">
         <div class="menu-card-visual">
-          <span class="menu-card-num">03</span>
-          <span class="menu-card-tag">Best</span>
-          <img src="assets/icons/K-도넛 버거.png" alt="고로케">
+          <span class="menu-card-num">🥟</span>
+          <span class="menu-card-tag">2,500원~</span>
         </div>
         <div class="menu-card-info">
           <div>
             <h3 class="menu-card-name">고로케</h3>
-            <p class="menu-card-desc">Croquette</p>
+            <p class="menu-card-desc">소불고기, 크림치즈, 단팥</p>
           </div>
-          <span class="menu-card-price">₩2,500</span>
         </div>
-      </article>
+      </a>
 
-      <article class="menu-card">
+      <a href="/menu/#sandwich" class="menu-card">
         <div class="menu-card-visual">
-          <span class="menu-card-num">04</span>
-          <span class="menu-card-tag">Brunch</span>
-          <img src="assets/icons/K-도넛 버거.png" alt="수제 버거">
+          <span class="menu-card-num">🥪</span>
+          <span class="menu-card-tag">2,500원~</span>
         </div>
         <div class="menu-card-info">
           <div>
-            <h3 class="menu-card-name">수제 버거</h3>
-            <p class="menu-card-desc">Handmade Burger</p>
+            <h3 class="menu-card-name">샌드위치 & 소금빵</h3>
+            <p class="menu-card-desc">BLT, 연어, 잠봉뵈르</p>
           </div>
-          <span class="menu-card-price">₩5,500</span>
         </div>
-      </article>
+      </a>
 
-      <article class="menu-card">
+      <a href="/menu/#rice" class="menu-card">
         <div class="menu-card-visual">
-          <span class="menu-card-num">05</span>
-          <span class="menu-card-tag">Brunch</span>
-          <img src="assets/icons/K-토스트 바.png" alt="샌드위치">
+          <span class="menu-card-num">🍚</span>
+          <span class="menu-card-tag">12,000원~</span>
         </div>
         <div class="menu-card-info">
           <div>
-            <h3 class="menu-card-name">샌드위치</h3>
-            <p class="menu-card-desc">Artisan Sandwich</p>
+            <h3 class="menu-card-name">필라프</h3>
+            <p class="menu-card-desc">감바스, 치킨, 김치소세지</p>
           </div>
-          <span class="menu-card-price">₩4,500</span>
         </div>
-      </article>
+      </a>
 
-      <article class="menu-card">
+      <a href="/menu/#drink" class="menu-card">
         <div class="menu-card-visual">
-          <span class="menu-card-num">06</span>
-          <span class="menu-card-tag">Daily</span>
-          <img src="assets/icons/K-토스트 바.png" alt="우유 식빵">
+          <span class="menu-card-num">☕</span>
+          <span class="menu-card-tag">2,000원~</span>
         </div>
         <div class="menu-card-info">
           <div>
-            <h3 class="menu-card-name">우유 식빵</h3>
-            <p class="menu-card-desc">Milk Bread</p>
+            <h3 class="menu-card-name">음료</h3>
+            <p class="menu-card-desc">커피, 에이드, 프라페</p>
           </div>
-          <span class="menu-card-price">₩4,000</span>
         </div>
-      </article>
+      </a>
     </div>
+
+    <a href="/menu/" class="menu-view-all-btn reveal">
+      전체 메뉴 보기 →
+    </a>
   </section>
 
   <!-- Philosophy -->
