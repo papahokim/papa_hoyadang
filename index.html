@@ -16,7 +16,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,9 +30,10 @@
       --warm-gray: #3D3A36;
       --soft-black: #1A1A1A;
 
-      --f-display: 'Cormorant Garamond', 'Noto Serif KR', serif;
-      --f-body: 'Inter', -apple-system, sans-serif;
-      --f-korean: 'Noto Serif KR', serif;
+      /* 폰트 시스템: 하나의 목소리 */
+      --font-kr: 'Noto Serif KR', serif;
+      --font-en: 'Cormorant Garamond', serif;
+      --font-chalk: var(--font-chalk);
 
       --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
@@ -51,7 +52,7 @@
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
     body {
-      font-family: var(--f-body);
+      font-family: var(--font-kr);
       background: var(--black);
       color: var(--white);
       line-height: 1.6;
@@ -205,7 +206,7 @@
 
     .preloader-logo {
       margin-top: 3rem;
-      font-family: var(--f-korean);
+      font-family: var(--font-kr);
       font-size: 2rem;
       letter-spacing: 0.2em;
       opacity: 0;
@@ -258,7 +259,7 @@
       background: transparent;
       border: 1px solid rgba(255,255,255,0.2);
       color: rgba(255,255,255,0.5);
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 0.75rem;
       font-style: italic;
       display: flex;
@@ -273,7 +274,7 @@
       position: absolute;
       right: 100%;
       margin-right: 1rem;
-      font-family: var(--f-body);
+      font-family: var(--font-kr);
       font-size: 0.625rem;
       font-style: normal;
       letter-spacing: 0.15em;
@@ -318,7 +319,7 @@
     }
 
     .nav-logo {
-      font-family: var(--f-korean);
+      font-family: var(--font-kr);
       font-size: 1.5rem;
       font-weight: 400;
       letter-spacing: 0.15em;
@@ -400,7 +401,7 @@
 
     .hero-parallax-text {
       position: absolute;
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: clamp(20rem, 50vw, 50rem);
       font-weight: 300;
       color: rgba(255,255,255,0.015);
@@ -429,7 +430,7 @@
     }
 
     .hero-floor-num {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 3rem;
       font-weight: 300;
       font-style: italic;
@@ -447,7 +448,7 @@
     }
 
     .hero-title {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-weight: 300;
       line-height: 0.85;
       margin-bottom: 3rem;
@@ -518,7 +519,7 @@
     }
 
     .hero-info-value {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 1.25rem;
       font-style: italic;
     }
@@ -679,7 +680,7 @@
     }
 
     .marquee-item {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 1rem;
       font-weight: 500;
       letter-spacing: 0.1em;
@@ -771,7 +772,7 @@
     }
 
     .about-title {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: clamp(2.5rem, 4vw, 4rem);
       font-weight: 300;
       line-height: 1.2;
@@ -802,7 +803,7 @@
     }
 
     .stat-value {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 4rem;
       font-weight: 300;
       line-height: 1;
@@ -842,7 +843,7 @@
       top: 50%;
       left: -5%;
       transform: translateY(-50%) rotate(-90deg);
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 15rem;
       font-weight: 300;
       color: rgba(255,255,255,0.02);
@@ -859,7 +860,7 @@
     }
 
     .menu-title {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: clamp(3rem, 8vw, 6rem);
       font-weight: 300;
       line-height: 1;
@@ -939,7 +940,7 @@
     }
 
     .menu-card-tag {
-      font-family: 'Nanum Pen Script', cursive;
+      font-family: var(--font-chalk);
       font-size: 1.1rem;
       color: #f0e6d0;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -956,7 +957,7 @@
     }
 
     .chalk-title {
-      font-family: 'Nanum Pen Script', cursive;
+      font-family: var(--font-chalk);
       font-size: 2rem;
       color: #fff8e7;
       text-shadow: 0 0 8px rgba(255,255,255,0.2);
@@ -972,7 +973,7 @@
     }
 
     .chalk-item {
-      font-family: 'Nanum Pen Script', cursive;
+      font-family: var(--font-chalk);
       font-size: 1.2rem;
       color: rgba(255,248,230,0.85);
       text-shadow: 0 0 4px rgba(255,255,255,0.15);
@@ -1030,7 +1031,7 @@
     }
 
     .menu-card-name {
-      font-family: 'Nanum Pen Script', cursive;
+      font-family: var(--font-chalk);
       font-size: 1.4rem;
       color: #f0e6d0;
       margin-bottom: 0.25rem;
@@ -1076,7 +1077,7 @@
     }
 
     .story-entry-title {
-      font-family: var(--f-korean);
+      font-family: var(--font-kr);
       font-size: 2rem;
       font-weight: 400;
       margin-bottom: 3rem;
@@ -1164,7 +1165,7 @@
     }
 
     .philosophy-bg-char {
-      font-family: var(--f-korean);
+      font-family: var(--font-kr);
       font-size: clamp(30rem, 60vw, 60rem);
       font-weight: 600;
       color: rgba(0,0,0,0.025);
@@ -1178,7 +1179,7 @@
     }
 
     .philosophy-quote {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 300;
       font-style: italic;
@@ -1220,7 +1221,7 @@
     }
 
     .elevator-title {
-      font-family: var(--f-korean);
+      font-family: var(--font-kr);
       font-size: 3rem;
       font-weight: 400;
       margin-bottom: 0.5rem;
@@ -1270,7 +1271,7 @@
     }
 
     .elevator-floor-num {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 1.5rem;
       font-style: italic;
       color: var(--gold);
@@ -1291,7 +1292,7 @@
     }
 
     .elevator-floor-info h3 {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: 1.5rem;
       font-weight: 400;
       margin-bottom: 0.25rem;
@@ -1345,7 +1346,7 @@
     .elevator-digit {
       width: 44px;
       height: 52px;
-      font-family: var(--f-body);
+      font-family: var(--font-kr);
       font-size: 1.25rem;
       font-weight: 500;
       text-align: center;
@@ -1408,7 +1409,7 @@
     }
 
     .location-content h2 {
-      font-family: var(--f-display);
+      font-family: var(--font-en);
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 300;
       margin-bottom: 3rem;

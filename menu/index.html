@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -27,6 +27,10 @@
       --border: rgba(255,255,255,0.08);
       --accent-signature: #D4A853;
       --accent-best: #E8B86D;
+
+      /* 폰트 시스템: 하나의 목소리 */
+      --font-kr: 'Noto Serif KR', serif;
+      --font-en: 'Cormorant Garamond', serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,7 +40,7 @@
     }
 
     body {
-      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      font-family: var(--font-kr);
       background: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
@@ -81,7 +85,7 @@
     }
 
     .header-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 18px;
       font-weight: 400;
       letter-spacing: 0.2em;
@@ -89,7 +93,7 @@
     }
 
     .header-logo {
-      font-family: 'Noto Serif KR', serif;
+      font-family: var(--font-kr);
       font-size: 16px;
       color: var(--dorado);
     }
@@ -102,7 +106,7 @@
     }
 
     .hero-label {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 12px;
       letter-spacing: 0.3em;
       color: var(--text-muted);
@@ -110,7 +114,7 @@
     }
 
     .hero-title {
-      font-family: 'Noto Serif KR', serif;
+      font-family: var(--font-kr);
       font-size: 32px;
       font-weight: 600;
       color: var(--text-primary);
@@ -118,7 +122,7 @@
     }
 
     .hero-subtitle {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 16px;
       font-style: italic;
       color: var(--dorado);
@@ -139,7 +143,7 @@
     }
 
     .stat-number {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 28px;
       font-weight: 600;
       color: var(--dorado);
@@ -238,7 +242,7 @@
     }
 
     .section-info h2 {
-      font-family: 'Noto Serif KR', serif;
+      font-family: var(--font-kr);
       font-size: 18px;
       font-weight: 600;
       color: var(--text-primary);
@@ -246,7 +250,7 @@
     }
 
     .section-info .subtitle {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 13px;
       font-style: italic;
       color: var(--text-muted);
@@ -347,7 +351,7 @@
     }
 
     .menu-price {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 17px;
       font-weight: 600;
       color: var(--dorado);
@@ -467,13 +471,13 @@
     }
 
     .recommend-title {
-      font-family: 'Noto Serif KR', serif;
+      font-family: var(--font-kr);
       font-size: 20px;
       font-weight: 600;
     }
 
     .recommend-subtitle {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-en);
       font-size: 12px;
       color: var(--text-muted);
       font-style: italic;
@@ -515,7 +519,7 @@
     }
 
     .footer-info .brand {
-      font-family: 'Noto Serif KR', serif;
+      font-family: var(--font-kr);
       font-size: 14px;
       color: var(--dorado);
       margin-bottom: 8px;
