@@ -2399,13 +2399,13 @@
     }
   }
 
-  // 요기요 앱 열기
-  // TODO: 매장 ID 받으면 yogiyo://store/{ID} 로 변경
+  // 요기요 앱 열기 - 매장 ID: 1211887
   function openYogiyo() {
-    const appScheme = 'yogiyo://search?keyword=호야당';
+    const storeId = '1211887';
+    const appScheme = 'yogiyo://store/' + storeId;
     const androidStore = 'https://play.google.com/store/apps/details?id=com.fineapp.yogiyo';
     const iosStore = 'https://apps.apple.com/kr/app/id543831532';
-    const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=yogiyo;package=com.fineapp.yogiyo;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+    const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=yogiyo;package=com.fineapp.yogiyo;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
 
     if (/android/i.test(navigator.userAgent)) {
       window.location.href = intentUrl;
