@@ -1273,57 +1273,75 @@
       });
     });
 
+    // 호야당 딥링크 설정 (2026.02.04)
+    // 딥링크 우선 시도 → 앱 없으면 스토어로 폴백
+
     // 쿠팡이츠 - 스토어 ID: 550712
     function openCoupangEats() {
-      const storeId = '550712';
-      const appScheme = 'coupangeats://store/' + storeId;
-      const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.eats';
+      const deeplink = 'coupangeats://store/550712';
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.mobile.eats';
       const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
-      const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+      const webUrl = 'https://www.coupangeats.com/';
 
-      if (/android/i.test(navigator.userAgent)) {
-        window.location.href = intentUrl;
-      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
-        window.location.href = appScheme;
-        setTimeout(function() { window.location.href = iosStore; }, 1500);
+      if (/android|iphone|ipad|ipod/i.test(navigator.userAgent)) {
+        const fallbackUrl = /android/i.test(navigator.userAgent) ? androidStore : iosStore;
+        const start = Date.now();
+
+        window.location.href = deeplink;
+
+        setTimeout(function() {
+          if (Date.now() - start < 2000) {
+            window.location.href = fallbackUrl;
+          }
+        }, 1500);
       } else {
-        alert('쿠팡이츠 앱에서 "호야당"을 검색해주세요!');
+        window.open(webUrl, '_blank');
       }
     }
 
     // 배달의민족 - 가게 번호: 14190460
     function openBaemin() {
-      const shopId = '14190460';
-      const appScheme = 'baeminkr://shop/' + shopId;
+      const deeplink = 'baeminkr://shop/14190460';
       const androidStore = 'https://play.google.com/store/apps/details?id=com.woowahan.baemin';
       const iosStore = 'https://apps.apple.com/kr/app/id378084485';
-      const intentUrl = 'intent://shop/' + shopId + '#Intent;scheme=baeminkr;package=com.woowahan.baemin;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+      const webUrl = 'https://baemin.me/';
 
-      if (/android/i.test(navigator.userAgent)) {
-        window.location.href = intentUrl;
-      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
-        window.location.href = appScheme;
-        setTimeout(function() { window.location.href = iosStore; }, 1500);
+      if (/android|iphone|ipad|ipod/i.test(navigator.userAgent)) {
+        const fallbackUrl = /android/i.test(navigator.userAgent) ? androidStore : iosStore;
+        const start = Date.now();
+
+        window.location.href = deeplink;
+
+        setTimeout(function() {
+          if (Date.now() - start < 2000) {
+            window.location.href = fallbackUrl;
+          }
+        }, 1500);
       } else {
-        alert('배달의민족 앱에서 "호야당"을 검색해주세요!');
+        window.open(webUrl, '_blank');
       }
     }
 
     // 요기요 - 매장 ID: 1211887
     function openYogiyo() {
-      const storeId = '1211887';
-      const appScheme = 'yogiyo://store/' + storeId;
+      const deeplink = 'yogiyo://shops/1211887';
       const androidStore = 'https://play.google.com/store/apps/details?id=com.fineapp.yogiyo';
       const iosStore = 'https://apps.apple.com/kr/app/id543831532';
-      const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=yogiyo;package=com.fineapp.yogiyo;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+      const webUrl = 'https://www.yogiyo.co.kr/mobile/#/';
 
-      if (/android/i.test(navigator.userAgent)) {
-        window.location.href = intentUrl;
-      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
-        window.location.href = appScheme;
-        setTimeout(function() { window.location.href = iosStore; }, 1500);
+      if (/android|iphone|ipad|ipod/i.test(navigator.userAgent)) {
+        const fallbackUrl = /android/i.test(navigator.userAgent) ? androidStore : iosStore;
+        const start = Date.now();
+
+        window.location.href = deeplink;
+
+        setTimeout(function() {
+          if (Date.now() - start < 2000) {
+            window.location.href = fallbackUrl;
+          }
+        }, 1500);
       } else {
-        alert('요기요 앱에서 "호야당"을 검색해주세요!');
+        window.open(webUrl, '_blank');
       }
     }
   </script>
