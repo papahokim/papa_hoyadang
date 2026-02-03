@@ -1277,6 +1277,7 @@
     function openCoupangEats() {
       const storeId = '550712';
       const appScheme = 'coupangeats://store/' + storeId;
+      const webUrl = 'https://www.coupangeats.com/';
       const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.eats';
       const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
       const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
@@ -1287,7 +1288,7 @@
         window.location.href = appScheme;
         setTimeout(function() { window.location.href = iosStore; }, 1500);
       } else {
-        alert('쿠팡이츠 앱에서 "호야당"을 검색해주세요!');
+        window.open(webUrl, '_blank');
       }
     }
 
@@ -1295,6 +1296,7 @@
     function openBaemin() {
       const shopId = '14190460';
       const appScheme = 'baeminkr://shop/' + shopId;
+      const webUrl = 'https://baemin.me/';
       const androidStore = 'https://play.google.com/store/apps/details?id=com.woowahan.baemin';
       const iosStore = 'https://apps.apple.com/kr/app/id378084485';
       const intentUrl = 'intent://shop/' + shopId + '#Intent;scheme=baeminkr;package=com.woowahan.baemin;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
@@ -1305,7 +1307,7 @@
         window.location.href = appScheme;
         setTimeout(function() { window.location.href = iosStore; }, 1500);
       } else {
-        alert('배달의민족 앱에서 "호야당"을 검색해주세요!');
+        window.open(webUrl, '_blank');
       }
     }
 
@@ -1313,6 +1315,7 @@
     function openYogiyo() {
       const storeId = '1211887';
       const appScheme = 'yogiyo://store/' + storeId;
+      const webUrl = 'https://www.yogiyo.co.kr/mobile/#/';
       const androidStore = 'https://play.google.com/store/apps/details?id=com.fineapp.yogiyo';
       const iosStore = 'https://apps.apple.com/kr/app/id543831532';
       const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=yogiyo;package=com.fineapp.yogiyo;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
@@ -1323,7 +1326,7 @@
         window.location.href = appScheme;
         setTimeout(function() { window.location.href = iosStore; }, 1500);
       } else {
-        alert('요기요 앱에서 "호야당"을 검색해주세요!');
+        window.open(webUrl, '_blank');
       }
     }
   </script>
