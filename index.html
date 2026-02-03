@@ -572,6 +572,17 @@
       color: #fff;
     }
 
+    .hero-platform-btn.yogiyo {
+      background: #FA0050;
+      color: #fff;
+    }
+
+    .hero-platform-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
     .hero-quick-actions {
       display: flex;
       gap: 1rem;
@@ -1542,6 +1553,13 @@
       border-color: var(--gold);
     }
 
+    .footer-platform-btn.coupang { border-color: #E31837; color: #E31837; }
+    .footer-platform-btn.baemin { border-color: #2AC1BC; color: #2AC1BC; }
+    .footer-platform-btn.yogiyo { border-color: #FA0050; color: #FA0050; }
+    .footer-platform-btn.coupang:hover { background: rgba(227, 24, 55, 0.15); }
+    .footer-platform-btn.baemin:hover { background: rgba(42, 193, 188, 0.15); }
+    .footer-platform-btn.yogiyo:hover { background: rgba(250, 0, 80, 0.15); }
+
     .footer-copy {
       font-size: 0.75rem;
       color: rgba(255,255,255,0.3);
@@ -1741,10 +1759,16 @@
       <!-- 배달 플랫폼 버튼 (앱 딥링크) -->
       <div class="hero-platforms">
         <a href="#" onclick="openCoupangEats(); return false;" class="hero-platform-btn coupang">
-          <span>🛵</span> 쿠팡이츠
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          쿠팡이츠
         </a>
         <a href="#" onclick="openBaemin(); return false;" class="hero-platform-btn baemin">
-          <span>🍽️</span> 배달의민족
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05l-5 1.33V18l-3.5 1.29v2.4c0 .72.6 1.3 1.3 1.3h2.26zM1 21.99h18v-2H1v2zM5.17 4.01l2.33 6.99H5.05L4 7.05l-2.12 6.15c-.34 1.01.33 2.06 1.4 2.24l8.64 1.48 1.12-3.35L5.17 4.01z"/></svg>
+          배달의민족
+        </a>
+        <a href="#" onclick="openYogiyo(); return false;" class="hero-platform-btn yogiyo">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+          요기요
         </a>
       </div>
 
@@ -2071,8 +2095,9 @@
         <p>매일 6:00-21:00 (수 23시까지)</p>
       </div>
       <div class="footer-platforms">
-        <a href="#" onclick="openCoupangEats(); return false;" class="footer-platform-btn">🛵 쿠팡이츠</a>
-        <a href="#" onclick="openBaemin(); return false;" class="footer-platform-btn">🍽️ 배달의민족</a>
+        <a href="#" onclick="openCoupangEats(); return false;" class="footer-platform-btn coupang">쿠팡이츠</a>
+        <a href="#" onclick="openBaemin(); return false;" class="footer-platform-btn baemin">배달의민족</a>
+        <a href="#" onclick="openYogiyo(); return false;" class="footer-platform-btn yogiyo">요기요</a>
       </div>
       <p class="footer-copy">© 2026 호야당. All rights reserved.</p>
     </div>
@@ -2371,6 +2396,26 @@
       }, 1500);
     } else {
       alert('배달의민족 앱에서 "호야당"을 검색해주세요!');
+    }
+  }
+
+  // 요기요 앱 열기
+  // TODO: 매장 ID 받으면 yogiyo://store/{ID} 로 변경
+  function openYogiyo() {
+    const appScheme = 'yogiyo://search?keyword=호야당';
+    const androidStore = 'https://play.google.com/store/apps/details?id=com.fineapp.yogiyo';
+    const iosStore = 'https://apps.apple.com/kr/app/id543831532';
+    const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=yogiyo;package=com.fineapp.yogiyo;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+
+    if (/android/i.test(navigator.userAgent)) {
+      window.location.href = intentUrl;
+    } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+      window.location.href = appScheme;
+      setTimeout(function() {
+        window.location.href = iosStore;
+      }, 1500);
+    } else {
+      alert('요기요 앱에서 "호야당"을 검색해주세요!');
     }
   }
   </script>
