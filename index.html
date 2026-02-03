@@ -2334,13 +2334,13 @@
 
   <!-- 앱 딥링크 스크립트 -->
   <script>
-  // 쿠팡이츠 앱 열기
-  // TODO: 매장 ID 받으면 coupangeats://store/{ID} 로 변경
+  // 쿠팡이츠 앱 열기 - 스토어 ID: 550712
   function openCoupangEats() {
-    const appScheme = 'coupangeats://search?keyword=호야당';
+    const storeId = '550712';
+    const appScheme = 'coupangeats://store/' + storeId;
     const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.eats';
     const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
-    const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+    const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
 
     if (/android/i.test(navigator.userAgent)) {
       window.location.href = intentUrl;
