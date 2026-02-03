@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MENU | 好爺堂</title>
+  <title>MENU | 호야당</title>
   <meta name="description" content="호야당 전체 메뉴 - 파스타, 버거, 고로케, 샌드위치, 음료">
-  <meta name="theme-color" content="#0D0D0D">
+  <meta name="theme-color" content="#1a2a1e">
   <link rel="icon" href="/assets/icons/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 
@@ -15,34 +15,30 @@
 
   <style>
     :root {
-      --bg-primary: #0D0D0D;
-      --bg-secondary: #141414;
-      --bg-card: #1A1A1A;
-      --bg-hover: #222;
-      --dorado: #D4A853;
-      --dorado-dim: rgba(212, 168, 83, 0.15);
-      --text-primary: #F5F5F5;
-      --text-secondary: rgba(255,255,255,0.6);
-      --text-muted: rgba(255,255,255,0.4);
-      --border: rgba(255,255,255,0.08);
-      --accent-signature: #D4A853;
-      --accent-best: #E8B86D;
+      /* 칠판 색상 시스템 */
+      --chalk-board: #1e3322;
+      --chalk-board-dark: #1a2a1e;
+      --chalk-board-light: #243828;
+      --chalk-white: rgba(255,255,255,0.92);
+      --chalk-dim: rgba(255,255,255,0.6);
+      --chalk-muted: rgba(255,255,255,0.4);
+      --chalk-gold: #D4A853;
+      --chalk-gold-dim: rgba(212, 168, 83, 0.2);
+      --wood-frame: #8B4513;
+      --wood-dark: #5D3A1A;
+      --border: rgba(255,255,255,0.1);
 
-      /* 폰트 시스템: 하나의 목소리 */
       --font-kr: 'Noto Serif KR', serif;
       --font-en: 'Cormorant Garamond', serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-kr);
-      background: var(--bg-primary);
-      color: var(--text-primary);
+      background: var(--chalk-board-dark);
+      color: var(--chalk-white);
       line-height: 1.6;
       min-height: 100vh;
       padding-bottom: 100px;
@@ -51,17 +47,27 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* Header */
+    /* ═══ 칠판 텍스처 ═══ */
+    .chalkboard-texture {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.015) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.01) 0%, transparent 50%),
+        linear-gradient(180deg, var(--chalk-board-light) 0%, var(--chalk-board-dark) 100%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ═══ Header ═══ */
     .header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(13,13,13,0.95);
+      background: rgba(26, 42, 30, 0.95);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 3px solid var(--wood-frame);
       padding: 0 20px;
       height: 60px;
       display: flex;
@@ -70,54 +76,67 @@
     }
 
     .back-btn {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--chalk-dim);
       font-size: 24px;
       transition: color 0.2s;
     }
-
-    .back-btn:hover {
-      color: var(--dorado);
-    }
+    .back-btn:hover { color: var(--chalk-gold); }
 
     .header-title {
       font-family: var(--font-en);
       font-size: 18px;
       font-weight: 400;
       letter-spacing: 0.2em;
-      color: var(--text-secondary);
+      color: var(--chalk-dim);
     }
 
     .header-logo {
       font-family: var(--font-kr);
       font-size: 16px;
-      color: var(--dorado);
+      color: var(--chalk-gold);
+      font-weight: 500;
     }
 
-    /* Hero */
+    /* ═══ Hero ═══ */
     .hero {
       padding: 100px 24px 60px;
       text-align: center;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 3px solid var(--wood-frame);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-label {
       font-family: var(--font-en);
       font-size: 12px;
       letter-spacing: 0.3em;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       margin-bottom: 16px;
     }
 
     .hero-title {
       font-family: var(--font-kr);
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 600;
-      color: var(--text-primary);
+      color: var(--chalk-white);
+      margin-bottom: 8px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.1);
+    }
+
+    .hero-brand {
+      font-family: var(--font-kr);
+      font-size: 24px;
+      color: var(--chalk-gold);
+      font-weight: 500;
       margin-bottom: 8px;
     }
 
@@ -125,7 +144,7 @@
       font-family: var(--font-en);
       font-size: 16px;
       font-style: italic;
-      color: var(--dorado);
+      color: var(--chalk-gold);
       letter-spacing: 0.1em;
     }
 
@@ -135,80 +154,74 @@
       gap: 40px;
       margin-top: 32px;
       padding-top: 24px;
-      border-top: 1px solid var(--border);
+      border-top: 1px dashed var(--border);
     }
 
-    .stat-item {
-      text-align: center;
-    }
-
+    .stat-item { text-align: center; }
     .stat-number {
       font-family: var(--font-en);
       font-size: 28px;
       font-weight: 600;
-      color: var(--dorado);
+      color: var(--chalk-gold);
     }
-
     .stat-label {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       letter-spacing: 0.1em;
       margin-top: 4px;
     }
 
-    /* Category Nav */
+    /* ═══ Category Nav ═══ */
     .category-nav {
       position: sticky;
       top: 60px;
       z-index: 99;
-      background: rgba(13,13,13,0.98);
+      background: rgba(26, 42, 30, 0.98);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       padding: 16px 20px;
       overflow-x: auto;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--wood-dark);
       scrollbar-width: none;
     }
-
     .category-nav::-webkit-scrollbar { display: none; }
 
     .category-chip {
       display: inline-block;
       padding: 10px 20px;
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px dashed var(--chalk-muted);
       border-radius: 100px;
       font-size: 13px;
       font-weight: 400;
-      color: var(--text-secondary);
+      color: var(--chalk-dim);
       margin-right: 10px;
       transition: all 0.3s ease;
     }
-
     .category-chip:hover {
-      border-color: var(--dorado);
-      color: var(--dorado);
+      border-color: var(--chalk-gold);
+      color: var(--chalk-gold);
+      border-style: solid;
     }
-
     .category-chip.active {
-      background: var(--dorado);
-      border-color: var(--dorado);
-      color: var(--bg-primary);
+      background: var(--chalk-gold);
+      border-color: var(--chalk-gold);
+      border-style: solid;
+      color: var(--chalk-board-dark);
       font-weight: 500;
     }
 
-    /* Main Content */
+    /* ═══ Main Content ═══ */
     .main-content {
       max-width: 800px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Accordion Section */
+    /* ═══ Accordion Section ═══ */
     .accordion-section {
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px dashed var(--border);
     }
 
     .accordion-header {
@@ -219,10 +232,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
-    .accordion-header:hover {
-      opacity: 0.8;
-    }
+    .accordion-header:hover { opacity: 0.8; }
 
     .accordion-left {
       display: flex;
@@ -231,12 +241,10 @@
     }
 
     .section-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--dorado-dim);
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--chalk-gold-dim);
+      border: 1px solid var(--chalk-gold);
       border-radius: 12px;
       font-size: 24px;
     }
@@ -245,77 +253,56 @@
       font-family: var(--font-kr);
       font-size: 18px;
       font-weight: 600;
-      color: var(--text-primary);
+      color: var(--chalk-white);
       margin-bottom: 2px;
     }
-
     .section-info .subtitle {
       font-family: var(--font-en);
       font-size: 13px;
       font-style: italic;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       letter-spacing: 0.05em;
     }
 
     .accordion-arrow {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--chalk-muted);
       font-size: 20px;
       transition: transform 0.3s ease;
     }
-
-    .accordion-section.open .accordion-arrow {
-      transform: rotate(180deg);
-    }
+    .accordion-section.open .accordion-arrow { transform: rotate(180deg); }
 
     .accordion-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease;
     }
+    .accordion-section.open .accordion-content { max-height: 5000px; }
+    .accordion-inner { padding-bottom: 24px; }
 
-    .accordion-section.open .accordion-content {
-      max-height: 5000px;
-    }
-
-    .accordion-inner {
-      padding-bottom: 24px;
-    }
-
-    /* Menu Item */
+    /* ═══ Menu Item ═══ */
     .menu-item {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       padding: 16px 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px dotted var(--border);
       transition: background 0.2s;
     }
+    .menu-item:last-child { border-bottom: none; }
 
-    .menu-item:last-child {
-      border-bottom: none;
-    }
-
-    .menu-left {
-      flex: 1;
-      padding-right: 16px;
-    }
-
+    .menu-left { flex: 1; padding-right: 16px; }
     .menu-name-row {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 4px;
     }
-
     .menu-name {
       font-size: 15px;
       font-weight: 500;
-      color: var(--text-primary);
+      color: var(--chalk-white);
     }
 
     .badge {
@@ -327,26 +314,23 @@
       font-weight: 600;
       letter-spacing: 0.03em;
     }
-
     .badge-best {
-      background: linear-gradient(135deg, var(--accent-best), var(--dorado));
-      color: var(--bg-primary);
+      background: linear-gradient(135deg, #E8B86D, var(--chalk-gold));
+      color: var(--chalk-board-dark);
     }
-
     .badge-signature {
       background: transparent;
-      border: 1px solid var(--dorado);
-      color: var(--dorado);
+      border: 1px solid var(--chalk-gold);
+      color: var(--chalk-gold);
     }
-
     .badge-new {
       background: #E8B86D;
-      color: var(--bg-primary);
+      color: var(--chalk-board-dark);
     }
 
     .menu-desc {
       font-size: 12px;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       line-height: 1.5;
     }
 
@@ -354,109 +338,50 @@
       font-family: var(--font-en);
       font-size: 17px;
       font-weight: 600;
-      color: var(--dorado);
+      color: var(--chalk-gold);
       white-space: nowrap;
     }
 
-    /* Set Menu */
+    /* ═══ Set Menu ═══ */
     .set-menu {
-      background: var(--bg-card);
+      background: rgba(212, 168, 83, 0.08);
       border-radius: 12px;
       padding: 16px;
       margin: 12px 0;
-      border: 1px solid var(--border);
+      border: 1px dashed var(--chalk-gold);
     }
-
-    .set-menu .menu-item {
-      padding: 0;
-      border-bottom: none;
-    }
-
-    .set-menu .menu-name {
-      color: var(--dorado);
-    }
+    .set-menu .menu-item { padding: 0; border-bottom: none; }
+    .set-menu .menu-name { color: var(--chalk-gold); }
 
     .set-prices {
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
     .original-price {
       font-size: 13px;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       text-decoration: line-through;
     }
 
-    /* Subcategory */
-    .subcategory {
-      margin-top: 20px;
-    }
-
+    /* ═══ Subcategory ═══ */
+    .subcategory { margin-top: 20px; }
     .subcategory-title {
       font-size: 12px;
       font-weight: 500;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       letter-spacing: 0.1em;
       padding-bottom: 12px;
       margin-bottom: 4px;
       border-bottom: 1px dashed var(--border);
     }
 
-    /* Floating Order */
-    .floating-order {
-      position: fixed;
-      bottom: 24px;
-      left: 20px;
-      right: 20px;
-      max-width: 400px;
-      margin: 0 auto;
-      display: flex;
-      gap: 12px;
-      z-index: 100;
-    }
-
-    .order-btn {
-      flex: 1;
-      padding: 16px 20px;
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 600;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    }
-
-    .order-btn.coupang {
-      background: #00A0E0;
-      color: #fff;
-    }
-
-    .order-btn.coupang:hover {
-      background: #0090CC;
-      transform: translateY(-2px);
-    }
-
-    .order-btn.baemin {
-      background: #2AC1BC;
-      color: #fff;
-    }
-
-    .order-btn.baemin:hover {
-      background: #25ABA7;
-      transform: translateY(-2px);
-    }
-
-    /* Recommend Section - Special */
+    /* ═══ Recommend Section ═══ */
     .recommend-section {
-      background: var(--bg-secondary);
+      background: rgba(212, 168, 83, 0.05);
       padding: 32px 20px;
       margin: 0 -20px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 3px solid var(--wood-frame);
     }
 
     .recommend-header {
@@ -465,32 +390,23 @@
       gap: 12px;
       margin-bottom: 24px;
     }
-
-    .recommend-icon {
-      font-size: 28px;
-    }
-
+    .recommend-icon { font-size: 28px; }
     .recommend-title {
       font-family: var(--font-kr);
       font-size: 20px;
       font-weight: 600;
     }
-
     .recommend-subtitle {
       font-family: var(--font-en);
       font-size: 12px;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       font-style: italic;
       margin-left: auto;
     }
 
-    .recommend-grid {
-      display: grid;
-      gap: 12px;
-    }
-
+    .recommend-grid { display: grid; gap: 12px; }
     .recommend-card {
-      background: var(--bg-card);
+      background: var(--chalk-board);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 20px;
@@ -499,53 +415,86 @@
       align-items: center;
       transition: all 0.3s ease;
     }
-
     .recommend-card:hover {
-      border-color: var(--dorado);
+      border-color: var(--chalk-gold);
       transform: translateX(4px);
     }
+    .recommend-card .menu-desc { margin-top: 6px; }
 
-    .recommend-card .menu-desc {
-      margin-top: 6px;
+    /* ═══ Floating Order ═══ */
+    .floating-order {
+      position: fixed;
+      bottom: 24px;
+      left: 20px; right: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
     }
 
-    /* Footer info */
+    .order-btn {
+      flex: 1;
+      padding: 14px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .order-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .order-btn.coupang { background: #E31837; color: #fff; }
+    .order-btn.coupang:hover { background: #c91530; transform: translateY(-2px); }
+    .order-btn.baemin { background: #2AC1BC; color: #fff; }
+    .order-btn.baemin:hover { background: #25ABA7; transform: translateY(-2px); }
+    .order-btn.yogiyo { background: #FA0050; color: #fff; }
+    .order-btn.yogiyo:hover { background: #e00048; transform: translateY(-2px); }
+
+    /* ═══ Footer ═══ */
     .footer-info {
       text-align: center;
       padding: 40px 20px 60px;
-      color: var(--text-muted);
+      color: var(--chalk-muted);
       font-size: 12px;
       line-height: 1.8;
     }
-
     .footer-info .brand {
       font-family: var(--font-kr);
-      font-size: 14px;
-      color: var(--dorado);
+      font-size: 18px;
+      color: var(--chalk-gold);
       margin-bottom: 8px;
+      font-weight: 500;
     }
 
-    /* Animation */
+    /* ═══ Animation ═══ */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .accordion-section { animation: fadeIn 0.4s ease forwards; }
 
-    .accordion-section {
-      animation: fadeIn 0.4s ease forwards;
-    }
-
-    /* Responsive */
+    /* ═══ Responsive ═══ */
     @media (max-width: 480px) {
-      .hero-title { font-size: 26px; }
+      .hero-title { font-size: 28px; }
+      .hero-brand { font-size: 20px; }
       .hero-stats { gap: 24px; }
       .stat-number { font-size: 24px; }
       .section-icon { width: 40px; height: 40px; font-size: 20px; }
       .section-info h2 { font-size: 16px; }
+      .floating-order { gap: 8px; }
+      .order-btn { padding: 12px 10px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
+
+  <div class="chalkboard-texture"></div>
 
   <!-- Header -->
   <header class="header">
@@ -555,13 +504,14 @@
       </svg>
     </a>
     <span class="header-title">MENU</span>
-    <span class="header-logo">好爺堂</span>
+    <span class="header-logo">호야당</span>
   </header>
 
   <!-- Hero -->
   <section class="hero">
     <p class="hero-label">SINCE 2006</p>
     <h1 class="hero-title">메뉴판</h1>
+    <p class="hero-brand">호야당</p>
     <p class="hero-subtitle">Handcrafted Daily</p>
     <div class="hero-stats">
       <div class="stat-item">
@@ -661,21 +611,15 @@
           <div class="subcategory">
             <div class="subcategory-title">OIL PASTA</div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">알리오올리오</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">알리오올리오</div></div>
               <span class="menu-price">9,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">베이컨알리오올리오</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">베이컨알리오올리오</div></div>
               <span class="menu-price">12,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">해산물알리오올리오</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">해산물알리오올리오</div></div>
               <span class="menu-price">13,000</span>
             </div>
             <div class="menu-item">
@@ -688,27 +632,19 @@
               <span class="menu-price">14,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">엔초비알리오올리오</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">엔초비알리오올리오</div></div>
               <span class="menu-price">15,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">명란오일파스타</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">명란오일파스타</div></div>
               <span class="menu-price">15,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">봉골레</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">봉골레</div></div>
               <span class="menu-price">13,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">감바스알아히오</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">감바스알아히오</div></div>
               <span class="menu-price">16,000</span>
             </div>
           </div>
@@ -716,33 +652,23 @@
           <div class="subcategory">
             <div class="subcategory-title">TOMATO &amp; ROSE</div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">토마토파스타</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">토마토파스타</div></div>
               <span class="menu-price">11,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">해산물토마토</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">해산물토마토</div></div>
               <span class="menu-price">13,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">해산물로제</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">해산물로제</div></div>
               <span class="menu-price">13,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">볼로네제</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">볼로네제</div></div>
               <span class="menu-price">14,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">오징어먹물해산물</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">오징어먹물해산물</div></div>
               <span class="menu-price">15,000</span>
             </div>
           </div>
@@ -750,21 +676,15 @@
           <div class="subcategory">
             <div class="subcategory-title">CREAM</div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">베이컨크림</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">베이컨크림</div></div>
               <span class="menu-price">13,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">매콤새우크림</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">매콤새우크림</div></div>
               <span class="menu-price">13,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">투움바</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">투움바</div></div>
               <span class="menu-price">18,000</span>
             </div>
           </div>
@@ -781,15 +701,11 @@
               <span class="menu-price">15,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">스파이시상하이해물</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">스파이시상하이해물</div></div>
               <span class="menu-price">14,000</span>
             </div>
             <div class="menu-item">
-              <div class="menu-left">
-                <div class="menu-name">김치렐리쉬삼겹</div>
-              </div>
+              <div class="menu-left"><div class="menu-name">김치렐리쉬삼겹</div></div>
               <span class="menu-price">15,000</span>
             </div>
           </div>
@@ -1285,7 +1201,7 @@
 
     <!-- Footer -->
     <footer class="footer-info">
-      <div class="brand">好爺堂</div>
+      <div class="brand">호야당</div>
       <p>Since 2006 &middot; Anyang, Korea</p>
       <p>Handcrafted Daily</p>
     </footer>
@@ -1295,10 +1211,16 @@
   <!-- Floating Order -->
   <div class="floating-order">
     <a href="javascript:void(0)" onclick="openCoupangEats()" class="order-btn coupang">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
       쿠팡이츠
     </a>
     <a href="javascript:void(0)" onclick="openBaemin()" class="order-btn baemin">
+      <svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05l-5 1.33V18l-3.5 1.29v2.4c0 .72.6 1.3 1.3 1.3h2.26zM1 21.99h18v-2H1v2zM5.17 4.01l2.33 6.99H5.05L4 7.05l-2.12 6.15c-.34 1.01.33 2.06 1.4 2.24l8.64 1.48 1.12-3.35L5.17 4.01z"/></svg>
       배달의민족
+    </a>
+    <a href="javascript:void(0)" onclick="openYogiyo()" class="order-btn yogiyo">
+      <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+      요기요
     </a>
   </div>
 
@@ -1310,7 +1232,6 @@
     }
 
     // Category chip active state
-    const sections = document.querySelectorAll('.accordion-section[id], .recommend-section[id]');
     const chips = document.querySelectorAll('.category-chip');
 
     function updateActiveChip() {
@@ -1352,46 +1273,57 @@
       });
     });
 
-    // Deeplink functions
-    // TODO: 매장 ID 받으면 coupangeats://store/{ID} 로 변경
+    // 쿠팡이츠 - 스토어 ID: 550712
     function openCoupangEats() {
-      const appScheme = 'coupangeats://search?keyword=호야당';
+      const storeId = '550712';
+      const appScheme = 'coupangeats://store/' + storeId;
       const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.eats';
       const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
-      const intentUrl = 'intent://search?keyword=호야당#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+      const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=coupangeats;package=com.coupang.eats;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
 
-      const ua = navigator.userAgent.toLowerCase();
-      const isAndroid = ua.indexOf('android') > -1;
-      const isIOS = /iphone|ipad|ipod/.test(ua);
-
-      if (isAndroid) {
+      if (/android/i.test(navigator.userAgent)) {
         window.location.href = intentUrl;
-      } else if (isIOS) {
+      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
         window.location.href = appScheme;
-        setTimeout(() => { window.location.href = iosStore; }, 1500);
+        setTimeout(function() { window.location.href = iosStore; }, 1500);
       } else {
-        window.open('https://www.coupangeats.com/search?query=안양 호야당', '_blank');
+        alert('쿠팡이츠 앱에서 "호야당"을 검색해주세요!');
       }
     }
 
-    // TODO: 가게 번호 받으면 baeminkr://shop/{번호} 로 변경
+    // 배달의민족 - 가게 번호: 14190460
     function openBaemin() {
-      const appScheme = 'baemin://';
-      const androidStore = 'https://play.google.com/store/apps/details?id=com.sampleapp.baemin';
+      const shopId = '14190460';
+      const appScheme = 'baeminkr://shop/' + shopId;
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.woowahan.baemin';
       const iosStore = 'https://apps.apple.com/kr/app/id378084485';
-      const intentUrl = 'intent://#Intent;scheme=baemin;package=com.sampleapp.baemin;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+      const intentUrl = 'intent://shop/' + shopId + '#Intent;scheme=baeminkr;package=com.woowahan.baemin;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
 
-      const ua = navigator.userAgent.toLowerCase();
-      const isAndroid = ua.indexOf('android') > -1;
-      const isIOS = /iphone|ipad|ipod/.test(ua);
-
-      if (isAndroid) {
+      if (/android/i.test(navigator.userAgent)) {
         window.location.href = intentUrl;
-      } else if (isIOS) {
+      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
         window.location.href = appScheme;
-        setTimeout(() => { window.location.href = iosStore; }, 1500);
+        setTimeout(function() { window.location.href = iosStore; }, 1500);
       } else {
-        window.open('https://baemin.me/', '_blank');
+        alert('배달의민족 앱에서 "호야당"을 검색해주세요!');
+      }
+    }
+
+    // 요기요 - 매장 ID: 1211887
+    function openYogiyo() {
+      const storeId = '1211887';
+      const appScheme = 'yogiyo://store/' + storeId;
+      const androidStore = 'https://play.google.com/store/apps/details?id=com.fineapp.yogiyo';
+      const iosStore = 'https://apps.apple.com/kr/app/id543831532';
+      const intentUrl = 'intent://store/' + storeId + '#Intent;scheme=yogiyo;package=com.fineapp.yogiyo;S.browser_fallback_url=' + encodeURIComponent(androidStore) + ';end';
+
+      if (/android/i.test(navigator.userAgent)) {
+        window.location.href = intentUrl;
+      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+        window.location.href = appScheme;
+        setTimeout(function() { window.location.href = iosStore; }, 1500);
+      } else {
+        alert('요기요 앱에서 "호야당"을 검색해주세요!');
       }
     }
   </script>
