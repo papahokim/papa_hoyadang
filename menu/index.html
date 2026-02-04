@@ -1283,77 +1283,21 @@
      * - 요기요: 1211887
      */
 
-    function openDeliveryApp(platform) {
-      var userAgent = navigator.userAgent.toLowerCase();
-      var isAndroid = userAgent.indexOf("android") > -1;
-      var isIOS = userAgent.indexOf("iphone") > -1 || userAgent.indexOf("ipad") > -1;
-
-      var appSchemes = {
-        'baemin': {
-          'scheme': 'baeminkr://v1/shop?shop_no=14190460',
-          'store_android': 'market://details?id=com.sampleapp',
-          'store_ios': 'https://apps.apple.com/kr/app/id378084485',
-          'web': 'https://www.baemin.com/shopDetail?shopDetail_shopNo=14190460'
-        },
-        'yogiyo': {
-          'scheme': 'yogiyoapp://shop/1211887/menus',
-          'store_android': 'market://details?id=com.fineapp.yogiyo',
-          'store_ios': 'https://apps.apple.com/kr/app/id543831532',
-          'web': 'https://www.yogiyo.co.kr/mobile/#/restaurant/1211887'
-        },
-        'coupang': {
-          // 쿠팡이츠는 웹 유니버설 링크가 가장 안정적
-          'scheme': 'https://web.coupangeats.com/share?storeId=550712',
-          'store_android': 'https://web.coupangeats.com/share?storeId=550712',
-          'store_ios': 'https://web.coupangeats.com/share?storeId=550712',
-          'web': 'https://web.coupangeats.com/share?storeId=550712'
-        }
-      };
-
-      var target = appSchemes[platform];
-      if (!target) return;
-
-      // 쿠팡이츠: 웹 유니버설 링크 (쿠팡 서버가 앱/웹 분기 처리)
-      if (platform === 'coupang') {
-        location.href = target.scheme;
-        return;
-      }
-
-      // PC인 경우 웹사이트로 이동
-      if (!isAndroid && !isIOS) {
-        location.href = target.web;
-        return;
-      }
-
-      // 모바일: 딥링크 시도 후 폴백
-      var start = new Date().getTime();
-      location.href = target.scheme;
-
-      // 0.5초 후 앱이 안 열렸으면 스토어로 이동
-      setTimeout(function() {
-        var end = new Date().getTime();
-        // 앱이 실행되었다면 브라우저가 백그라운드로 가서 시간 멈춤
-        // 시간이 계속 흘렀다면 앱 미설치
-        if (end - start < 1000) {
-          if (isAndroid) {
-            location.href = target.store_android;
-          } else if (isIOS) {
-            location.href = target.store_ios;
-          }
-        }
-      }, 500);
-    }
-
+    /**
+     * 배달앱 연동 - 쿠팡이츠 방식 (웹 URL 직행)
+     * 앱 설치됨 → 앱에서 열림 (유니버설 링크)
+     * 앱 미설치 → 웹에서 열림 (거기서 앱 설치 유도)
+     */
     function openCoupangEats() {
-      openDeliveryApp('coupang');
+      location.href = 'https://web.coupangeats.com/share?storeId=550712';
     }
 
     function openBaemin() {
-      openDeliveryApp('baemin');
+      location.href = 'https://www.baemin.com/shopDetail?shopDetail_shopNo=14190460';
     }
 
     function openYogiyo() {
-      openDeliveryApp('yogiyo');
+      location.href = 'https://www.yogiyo.co.kr/mobile/#/restaurant/1211887';
     }
   </script>
 
