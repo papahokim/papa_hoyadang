@@ -233,6 +233,61 @@ Section 6: Portal + Ending
 
 ## 10. Development Log
 
+### 2026-02-04 (v3.6) — 배달앱 3사 연동
+
+| 작업 | 상태 |
+|------|------|
+| 쿠팡이츠 공식 공유 링크 연동 | ✓ |
+| 배달의민족 공식 공유 링크 연동 | ✓ |
+| 요기요 공식 공유 링크 연동 | ✓ |
+| menu/index.html 하단 플로팅 버튼 구현 | ✓ |
+
+**최종 구현 방식:**
+
+| 플랫폼 | 공식 공유 URL |
+|--------|--------------|
+| 쿠팡이츠 | `https://web.coupangeats.com/share?storeId=550712` |
+| 배달의민족 | `https://s.baemin.com/d2000gCVdxUak` |
+| 요기요 | `https://ws.yogiyo.co.kr/jnsce1` |
+
+**삽질 기록 (교훈):**
+
+| 시도한 방식 | 결과 | 교훈 |
+|------------|------|------|
+| 딥링크 스키마 추측 (`baeminkr://`, `yogiyoapp://`) | 실패 | 공식 문서 없이 추측 금지 |
+| intent:// URL (Android) | 앱 있어도 스토어로 감 | 복잡한 방식 피하기 |
+| iframe + setTimeout 폴백 | 느리고 불안정 | 단순한 게 최고 |
+| 웹 URL 직접 연결 (`yogiyo.co.kr/mobile/#/...`) | 매장 상세 안 감 | 각 앱마다 URL 규칙 다름 |
+
+**결론:**
+
+```
+복잡한 딥링크 로직 = 쓰레기통
+각 앱에서 직접 "공유하기 → 링크 복사" = 정답
+
+앱사가 만든 공식 공유 링크가 만능 열쇠.
+앱 있으면 앱 열리고, 없으면 스토어로 알아서 감.
+개발자가 건드릴 필요 없음.
+```
+
+**코드:**
+
+```javascript
+function openCoupangEats() {
+  location.href = 'https://web.coupangeats.com/share?storeId=550712';
+}
+
+function openBaemin() {
+  location.href = 'https://s.baemin.com/d2000gCVdxUak';
+}
+
+function openYogiyo() {
+  location.href = 'https://ws.yogiyo.co.kr/jnsce1';
+}
+```
+
+---
+
 ### 2026-01-31 (v3.5) — YouTube 키트 패키지
 
 | 작업 | 상태 |
