@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>3층 전략 백서 | HOYADANG</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1c1c1c;
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f5f5;
+      --text-2: rgba(255,255,255,0.6);
+      --text-3: rgba(255,255,255,0.35);
+      --green: #1B4332;
+      --green-light: #2D6A4F;
+      --gold: #D4AF37;
+      --gold-dim: rgba(212,175,55,0.12);
+      --red: #FF3B30;
+      --blue: #007AFF;
+      --orange: #FF9500;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--green) 0%, #0D2818 100%);
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+    }
+    .header-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 14px;
+      color: var(--text-2);
+    }
+    .header .meta {
+      margin-top: 16px;
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-number {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      color: var(--bg);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card.highlight {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--text-2);
+      margin-bottom: 8px;
+    }
+
+    /* 3-Floor Diagram */
+    .floor-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .floor {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .floor-3 {
+      background: linear-gradient(90deg, rgba(212,175,55,0.15) 0%, transparent 100%);
+      border-color: var(--gold);
+    }
+    .floor-2 {
+      background: linear-gradient(90deg, rgba(255,59,48,0.1) 0%, transparent 100%);
+      border-color: var(--red);
+    }
+    .floor-1 {
+      background: linear-gradient(90deg, rgba(0,122,255,0.1) 0%, transparent 100%);
+      border-color: var(--blue);
+    }
+    .floor-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .floor-3 .floor-num { background: var(--gold); color: var(--bg); }
+    .floor-2 .floor-num { background: var(--red); color: white; }
+    .floor-1 .floor-num { background: var(--blue); color: white; }
+    .floor-content { flex: 1; }
+    .floor-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .floor-desc { font-size: 12px; color: var(--text-3); }
+    .floor-badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .floor-3 .floor-badge { background: rgba(212,175,55,0.2); color: var(--gold); }
+    .floor-2 .floor-badge { background: rgba(255,59,48,0.2); color: var(--red); }
+    .floor-1 .floor-badge { background: rgba(0,122,255,0.2); color: var(--blue); }
+
+    .arrow-down {
+      text-align: center;
+      font-size: 20px;
+      color: var(--text-3);
+      margin: 8px 0;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      color: var(--text-3);
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td { color: var(--text-2); }
+    tr:hover td { background: var(--surface-2); }
+
+    code {
+      background: var(--surface-2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 12px;
+      color: var(--gold);
+    }
+
+    pre {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 16px 0;
+    }
+
+    /* Platform Cards */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .platform-card {
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .platform-card.active { border-color: #34C759; }
+    .platform-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+    .platform-logo.baemin { background: #2AC1BC; }
+    .platform-logo.coupang { background: #E31837; }
+    .platform-logo.yogiyo { background: #FA0050; }
+    .platform-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .platform-url { font-size: 10px; color: var(--text-3); word-break: break-all; }
+    .platform-status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(52,199,89,0.15);
+      color: #34C759;
+    }
+
+    /* Quote */
+    blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 20px;
+      margin: 24px 0;
+      font-style: italic;
+      color: var(--text-2);
+    }
+
+    /* List */
+    ul {
+      margin: 12px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+      color: var(--text-2);
+      font-size: 14px;
+    }
+    li strong { color: var(--text); }
+
+    /* Comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .compare-card {
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .compare-card.before {
+      background: rgba(255,59,48,0.05);
+      border-color: rgba(255,59,48,0.3);
+    }
+    .compare-card.after {
+      background: rgba(52,199,89,0.05);
+      border-color: rgba(52,199,89,0.3);
+    }
+    .compare-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .compare-card.before .compare-label { color: var(--red); }
+    .compare-card.after .compare-label { color: #34C759; }
+    .compare-card ul { padding-left: 16px; margin: 0; }
+    .compare-card li { font-size: 13px; margin-bottom: 6px; }
+
+    @media (max-width: 600px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .floor { flex-direction: column; text-align: center; }
+      .floor-badge { margin-top: 8px; }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+    .footer a {
+      color: var(--text-3);
+      text-decoration: none;
+      font-size: 13px;
+      margin: 0 12px;
+    }
+    .footer a:hover { color: var(--gold); }
+
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .toc h3 {
+      font-size: 12px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .toc a {
+      display: block;
+      color: var(--text-2);
+      text-decoration: none;
+      padding: 8px 0;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc a:last-child { border-bottom: none; }
+    .toc a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-badge">TOP SECRET / INTERNAL</div>
+    <h1>호야당 3층 전략 백서</h1>
+    <p>Three-Floor Strategy Whitepaper</p>
+    <div class="meta">
+      Version 2.0 Final | 2026-02-04 | Author: CEO & Strategic AI Partner
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- TOC -->
+    <nav class="toc">
+      <h3>목차</h3>
+      <a href="#executive">1. Executive Summary</a>
+      <a href="#context">2. 상황 분석: 왜 3층인가</a>
+      <a href="#architecture">3. 3층 아키텍처</a>
+      <a href="#floor1">4. 1층: 매장 최적화</a>
+      <a href="#floor2">5. 2층: YouTube 콘텐츠</a>
+      <a href="#floor3">6. 3층: 콘텐츠 비즈니스</a>
+      <a href="#d2p">7. D2P 커머스 아키텍처</a>
+      <a href="#technical">8. 기술 구현 사양</a>
+      <a href="#lessons">9. 삽질 기록 (교훈)</a>
+      <a href="#action">10. 실행 계획</a>
+    </nav>
+
+    <!-- 1. Executive Summary -->
+    <section class="section" id="executive">
+      <h2 class="section-title">
+        <span class="section-number">1</span>
+        Executive Summary
+      </h2>
+      <div class="card highlight">
+        <p style="font-size: 16px; color: var(--text); line-height: 1.8;">
+          본 백서는 <strong>재개발 1년 남은 낙후된 빵집</strong>을 <strong>콘텐츠 비즈니스의 실험실</strong>로 전환하는 전략을 문서화한다.
+        </p>
+        <p style="margin-top: 16px;">
+          핵심 철학: <strong>확장이 아닌 최적화</strong>, <strong>매출 극대화가 아닌 생존</strong>, <strong>매장이 아닌 콘텐츠 랩</strong>
+        </p>
+      </div>
+      <blockquote>
+        "좌표는 찍혔다. 이제 손님을 부르기만 하면 된다."
+      </blockquote>
+    </section>
+
+    <!-- 2. Context -->
+    <section class="section" id="context">
+      <h2 class="section-title">
+        <span class="section-number">2</span>
+        상황 분석: 왜 3층인가
+      </h2>
+
+      <div class="card">
+        <h3>현재 조건</h3>
+        <table>
+          <tr><td>매장 위치</td><td>박달동 위수지역 (재개발 예정)</td></tr>
+          <tr><td>남은 시간</td><td>1년 ~ 1.5년</td></tr>
+          <tr><td>운영자</td><td>64세, 20년 제빵 경력</td></tr>
+          <tr><td>현재 상황</td><td>포장 고객 거의 없음, 낙후</td></tr>
+          <tr><td>확장 가능성</td><td>불가 (직원 채용 비효율)</td></tr>
+        </table>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card before">
+          <div class="compare-label">X 하지 않는 것</div>
+          <ul>
+            <li>매출 극대화</li>
+            <li>매장 확장</li>
+            <li>직원 채용</li>
+            <li>자체 결제 시스템</li>
+          </ul>
+        </div>
+        <div class="compare-card after">
+          <div class="compare-label">O 하는 것</div>
+          <ul>
+            <li>생계비 300만원 표준화</li>
+            <li>1인 운영 최적화</li>
+            <li>콘텐츠 랩으로 활용</li>
+            <li>플랫폼 인프라 활용</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>리프레이밍</h3>
+        <table>
+          <tr><th>Before</th><th>After</th></tr>
+          <tr><td>재개발 = 데드라인</td><td>재개발 = 런웨이</td></tr>
+          <tr><td>매장 = 수익원</td><td>매장 = 콘텐츠 스튜디오</td></tr>
+          <tr><td>배달앱 = 매출</td><td>배달앱 = 검증 도구</td></tr>
+          <tr><td>64세 = 한계</td><td>64세 = 콘텐츠 비즈니스 전환 적기</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. Architecture -->
+    <section class="section" id="architecture">
+      <h2 class="section-title">
+        <span class="section-number">3</span>
+        3층 아키텍처
+      </h2>
+
+      <div class="floor-diagram">
+        <div class="floor floor-3">
+          <div class="floor-num">3F</div>
+          <div class="floor-content">
+            <div class="floor-title">콘텐츠 비즈니스</div>
+            <div class="floor-desc">최종 목표 - 지속가능한 디지털 수익</div>
+          </div>
+          <div class="floor-badge">FUTURE</div>
+        </div>
+        <div class="arrow-down">^</div>
+        <div class="floor floor-2">
+          <div class="floor-num">2F</div>
+          <div class="floor-content">
+            <div class="floor-title">YouTube K-도넛 시리즈</div>
+            <div class="floor-desc">자산 축적 - 콘텐츠 제작</div>
+          </div>
+          <div class="floor-badge">BUILD</div>
+        </div>
+        <div class="arrow-down">^</div>
+        <div class="floor floor-1">
+          <div class="floor-num">1F</div>
+          <div class="floor-content">
+            <div class="floor-title">매장 최적화</div>
+            <div class="floor-desc">생계비 300만원 확보 - 혼자 운영 가능</div>
+          </div>
+          <div class="floor-badge">NOW</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>왜 이 구조가 작동하는가</h3>
+        <ul>
+          <li><strong>물성 있음</strong> - 실제 빵집에서 찍는 콘텐츠 = 진정성</li>
+          <li><strong>노하우 있음</strong> - 20년 경력 = 콘텐츠 재료 무한</li>
+          <li><strong>리스크 없음</strong> - 어차피 철거될 곳 = 실험 부담 제로</li>
+          <li><strong>파트너 있음</strong> - 기술/전략 서포트 (AI + 설계자)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Floor 1 -->
+    <section class="section" id="floor1">
+      <h2 class="section-title">
+        <span class="section-number">4</span>
+        1층: 매장 최적화
+      </h2>
+
+      <div class="card">
+        <h3>목표</h3>
+        <p style="font-size: 24px; color: var(--gold); font-weight: 700;">월 300만원 생계비 표준화</p>
+        <p style="margin-top: 12px;">2층, 3층으로 올라가기 위한 최소한의 안정 기반</p>
+      </div>
+
+      <div class="card">
+        <h3>실행 항목</h3>
+        <table>
+          <tr><th>항목</th><th>방향</th></tr>
+          <tr><td>메뉴</td><td>정리 및 단순화</td></tr>
+          <tr><td>가격</td><td>재설정 (마진 확보)</td></tr>
+          <tr><td>권역</td><td>박달동 위수지역 특화</td></tr>
+          <tr><td>시간대</td><td>라이프스타일 맞춤 재조정</td></tr>
+          <tr><td>운영</td><td>아저씨 혼자 가능한 수준</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>배달앱 3사 연동</h3>
+        <p>복잡한 자체 결제 시스템 대신, 대형 플랫폼의 인프라를 100% 활용</p>
+        <div class="platform-grid">
+          <div class="platform-card active">
+            <div class="platform-logo coupang">C</div>
+            <div class="platform-name">쿠팡이츠</div>
+            <div class="platform-url">web.coupangeats.com/share?storeId=550712</div>
+            <div class="platform-status">연동 완료</div>
+          </div>
+          <div class="platform-card active">
+            <div class="platform-logo baemin">B</div>
+            <div class="platform-name">배달의민족</div>
+            <div class="platform-url">s.baemin.com/d2000gCVdxUak</div>
+            <div class="platform-status">연동 완료</div>
+          </div>
+          <div class="platform-card active">
+            <div class="platform-logo yogiyo">Y</div>
+            <div class="platform-name">요기요</div>
+            <div class="platform-url">ws.yogiyo.co.kr/jnsce1</div>
+            <div class="platform-status">연동 완료</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Floor 2 -->
+    <section class="section" id="floor2">
+      <h2 class="section-title">
+        <span class="section-number">5</span>
+        2층: YouTube 콘텐츠
+      </h2>
+
+      <div class="card">
+        <h3>4 SCENES FROM SEOUL</h3>
+        <p>K-Street Food IP — 서울의 네 장면</p>
+        <table>
+          <tr><th>SCENE</th><th>제품</th><th>컨셉</th></tr>
+          <tr><td>01</td><td>K-컵떡볶이 도넛</td><td>불 / 매움 / 야시장</td></tr>
+          <tr><td>02</td><td>K-모찌 도넛</td><td>쫀득 / 폭발 / 터지는 속</td></tr>
+          <tr><td>03</td><td>K-도넛 버거</td><td>단짠 / 과잉 / 파인애플</td></tr>
+          <tr><td>04</td><td>K-토스트 바</td><td>철판 / 연기 / 손맛</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>콘텐츠 전략</h3>
+        <ul>
+          <li><strong>YouTube Shorts</strong> - 후킹, 유입 미끼</li>
+          <li><strong>Long-form</strong> - 스토리텔링, 팬덤 구축</li>
+          <li><strong>ASMR/메이킹필름</strong> - 시각적 자극</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>YouTube 루핑 전략</h3>
+        <p>SEO 대신, 콘텐츠가 콘텐츠를 만드는 자기 증식 구조</p>
+        <pre>
+YouTube 영상 (미끼)
+    ↓
+웹사이트 유입
+    ↓
+콘텐츠 경험 + 브랜딩
+    ↓
+화면녹화 + 판서
+    ↓
+YouTube 재업로드
+    ↓
+(무한 반복)</pre>
+      </div>
+    </section>
+
+    <!-- 6. Floor 3 -->
+    <section class="section" id="floor3">
+      <h2 class="section-title">
+        <span class="section-number">6</span>
+        3층: 콘텐츠 비즈니스
+      </h2>
+
+      <div class="card">
+        <h3>최종 목표</h3>
+        <p style="font-size: 18px; color: var(--gold);">64세 이후에도 지속 가능한 디지털 수익 구조</p>
+        <ul style="margin-top: 16px;">
+          <li>물리적 매장 의존도 제로</li>
+          <li>콘텐츠 자산 = 영구 수익</li>
+          <li>K-Food IP 라이센싱 가능성</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>성공 시 이행 시나리오</h3>
+        <pre>
+콘텐츠 성공 (조회수/구독자)
+    ↓
+재개발 완료
+    ↓
+새 매장 개업 (선택적)
+    or
+콘텐츠 전업 (필수 아님)</pre>
+        <p style="margin-top: 12px; color: var(--text-3);">
+          20년 노하우가 있으므로 매장 하나 만드는 건 일도 아님.
+          진짜 자산은 콘텐츠.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. D2P -->
+    <section class="section" id="d2p">
+      <h2 class="section-title">
+        <span class="section-number">7</span>
+        D2P 커머스 아키텍처
+      </h2>
+
+      <div class="card">
+        <h3>D2P (Direct to Platform) 정의</h3>
+        <p>자체 결제 시스템의 리스크(이탈률, 보안, 유지보수)를 배제하고, 대형 플랫폼의 결제 인프라를 100% 활용하는 모델</p>
+      </div>
+
+      <div class="card">
+        <h3>3단계 고객 여정 (The Funnel)</h3>
+        <table>
+          <tr><th>단계</th><th>채널</th><th>목적</th></tr>
+          <tr>
+            <td><strong>Step 1: 유입</strong></td>
+            <td>YouTube</td>
+            <td>미끼 — 시각적 자극으로 호기심 유발</td>
+          </tr>
+          <tr>
+            <td><strong>Step 2: 설득</strong></td>
+            <td>자사 홈페이지</td>
+            <td>팬덤 — 브랜드 가치/철학 전달, 가격 저항 제거</td>
+          </tr>
+          <tr>
+            <td><strong>Step 3: 전환</strong></td>
+            <td>배달 플랫폼 3사</td>
+            <td>원터치 패스 — Universal Link로 결제 유도</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>이중 가격제 (Dual Pricing)</h3>
+        <p><strong>정책:</strong> 배달 앱 판매가 = 매장 가격 + (플랫폼 수수료 + 배달비)</p>
+        <p style="margin-top: 8px;"><strong>논리:</strong> Step 2(홈페이지)에서의 브랜딩 효과로 추가 비용을 '프리미엄 지불 의사'로 전환</p>
+      </div>
+    </section>
+
+    <!-- 8. Technical -->
+    <section class="section" id="technical">
+      <h2 class="section-title">
+        <span class="section-number">8</span>
+        기술 구현 사양
+      </h2>
+
+      <div class="card highlight">
+        <h3>핵심 원칙</h3>
+        <p style="font-size: 16px;">
+          <strong>복잡한 딥링크 로직 = 폐기</strong><br>
+          각 앱의 <strong>공식 공유 링크 (Universal Link)</strong>만 사용
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>플랫폼별 마스터 링크</h3>
+        <table>
+          <tr><th>플랫폼</th><th>공식 공유 URL</th></tr>
+          <tr>
+            <td>쿠팡이츠</td>
+            <td><code>https://web.coupangeats.com/share?storeId=550712</code></td>
+          </tr>
+          <tr>
+            <td>배달의민족</td>
+            <td><code>https://s.baemin.com/d2000gCVdxUak</code></td>
+          </tr>
+          <tr>
+            <td>요기요</td>
+            <td><code>https://ws.yogiyo.co.kr/jnsce1</code></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>구현 코드</h3>
+        <pre>
+function openCoupangEats() {
+  location.href = 'https://web.coupangeats.com/share?storeId=550712';
+}
+
+function openBaemin() {
+  location.href = 'https://s.baemin.com/d2000gCVdxUak';
+}
+
+function openYogiyo() {
+  location.href = 'https://ws.yogiyo.co.kr/jnsce1';
+}</pre>
+      </div>
+
+      <div class="card">
+        <h3>이 방식의 장점</h3>
+        <ul>
+          <li><strong>카카오톡/인스타그램 호환</strong> - 인앱 브라우저에서도 정상 작동</li>
+          <li><strong>유지보수 불필요</strong> - 플랫폼 앱 업데이트와 무관하게 영구 유효</li>
+          <li><strong>자동 Fallback</strong> - 앱 없으면 자동으로 앱스토어 이동 (플랫폼 자체 기능)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Lessons -->
+    <section class="section" id="lessons">
+      <h2 class="section-title">
+        <span class="section-number">9</span>
+        삽질 기록 (교훈)
+      </h2>
+
+      <div class="card">
+        <h3>시도했던 방식들</h3>
+        <table>
+          <tr><th>방식</th><th>결과</th><th>교훈</th></tr>
+          <tr>
+            <td>딥링크 스키마 추측<br><code>baeminkr://</code>, <code>yogiyoapp://</code></td>
+            <td>실패</td>
+            <td>공식 문서 없이 추측 금지</td>
+          </tr>
+          <tr>
+            <td>Android intent:// URL</td>
+            <td>앱 있어도 스토어로 감</td>
+            <td>복잡한 방식 피하기</td>
+          </tr>
+          <tr>
+            <td>iframe + setTimeout 폴백</td>
+            <td>느리고 불안정</td>
+            <td>단순한 게 최고</td>
+          </tr>
+          <tr>
+            <td>웹 URL 직접 연결</td>
+            <td>매장 상세 안 감</td>
+            <td>각 앱마다 URL 규칙 다름</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card highlight">
+        <h3>최종 결론</h3>
+        <blockquote style="border-color: #34C759; margin: 0;">
+          "각 앱에서 직접 '공유하기 → 링크 복사' = 정답.<br>
+          앱사가 만든 공식 공유 링크가 만능 열쇠.<br>
+          앱 있으면 앱 열리고, 없으면 스토어로 알아서 감.<br>
+          개발자가 건드릴 필요 없음."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 10. Action -->
+    <section class="section" id="action">
+      <h2 class="section-title">
+        <span class="section-number">10</span>
+        실행 계획
+      </h2>
+
+      <div class="card">
+        <h3>완료된 것 (2026-02-04)</h3>
+        <ul>
+          <li>배달앱 3사 공식 공유 링크 확보 및 검증</li>
+          <li>menu/index.html 플로팅 버튼 구현</li>
+          <li>hoyadang.com ↔ 1층 비즈니스 연동</li>
+          <li>3층 전략 백서 문서화</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>다음 단계</h3>
+        <table>
+          <tr><th>우선순위</th><th>항목</th><th>상태</th></tr>
+          <tr><td>1</td><td>메뉴 정리 및 가격 재설정</td><td>진행 중</td></tr>
+          <tr><td>2</td><td>박달동 권역 시간대 최적화</td><td>대기</td></tr>
+          <tr><td>3</td><td>YouTube 콘텐츠 제작 시작</td><td>대기</td></tr>
+          <tr><td>4</td><td>첫 Shorts 업로드</td><td>대기</td></tr>
+        </table>
+      </div>
+
+      <div class="card highlight">
+        <h3>최종 메시지</h3>
+        <p style="font-size: 18px; text-align: center; padding: 20px 0;">
+          기술적 삽질은 끝났다.<br>
+          1층 기초공사 완료.<br><br>
+          <strong style="color: var(--gold);">이제 콘텐츠를 만들 차례.</strong>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="./">Strategy Room</a>
+    <a href="../">Inner Portal</a>
+    <a href="../../">Public Site</a>
+  </footer>
+</body>
+</html>
