@@ -1297,17 +1297,8 @@
     }
 
     function openYogiyo() {
-      var ua = navigator.userAgent.toLowerCase();
-      if (ua.indexOf('android') > -1) {
-        // Android: intent URL - 앱 없으면 플레이스토어로
-        location.href = 'intent://shop/1211887/menus#Intent;scheme=yogiyoapp;package=com.fineapp.yogiyo;end';
-      } else if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
-        // iOS: 앱 딥링크 시도
-        location.href = 'yogiyoapp://shop/1211887/menus';
-      } else {
-        // PC: 웹으로
-        location.href = 'https://www.yogiyo.co.kr/';
-      }
+      // 요기요 딥링크: yogiyoapp://shop/{ID}/menus
+      location.href = 'yogiyoapp://shop/1211887/menus';
     }
   </script>
 
