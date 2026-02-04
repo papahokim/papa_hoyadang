@@ -1297,7 +1297,20 @@
     }
 
     function openYogiyo() {
-      location.href = 'https://www.yogiyo.co.kr/mobile/#/restaurant/1211887/';
+      // 요기요 앱 딥링크 시도 → 앱 없으면 웹으로 폴백
+      var isAndroid = /android/i.test(navigator.userAgent);
+      var isIOS = /iphone|ipad/i.test(navigator.userAgent);
+
+      if (isAndroid || isIOS) {
+        // 앱 딥링크 시도
+        location.href = 'yogiyoapp://restaurant/1211887';
+        // 1초 후에도 안 열리면 웹으로
+        setTimeout(function() {
+          location.href = 'https://www.yogiyo.co.kr/mobile/#/restaurant/1211887';
+        }, 1000);
+      } else {
+        location.href = 'https://www.yogiyo.co.kr/mobile/#/restaurant/1211887';
+      }
     }
   </script>
 
