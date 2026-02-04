@@ -1278,17 +1278,35 @@
 
     // 쿠팡이츠 - 스토어 ID: 550712
     function openCoupangEats() {
-      window.location.href = 'coupangeats://detail?storeId=550712';
+      const deeplink = 'coupangeats://detail?storeId=550712';
+      const storeUrl = 'https://play.google.com/store/apps/details?id=com.coupang.mobile.eats';
+
+      window.location.href = deeplink;
+      setTimeout(function() {
+        window.location.href = storeUrl;
+      }, 1500);
     }
 
     // 배달의민족 - 가게 번호: 14190460
     function openBaemin() {
-      window.location.href = 'baeminkr://v1/shop?shop_no=14190460';
+      const deeplink = 'baeminkr://v1/shop?shop_no=14190460';
+      const storeUrl = 'https://play.google.com/store/apps/details?id=com.woowahan.baemin';
+
+      window.location.href = deeplink;
+      setTimeout(function() {
+        window.location.href = storeUrl;
+      }, 1500);
     }
 
     // 요기요 - 매장 ID: 1211887
     function openYogiyo() {
-      window.location.href = 'yogiyo://shops/1211887/menus';
+      const deeplink = 'yogiyo://shops/1211887/menus';
+      const storeUrl = 'https://play.google.com/store/apps/details?id=com.fineapp.yogiyo';
+
+      window.location.href = deeplink;
+      setTimeout(function() {
+        window.location.href = storeUrl;
+      }, 1500);
     }
   </script>
 
