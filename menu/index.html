@@ -1297,8 +1297,14 @@
     }
 
     function openYogiyo() {
-      // 요기요 딥링크: yogiyoapp://shop/{ID}/menus
+      // 앱 딥링크 시도 후 1.5초 후 웹으로 폴백
+      var start = Date.now();
       location.href = 'yogiyoapp://shop/1211887/menus';
+      setTimeout(function() {
+        if (Date.now() - start < 2000) {
+          location.href = 'https://www.yogiyo.co.kr/';
+        }
+      }, 1500);
     }
   </script>
 
