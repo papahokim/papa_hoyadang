@@ -1278,25 +1278,8 @@
 
     // 쿠팡이츠 - 스토어 ID: 550712
     function openCoupangEats() {
-      const deeplink = 'coupangeats://store/550712';
-      const androidStore = 'https://play.google.com/store/apps/details?id=com.coupang.mobile.eats';
-      const iosStore = 'https://apps.apple.com/kr/app/id1445504255';
-      const webUrl = 'https://www.coupangeats.com/';
-
-      if (/android|iphone|ipad|ipod/i.test(navigator.userAgent)) {
-        const fallbackUrl = /android/i.test(navigator.userAgent) ? androidStore : iosStore;
-        const start = Date.now();
-
-        window.location.href = deeplink;
-
-        setTimeout(function() {
-          if (Date.now() - start < 2000) {
-            window.location.href = fallbackUrl;
-          }
-        }, 1500);
-      } else {
-        window.open(webUrl, '_blank');
-      }
+      // 쿠팡이츠는 웹 URL로 바로 연결 (앱 있으면 앱에서 열림)
+      window.location.href = 'https://www.coupangeats.com/store/550712';
     }
 
     // 배달의민족 - 가게 번호: 14190460
