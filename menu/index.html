@@ -1297,8 +1297,21 @@
     }
 
     function openYogiyo() {
-      // 요기요 앱 딥링크: shop (restaurant는 구버전)
-      location.href = 'yogiyoapp://shop/1211887/menus';
+      // 요기요 앱 딥링크 시도, 실패시 웹으로 폴백
+      var appUrl = 'yogiyoapp://shop/1211887/menus';
+      var webUrl = 'https://www.yogiyo.co.kr/mobile/#/restaurant/1211887';
+
+      // 앱 열기 시도
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+
+      // 1초 후 웹으로 이동 (앱이 열렸으면 이 코드는 실행 안됨)
+      setTimeout(function() {
+        document.body.removeChild(iframe);
+        location.href = webUrl;
+      }, 1000);
     }
   </script>
 
