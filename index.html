@@ -1019,22 +1019,105 @@
       letter-spacing: 0.05em;
     }
 
-    .menu-view-all-btn {
-      display: inline-block;
+    .order-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
       margin-top: 3rem;
-      padding: 1rem 2.5rem;
-      background: var(--gold);
-      color: var(--black);
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      border-radius: 4px;
-      transition: all 0.3s;
+      padding: 1.25rem 3rem;
+      background: linear-gradient(135deg, #D4A853 0%, #E8C76A 50%, #D4A853 100%);
+      background-size: 200% 200%;
+      color: #1A1A1A;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 60px;
+      border: none;
+      box-shadow:
+        0 4px 20px rgba(212, 168, 83, 0.4),
+        0 8px 40px rgba(212, 168, 83, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    .menu-view-all-btn:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
+    .order-cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .order-cta-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 8px 30px rgba(212, 168, 83, 0.5),
+        0 16px 60px rgba(212, 168, 83, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      background-position: 100% 100%;
+    }
+
+    .order-cta-btn:hover::before {
+      left: 100%;
+    }
+
+    .order-cta-btn:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .order-cta-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .order-cta-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .order-cta-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+    }
+
+    .order-cta-main {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .order-cta-sub {
+      font-size: 0.65rem;
+      font-weight: 500;
+      opacity: 0.7;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .order-cta-btn {
+        padding: 1rem 2rem;
+        gap: 10px;
+      }
+      .order-cta-main {
+        font-size: 0.9rem;
+      }
     }
 
     /* Story Entry Section */
@@ -1905,8 +1988,18 @@
       </a>
     </div>
 
-    <a href="/menu/" class="menu-view-all-btn reveal">
-      전체 메뉴 보기 →
+    <a href="/menu/" class="order-cta-btn reveal">
+      <span class="order-cta-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </span>
+      <span class="order-cta-text">
+        <span class="order-cta-main">주문하기</span>
+        <span class="order-cta-sub">배달 · 포장</span>
+      </span>
     </a>
   </section>
 
