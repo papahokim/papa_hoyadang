@@ -1,34 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
   <defs>
-    <linearGradient id="crust" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E8A838"/>
-      <stop offset="50%" stop-color="#D4892A"/>
-      <stop offset="100%" stop-color="#B8741E"/>
-    </linearGradient>
-    <linearGradient id="cream" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFE8A0"/>
-      <stop offset="100%" stop-color="#F5D060"/>
-    </linearGradient>
+    <filter id="inkBleed">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="180" height="180" fill="#1B4332" rx="36"/>
+  <!-- Background - warm parchment paper -->
+  <rect width="180" height="180" fill="#F5EDE0" rx="36"/>
 
-  <!-- Croquette body -->
-  <ellipse cx="90" cy="70" rx="50" ry="34" fill="url(#crust)" transform="rotate(-15 90 70)"/>
+  <!-- 好爺堂 vertical calligraphy - simplified for icon size -->
+  <g fill="#1A1A1A" filter="url(#inkBleed)">
+    <!-- 好 (호) - top -->
+    <path d="M55 25 Q58 35 58 50 Q58 58 54 62" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M45 42 Q58 44 70 42" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M58 45 Q62 52 66 62" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M58 45 Q54 52 48 62" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M78 25 Q95 27 108 25" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M92 25 Q92 45 92 55 Q92 60 86 65" stroke="#1A1A1A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M78 42 Q92 44 106 42" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
 
-  <!-- Cream filling -->
-  <ellipse cx="77" cy="73" rx="20" ry="14" fill="url(#cream)" transform="rotate(-15 77 73)"/>
-  <ellipse cx="77" cy="73" rx="16" ry="11" fill="#FFF5CC" transform="rotate(-15 77 73)"/>
+    <!-- 爺 (야) - middle, largest -->
+    <path d="M55 75 Q90 72 125 75" stroke="#1A1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M75 75 Q68 95 58 115" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M105 75 Q112 95 122 115" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M70 95 Q90 97 110 95" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
 
-  <!-- Crust texture -->
-  <g fill="#C67B1A" opacity="0.5">
-    <circle cx="100" cy="55" r="2"/>
-    <circle cx="115" cy="65" r="1.5"/>
-    <circle cx="108" cy="78" r="2"/>
-    <circle cx="120" cy="72" r="1.5"/>
+    <!-- 堂 (당) - bottom -->
+    <path d="M55 125 Q90 122 125 125" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M68 132 L68 148 L112 148 L112 132 Z" stroke="#1A1A1A" stroke-width="3" fill="none"/>
+    <path d="M90 125 Q90 140 90 155" stroke="#1A1A1A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M50 155 Q90 152 130 155" stroke="#1A1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
   </g>
 
-  <!-- 호야당 text -->
-  <text x="90" y="145" font-family="'Noto Sans KR', sans-serif" font-size="28" font-weight="700" fill="#F5F1E6" text-anchor="middle">호야당</text>
+  <!-- Red seal (낙관) -->
+  <g transform="translate(125, 130)">
+    <rect x="0" y="0" width="42" height="42" fill="#C41E3A" rx="3" opacity="0.85"/>
+    <text x="21" y="30" font-family="serif" font-size="16" fill="#F5EDE0" text-anchor="middle" font-weight="bold">好</text>
+  </g>
 </svg>

@@ -1,0 +1,26 @@
+{
+  "name": "호야당 - 好爺堂",
+  "short_name": "호야당",
+  "description": "20년 장인의 손맛, 안양 호야당 베이커리",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EDE0",
+  "theme_color": "#1A1A1A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icons/apple-touch-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/logo-calligraphy.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["food", "lifestyle"],
+  "lang": "ko-KR"
+}
