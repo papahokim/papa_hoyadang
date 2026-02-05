@@ -1,0 +1,35 @@
+{
+  "id": "dawn",
+  "category": "chef",
+  "title": "새벽 4시의 남자",
+  "subtitle": "20년, 매일 같은 시간",
+  "cover": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80",
+  "date": "2006-2026",
+  "frames": [
+    {
+      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
+      "caption": "알람은 필요 없다.",
+      "caption_ko": "몸이 먼저 일어난다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
+      "caption": "첫 번째 반죽을 치댄다.",
+      "caption_ko": "아직 세상이 잠든 시간."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=80",
+      "caption": "오븐이 예열되는 소리.",
+      "caption_ko": "하루의 시작을 알린다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=800&q=80",
+      "caption": "첫 손님이 오기 전.",
+      "caption_ko": "이미 수십 개의 빵이 준비되어 있다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80",
+      "caption": "20년, 7300번의 새벽.",
+      "caption_ko": "이게 장인이다."
+    }
+  ]
+}

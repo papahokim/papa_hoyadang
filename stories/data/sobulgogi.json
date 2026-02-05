@@ -1,0 +1,35 @@
+{
+  "id": "sobulgogi",
+  "category": "bread",
+  "title": "소불고기의 탄생",
+  "subtitle": "20년 시그니처가 되기까지",
+  "cover": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
+  "date": "2006",
+  "frames": [
+    {
+      "image": "https://images.unsplash.com/photo-1495195134817-aeb325a55b65?w=800&q=80",
+      "caption": "새벽 5시, 고기를 고르러 간다.",
+      "caption_ko": "좋은 재료가 좋은 맛의 시작이다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800&q=80",
+      "caption": "양파는 눈물이 날 때까지.",
+      "caption_ko": "그래야 단맛이 깊어진다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=800&q=80",
+      "caption": "반죽은 손바닥으로 느낀다.",
+      "caption_ko": "기계가 모르는 감촉이 있다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=80",
+      "caption": "180도, 정확히 3분.",
+      "caption_ko": "이 순간을 위해 20년을 기다렸다."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
+      "caption": "이게 20년이다.",
+      "caption_ko": "소불고기 고로케, 시그니처의 탄생."
+    }
+  ]
+}
