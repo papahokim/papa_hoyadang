@@ -1037,76 +1037,283 @@
       transform: translateY(-2px);
     }
 
-    /* Story Entry Section */
-    .story-entry {
-      padding: 6rem 2rem;
-      background: var(--soft-black);
-      text-align: center;
+    /* ═══════════════════════════════════════
+       FILM STORIES — 손맛 필름 섹션
+    ═══════════════════════════════════════ */
+    .film-stories {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, var(--soft-black) 0%, #0D0A07 100%);
+      overflow: hidden;
     }
 
-    .story-entry-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+    .film-stories-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .film-stories-kodak {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .kodak-k {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #FFD700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .kodak-stripes-sm {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .kodak-stripes-sm span {
+      height: 4px;
+      background: #FF4500;
+      border-radius: 1px;
+    }
+
+    .kodak-stripes-sm span:nth-child(1) { width: 20px; }
+    .kodak-stripes-sm span:nth-child(2) { width: 16px; }
+    .kodak-stripes-sm span:nth-child(3) { width: 12px; }
+
+    .film-stories-title {
+      text-align: left;
+    }
+
+    .film-stories-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
       color: var(--gold);
-      margin-bottom: 1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
     }
 
-    .story-entry-title {
+    .film-stories-heading {
       font-family: var(--font-kr);
-      font-size: 2rem;
-      font-weight: 400;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    .film-stories-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.25rem;
+    }
+
+    .film-stories-desc {
+      text-align: center;
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.9;
+      margin-bottom: 3rem;
+      padding: 0 2rem;
+    }
+
+    /* Film Strip Preview */
+    .film-strip-preview {
+      position: relative;
       margin-bottom: 3rem;
     }
 
-    .story-entry-buttons {
+    .film-strip-track {
       display: flex;
-      justify-content: center;
       gap: 1.5rem;
-      flex-wrap: wrap;
+      padding: 1rem 2rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
     }
 
-    .story-entry-btn {
+    .film-strip-track::-webkit-scrollbar { display: none; }
+    .film-strip-track:active { cursor: grabbing; }
+
+    /* Film Preview Card */
+    .film-preview-card {
+      flex: 0 0 200px;
+      scroll-snap-align: center;
+      background: #1A1714;
+      border: 1px solid #2A2420;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+    }
+
+    .film-preview-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--gold);
+    }
+
+    .film-preview-edge {
+      height: 6px;
+      background: linear-gradient(90deg,
+        #FFD700 0%, #FFD700 33%,
+        #FF4500 33%, #FF4500 66%,
+        #FFD700 66%, #FFD700 100%
+      );
+    }
+
+    .film-preview-sprockets {
+      position: absolute;
+      top: 6px;
+      left: 4px;
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 2rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: all 0.3s;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px 0;
     }
 
-    .story-entry-btn:hover {
-      background: rgba(201, 169, 98, 0.1);
-      border-color: var(--gold);
+    .film-preview-sprockets span {
+      width: 8px;
+      height: 6px;
+      background: #0D0A07;
+      border-radius: 1px;
     }
 
-    .story-btn-icon {
-      font-size: 1.5rem;
+    .film-preview-image {
+      position: relative;
+      margin: 0 16px;
+      aspect-ratio: 3/4;
+      overflow: hidden;
     }
 
-    .story-btn-arrow {
+    .film-preview-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9) contrast(1.05);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .film-preview-card:hover .film-preview-image img {
+      transform: scale(1.08);
+    }
+
+    .film-preview-grain {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.1;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    .film-preview-num {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      color: #FF4500;
+      text-shadow: 0 0 6px rgba(255, 69, 0, 0.8);
+    }
+
+    .film-preview-info {
+      padding: 0.75rem;
+      border-top: 1px solid #2A2420;
+    }
+
+    .film-preview-cat {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.55rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .film-preview-info h3 {
+      font-family: var(--font-kr);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin: 0.25rem 0;
+      transition: color 0.3s;
+    }
+
+    .film-preview-card:hover .film-preview-info h3 {
+      color: var(--gold);
+    }
+
+    .film-preview-info p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .film-strip-hint {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      color: var(--gold);
       opacity: 0.5;
-      transition: transform 0.3s, opacity 0.3s;
+      letter-spacing: 0.15em;
+      margin-top: 1rem;
+      animation: swipeHintPulse 2s ease-in-out infinite;
     }
 
-    .story-entry-btn:hover .story-btn-arrow {
-      opacity: 1;
+    @keyframes swipeHintPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+
+    /* CTA Button */
+    .film-stories-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .film-stories-cta svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s;
+    }
+
+    .film-stories-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .film-stories-cta:hover svg {
       transform: translateX(4px);
     }
 
     @media (max-width: 768px) {
-      .story-entry-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      .story-entry-btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-      }
+      .film-stories { padding: 4rem 0; }
+      .film-stories-header { flex-direction: column; gap: 1rem; }
+      .film-stories-title { text-align: center; }
+      .film-preview-card { flex: 0 0 180px; }
+    }
+
+    @media (max-width: 480px) {
+      .film-preview-card { flex: 0 0 160px; }
+      .film-preview-info h3 { font-size: 0.8rem; }
     }
 
     @media (max-width: 768px) {
@@ -1910,24 +2117,94 @@
     </a>
   </section>
 
-  <!-- Story Entry -->
-  <section class="story-entry">
-    <div class="story-entry-content">
-      <p class="story-entry-eyebrow reveal">Our Story</p>
-      <h2 class="story-entry-title reveal reveal-delay-1">이야기를 들려드립니다</h2>
-      <div class="story-entry-buttons reveal reveal-delay-2">
-        <a href="/blog/" class="story-entry-btn">
-          <span class="story-btn-icon">📖</span>
-          <span>고로께 설명서</span>
-          <span class="story-btn-arrow">→</span>
-        </a>
-        <a href="/storybook/" class="story-entry-btn">
-          <span class="story-btn-icon">🎨</span>
-          <span>그림책 스토리</span>
-          <span class="story-btn-arrow">→</span>
-        </a>
+  <!-- Story Entry — 손맛 필름 -->
+  <section class="film-stories">
+    <div class="film-stories-header reveal">
+      <div class="film-stories-kodak">
+        <span class="kodak-k">K</span>
+        <div class="kodak-stripes-sm">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="film-stories-title">
+        <p class="film-stories-eyebrow">Photo Essay</p>
+        <h2 class="film-stories-heading">손맛 필름</h2>
+        <p class="film-stories-sub">20 Years in Frames</p>
       </div>
     </div>
+
+    <p class="film-stories-desc reveal reveal-delay-1">
+      요리하는 사진작가, 사진 찍는 요리사.<br>
+      20년의 손맛을 프레임에 담았습니다.
+    </p>
+
+    <!-- Film Strip Preview -->
+    <div class="film-strip-preview reveal reveal-delay-2">
+      <div class="film-strip-track" id="filmStripTrack">
+        <!-- Card 1 -->
+        <a href="/stories/viewer.html?id=sobulgogi" class="film-preview-card">
+          <div class="film-preview-edge"></div>
+          <div class="film-preview-sprockets">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="film-preview-image">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="소불고기의 탄생" loading="lazy">
+            <div class="film-preview-grain"></div>
+            <span class="film-preview-num">001</span>
+          </div>
+          <div class="film-preview-info">
+            <span class="film-preview-cat">BREAD</span>
+            <h3>소불고기의 탄생</h3>
+            <p>5 frames</p>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="/stories/viewer.html?id=dawn" class="film-preview-card">
+          <div class="film-preview-edge"></div>
+          <div class="film-preview-sprockets">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="film-preview-image">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&q=80" alt="새벽 4시의 남자" loading="lazy">
+            <div class="film-preview-grain"></div>
+            <span class="film-preview-num">002</span>
+          </div>
+          <div class="film-preview-info">
+            <span class="film-preview-cat">CHEF</span>
+            <h3>새벽 4시의 남자</h3>
+            <p>5 frames</p>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="/stories/viewer.html?id=hands" class="film-preview-card">
+          <div class="film-preview-edge"></div>
+          <div class="film-preview-sprockets">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="film-preview-image">
+            <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=400&q=80" alt="손의 기억" loading="lazy">
+            <div class="film-preview-grain"></div>
+            <span class="film-preview-num">003</span>
+          </div>
+          <div class="film-preview-info">
+            <span class="film-preview-cat">CHEF</span>
+            <h3>손의 기억</h3>
+            <p>6 frames</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="film-strip-hint">← 스와이프 →</div>
+    </div>
+
+    <a href="/stories/" class="film-stories-cta reveal reveal-delay-3">
+      <span>전체 이야기 보기</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
   </section>
 
   <!-- Philosophy -->
@@ -2206,6 +2483,30 @@
       const walk = (x - startX) * 2;
       menuGallery.scrollLeft = scrollLeft - walk;
     });
+
+    // ═══ FILM STRIP DRAG SCROLL ═══
+    const filmStrip = document.getElementById('filmStripTrack');
+    if (filmStrip) {
+      let filmIsDown = false;
+      let filmStartX;
+      let filmScrollLeft;
+
+      filmStrip.addEventListener('mousedown', (e) => {
+        filmIsDown = true;
+        filmStartX = e.pageX - filmStrip.offsetLeft;
+        filmScrollLeft = filmStrip.scrollLeft;
+      });
+
+      filmStrip.addEventListener('mouseleave', () => filmIsDown = false);
+      filmStrip.addEventListener('mouseup', () => filmIsDown = false);
+      filmStrip.addEventListener('mousemove', (e) => {
+        if (!filmIsDown) return;
+        e.preventDefault();
+        const x = e.pageX - filmStrip.offsetLeft;
+        const walk = (x - filmStartX) * 2;
+        filmStrip.scrollLeft = filmScrollLeft - walk;
+      });
+    }
 
     // ═══ SCROLL REVEAL ═══
     const revealElements = document.querySelectorAll('.reveal');
