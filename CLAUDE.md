@@ -1,6 +1,24 @@
-# 好爺堂 — Agent Protocol v3.1
+# 好爺堂 — Agent Protocol v3.2
 
 > Con las manos. 손으로.
+
+---
+
+## 0. HQ–Node Governance (2026-02-13 확정)
+
+**이 레포는 Satellite (Node)다. Center는 PapaFly.**
+
+1. **PapaFly is the only Center.** 모든 기준·구조·철학은 PapaFly에서 결정한다.
+2. **이 레포(hoyadang.com)는 Satellite.** `shared/data.json`을 직접 수정하지 않는다.
+3. **데이터 흐름은 단방향.** 현장→HQ (로그), HQ→Node (배포). 양방향 편집 금지.
+4. **철학·구조·AI 규칙은 PapaFly에만 존재한다.** 여기서 재정의하지 않는다.
+5. **이 Node는 실행·기록·피드백한다.** 핵심을 재정의하지 않는다.
+
+### shared/data.json (읽기 전용)
+- URL: `https://papafly.kr/shared/data.json`
+- **이 레포에서 수정 금지. fetch로 읽기만.**
+- 연락처/YouTube ID/도구 URL 변경 시 → PapaFly 레포에서 수정
+- fetch 실패 시 하드코딩 fallback 유지
 
 ---
 
