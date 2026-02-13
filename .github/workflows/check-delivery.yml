@@ -11,60 +11,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check delivery platform URLs
+      - name: Check delivery share URLs
         run: |
           NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-          check_url() {
+          # 공유 링크는 리다이렉터 — HTTP 응답(200/301/302)이 오면 alive
+          # 404/000/5xx = dead
+          check_share_url() {
             local key="$1"
-            local name="$2"
-            local url="$3"
+            local url="$2"
             local status
             local alive="false"
 
-            status=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 10 "$url" 2>/dev/null || echo "000")
+            # -L 안 씀 — 리다이렉터 자체의 응답만 확인
+            status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" 2>/dev/null || echo "000")
 
-            # 200 = OK, but need extra check for redirect-to-homepage
-            if [ "$status" = "200" ]; then
-              # Check if response body contains the store/restaurant info (not just homepage)
-              local body
-              body=$(curl -s -L --max-time 10 "$url" 2>/dev/null)
-
-              case "$key" in
-                coupang)
-                  # coupangeats store page should have store content
-                  if echo "$body" | grep -qi "550712\|호야당\|好爺堂"; then
-                    alive="true"
-                  fi
-                  ;;
-                baemin)
-                  # baemin should not redirect to "앱에서만" page
-                  if echo "$body" | grep -qi "shopDetail\|호야당\|好爺堂"; then
-                    if ! echo "$body" | grep -qi "앱에서만\|앱으로만\|app.baemin"; then
-                      alive="true"
-                    fi
-                  fi
-                  ;;
-                yogiyo)
-                  # yogiyo should have restaurant info, not just homepage
-                  if echo "$body" | grep -qi "1211887\|호야당\|好爺堂"; then
-                    alive="true"
-                  fi
-                  ;;
-              esac
-            fi
+            # 200, 301, 302, 307, 308 = 리다이렉터 정상
+            case "$status" in
+              200|301|302|307|308) alive="true" ;;
+            esac
 
             echo "${key}|${alive}|${status}"
           }
 
-          COUPANG=$(check_url "coupang" "쿠팡이츠" "https://www.coupangeats.com/store/550712")
-          BAEMIN=$(check_url "baemin" "배달의민족" "https://www.baemin.com/shopDetail?shopDetail_shopNo=14190460")
-          YOGIYO=$(check_url "yogiyo" "요기요" "https://www.yogiyo.co.kr/mobile/#/restaurant/1211887")
+          COUPANG=$(check_share_url "coupang" "https://web.coupangeats.com/share?storeId=550712")
+          BAEMIN=$(check_share_url "baemin" "https://s.baemin.com/d2000gCVdxUak")
+          YOGIYO=$(check_share_url "yogiyo" "https://ws.yogiyo.co.kr/jnsce1")
 
-          # Read previous status for lastAlive tracking
           PREV=$(cat menu/delivery-status.json 2>/dev/null || echo "{}")
 
-          # Parse results
           C_ALIVE=$(echo "$COUPANG" | cut -d'|' -f2)
           C_HTTP=$(echo "$COUPANG" | cut -d'|' -f3)
           B_ALIVE=$(echo "$BAEMIN" | cut -d'|' -f2)
@@ -72,7 +47,6 @@ jobs:
           Y_ALIVE=$(echo "$YOGIYO" | cut -d'|' -f2)
           Y_HTTP=$(echo "$YOGIYO" | cut -d'|' -f3)
 
-          # Track lastAlive from previous JSON
           C_LAST=$(echo "$PREV" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('platforms',{}).get('coupang',{}).get('lastAlive','null'))" 2>/dev/null || echo "null")
           B_LAST=$(echo "$PREV" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('platforms',{}).get('baemin',{}).get('lastAlive','null'))" 2>/dev/null || echo "null")
           Y_LAST=$(echo "$PREV" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('platforms',{}).get('yogiyo',{}).get('lastAlive','null'))" 2>/dev/null || echo "null")
@@ -81,46 +55,54 @@ jobs:
           [ "$B_ALIVE" = "true" ] && B_LAST="\"$NOW\"" || B_LAST=$([ "$B_LAST" = "null" ] && echo "null" || echo "\"$B_LAST\"")
           [ "$Y_ALIVE" = "true" ] && Y_LAST="\"$NOW\"" || Y_LAST=$([ "$Y_LAST" = "null" ] && echo "null" || echo "\"$Y_LAST\"")
 
-          cat > menu/delivery-status.json << EOJSON
-          {
-            "updated": "$NOW",
-            "platforms": {
-              "coupang": {
-                "name": "쿠팡이츠",
-                "url": "https://www.coupangeats.com/store/550712",
-                "alive": $C_ALIVE,
-                "lastAlive": $C_LAST,
-                "httpStatus": $C_HTTP
-              },
-              "baemin": {
-                "name": "배달의민족",
-                "url": "https://www.baemin.com/shopDetail?shopDetail_shopNo=14190460",
-                "alive": $B_ALIVE,
-                "lastAlive": $B_LAST,
-                "httpStatus": $B_HTTP
-              },
-              "yogiyo": {
-                "name": "요기요",
-                "url": "https://www.yogiyo.co.kr/mobile/#/restaurant/1211887",
-                "alive": $Y_ALIVE,
-                "lastAlive": $Y_LAST,
-                "httpStatus": $Y_HTTP
-              }
-            }
-          }
-          EOJSON
+          cat > menu/delivery-status.json << 'EOJSON'
+{
+  "updated": "PLACEHOLDER_NOW",
+  "platforms": {
+    "coupang": {
+      "name": "쿠팡이츠",
+      "url": "https://web.coupangeats.com/share?storeId=550712",
+      "alive": PLACEHOLDER_C_ALIVE,
+      "lastAlive": PLACEHOLDER_C_LAST,
+      "httpStatus": PLACEHOLDER_C_HTTP
+    },
+    "baemin": {
+      "name": "배달의민족",
+      "url": "https://s.baemin.com/d2000gCVdxUak",
+      "alive": PLACEHOLDER_B_ALIVE,
+      "lastAlive": PLACEHOLDER_B_LAST,
+      "httpStatus": PLACEHOLDER_B_HTTP
+    },
+    "yogiyo": {
+      "name": "요기요",
+      "url": "https://ws.yogiyo.co.kr/jnsce1",
+      "alive": PLACEHOLDER_Y_ALIVE,
+      "lastAlive": PLACEHOLDER_Y_LAST,
+      "httpStatus": PLACEHOLDER_Y_HTTP
+    }
+  }
+}
+EOJSON
 
-          # Clean up indentation from heredoc
-          sed -i 's/^          //' menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_NOW|$NOW|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_C_ALIVE|$C_ALIVE|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_C_LAST|$C_LAST|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_C_HTTP|$C_HTTP|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_B_ALIVE|$B_ALIVE|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_B_LAST|$B_LAST|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_B_HTTP|$B_HTTP|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_Y_ALIVE|$Y_ALIVE|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_Y_LAST|$Y_LAST|" menu/delivery-status.json
+          sed -i "s|PLACEHOLDER_Y_HTTP|$Y_HTTP|" menu/delivery-status.json
 
           echo "=== Results ==="
           echo "쿠팡이츠: alive=$C_ALIVE http=$C_HTTP"
           echo "배달의민족: alive=$B_ALIVE http=$B_HTTP"
           echo "요기요: alive=$Y_ALIVE http=$Y_HTTP"
+          cat menu/delivery-status.json
 
       - name: Commit if changed
         run: |
-          cd $GITHUB_WORKSPACE
           git diff --quiet menu/delivery-status.json && echo "No changes" && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
