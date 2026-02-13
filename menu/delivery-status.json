@@ -1,0 +1,26 @@
+{
+  "updated": "2026-02-13T00:00:00Z",
+  "platforms": {
+    "coupang": {
+      "name": "쿠팡이츠",
+      "url": "https://www.coupangeats.com/store/550712",
+      "alive": false,
+      "lastAlive": null,
+      "httpStatus": 404
+    },
+    "baemin": {
+      "name": "배달의민족",
+      "url": "https://www.baemin.com/shopDetail?shopDetail_shopNo=14190460",
+      "alive": false,
+      "lastAlive": null,
+      "httpStatus": 200
+    },
+    "yogiyo": {
+      "name": "요기요",
+      "url": "https://www.yogiyo.co.kr/mobile/#/restaurant/1211887",
+      "alive": false,
+      "lastAlive": null,
+      "httpStatus": 302
+    }
+  }
+}
