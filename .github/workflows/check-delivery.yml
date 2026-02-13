@@ -2,7 +2,7 @@ name: Delivery Link Health Check
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # 매일 KST 15:00 (UTC 06:00)
+    - cron: '0 6 * * *' # 매일 KST 15시 (UTC 06시)
   workflow_dispatch:
 
 jobs:
