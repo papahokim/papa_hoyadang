@@ -336,7 +336,7 @@
         <span class="app-arrow">→</span>
       </a>
 
-      <a href="https://dtslib-cloud-appstore.vercel.app/youtuber/clip-shorts/" class="app-card" target="_blank">
+      <a href="https://dtslib1979.github.io/dtslib-cloud-appstore/clip-shorts/" class="app-card" target="_blank" data-tool="clipShorts">
         <div class="app-icon red">🎬</div>
         <div class="app-info">
           <div class="app-name">Clip Shorts</div>
@@ -346,7 +346,7 @@
         <span class="app-arrow">↗</span>
       </a>
 
-      <a href="https://dtslib-cloud-appstore.vercel.app/youtuber/auto-shorts/" class="app-card" target="_blank">
+      <a href="https://dtslib1979.github.io/dtslib-cloud-appstore/auto-shorts/" class="app-card" target="_blank" data-tool="autoShorts">
         <div class="app-icon purple">🔄</div>
         <div class="app-info">
           <div class="app-name">Auto Shorts</div>
@@ -361,7 +361,7 @@
     <div class="section">
       <div class="section-title">🖼️ 이미지 도구</div>
 
-      <a href="https://dtslib-cloud-appstore.vercel.app/youtuber/image-pack/" class="app-card" target="_blank">
+      <a href="https://dtslib1979.github.io/dtslib-cloud-appstore/image-pack/" class="app-card" target="_blank" data-tool="imagePack">
         <div class="app-icon green">📦</div>
         <div class="app-info">
           <div class="app-name">Image Pack</div>
@@ -371,7 +371,7 @@
         <span class="app-arrow">↗</span>
       </a>
 
-      <a href="https://dtslib-cloud-appstore.vercel.app/youtuber/slim-lens/" class="app-card" target="_blank">
+      <a href="https://dtslib1979.github.io/dtslib-cloud-appstore/slim-lens/" class="app-card" target="_blank" data-tool="slimLens">
         <div class="app-icon blue">📷</div>
         <div class="app-info">
           <div class="app-name">Slim Lens</div>
@@ -386,7 +386,7 @@
     <div class="section">
       <div class="section-title">🎵 오디오 도구</div>
 
-      <a href="https://dtslib-cloud-appstore.vercel.app/youtuber/audio-studio/" class="app-card" target="_blank">
+      <a href="https://dtslib1979.github.io/dtslib-cloud-appstore/audio-studio/" class="app-card" target="_blank" data-tool="audioStudio">
         <div class="app-icon blue">🎵</div>
         <div class="app-info">
           <div class="app-name">Audio Studio</div>
@@ -403,5 +403,23 @@
       <p style="margin-top: 4px;">MSMR + DTS Cloud AppStore</p>
     </div>
   </div>
+
+  <!-- 본사 데이터 동기화 -->
+  <script>
+  (function() {
+    'use strict';
+    fetch('https://papafly.kr/shared/data.json')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d.tools) return;
+        var map = d.tools;
+        document.querySelectorAll('[data-tool]').forEach(function(el) {
+          var key = el.getAttribute('data-tool');
+          if (map[key]) el.href = map[key];
+        });
+      })
+      .catch(function() { /* fallback: 하드코딩 URL 유지 */ });
+  })();
+  </script>
 </body>
 </html>

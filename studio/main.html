@@ -568,12 +568,46 @@
   <!-- ═══ Footer ═══ -->
   <footer class="pie">
     <p class="pie-logo">호야당</p>
-    <p class="pie-direccion">
+    <p class="pie-direccion" id="footerAddress">
       경기도 안양시 만안구 와룡로 12-1<br>
       Anyang, Gyeonggi-do, South Korea
     </p>
     <p class="pie-copy">© 2026 호야당. All rights reserved.</p>
   </footer>
+
+  <!-- 본사 데이터 동기화 -->
+  <script>
+  (function() {
+    'use strict';
+    var DATA_URL = 'https://papafly.kr/shared/data.json';
+
+    fetch(DATA_URL).then(function(r) { return r.json(); }).then(function(d) {
+      if (!d.hoyadang) return;
+      var el = document.getElementById('footerAddress');
+      if (el && d.hoyadang.address) {
+        el.innerHTML = d.hoyadang.address + '<br>' + (d.hoyadang.addressEn || '');
+      }
+
+      // YouTube SCENE iframes 동기화
+      if (d.youtube && d.youtube.videos && d.youtube.videos.scenes) {
+        d.youtube.videos.scenes.forEach(function(scene) {
+          var card = document.querySelector('[data-video-id="' + scene.id + '"]');
+          if (card) return; // ID 같으면 스킵
+          // ID가 바뀐 경우: scene 번호로 찾아서 교체
+          var sceneCard = document.querySelector('[data-frame="' + scene.scene + '"]');
+          if (!sceneCard) return;
+          var oldId = sceneCard.getAttribute('data-video-id');
+          if (oldId === scene.id) return;
+          sceneCard.setAttribute('data-video-id', scene.id);
+          var iframe = sceneCard.querySelector('.scene-iframe');
+          if (iframe) {
+            iframe.src = 'https://www.youtube.com/embed/' + scene.id + '?modestbranding=1&rel=0&showinfo=0&controls=0&loop=1&playlist=' + scene.id + '&mute=1&playsinline=1&iv_load_policy=3&fs=0&disablekb=1&start=3';
+          }
+        });
+      }
+    }).catch(function() { /* fallback: 하드코딩 값 유지 */ });
+  })();
+  </script>
 
 
   <!-- ═══ Audio Player ═══ -->
