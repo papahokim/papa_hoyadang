@@ -1,16 +1,16 @@
-# Constitución del Mundo TANGO MAGENTA
+# Constitución del Mundo COCINA MAGENTA
 
 > "No construimos software. Construimos mundos."
 
 ---
 
-## Artículo I — El Cuerpo
+## Artículo I — Las Manos
 
-El cuerpo es la primera tecnología. Antes del código, antes de la pantalla, está el peso del pie contra el piso.
+Las manos son la primera tecnología. Antes del código, antes de la pantalla, está el peso de la mano contra la masa.
 
 ## Artículo II — La Transmisión
 
-El tango no se enseña. Se transmite. Como un idioma que solo se aprende en la calle.
+La cocina no se enseña. Se transmite. Como un idioma que solo se aprende en la cocina.
 
 ## Artículo III — El Silencio
 
@@ -18,7 +18,7 @@ La pausa es tan importante como el movimiento. El silencio es tan importante com
 
 ## Artículo IV — Lo Irrepetible
 
-Cada sesión es irrepetible. No hay replay. No hay undo. Solo el presente, extendido como un abrazo.
+Cada plato es irrepetible. No hay replay. No hay undo. Solo el presente, extendido como un abrazo.
 
 ## Artículo V — El Legado
 
@@ -31,8 +31,8 @@ Lo que se construye acá no es un producto. Es un legado. La diferencia está en
 No construimos software.
 Construimos mundos.
 No diseñamos interfaces.
-Diseñamos encuentros.
+Diseñamos sabores.
 No programamos funciones.
 Programamos rituales.
 
-— Manifiesto TANGO MAGENTA, 2026. Buenos Aires.
+— Manifiesto COCINA MAGENTA, 2026. Seoul.

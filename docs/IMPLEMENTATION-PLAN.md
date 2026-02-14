@@ -1,4 +1,4 @@
-# ESPÍRITU TANGO — Implementation Plan v1.0
+# ESPÍRITU COCINA — Implementation Plan v1.0
 
 ## 완벽한 구현 계획서
 
@@ -16,7 +16,7 @@
 
 ```
 ✅ DONE (40%)
-├── Repository rename (tango-magenta → espiritu-tango)
+├── Repository rename (cocina-magenta → espiritu-cocina)
 ├── index.html (Hero, Layers, Footer)
 ├── FACTORY.json v3.0
 ├── branch.json
@@ -49,10 +49,10 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  PROTOCOL LAYER (OS 공통 — ESPÍRITU TANGO 브랜딩)           │
+│  PROTOCOL LAYER (OS 공통 — ESPÍRITU COCINA 브랜딩)           │
 │                                                             │
-│  L2: cuerpo/        → Body Grammar (몸 문법)               │
-│  L3: laboratorio/   → Gesture Lab (제스처 설계)            │
+│  L2: cuerpo/        → Hands Grammar (손 문법)               │
+│  L3: laboratorio/   → Technique Lab (기법 설계)             │
 │  L4: control/       → Control Room (시스템 관측)           │
 │  L5: legado/        → Legacy (서사 축적)                   │
 │                                                             │
@@ -71,64 +71,64 @@
 
 | Layer | Title Format | Footer |
 |-------|--------------|--------|
-| Protocol (L2-L5) | `[Layer] — ESPÍRITU TANGO` | ESPÍRITU TANGO |
-| Node (L1) | `[Program] — Node: Magenta` | Node: Magenta · ESPÍRITU TANGO |
+| Protocol (L2-L5) | `[Layer] — ESPÍRITU COCINA` | ESPÍRITU COCINA |
+| Node (L1) | `[Program] — Node: Magenta` | Node: Magenta · ESPÍRITU COCINA |
 
 ---
 
 ## Phase 1: Protocol Layer (L2-L5)
 
-### 1.1 L2: cuerpo/ — Body Grammar
+### 1.1 L2: cuerpo/ — Hands Grammar
 
 **File**: `cuerpo/index.html`
 
 **Before**:
 ```html
-<title>Tutorial — TANGO MAGENTA</title>
+<title>Tutorial — COCINA MAGENTA</title>
 <p class="susurro latido">2F</p>
 <h1 class="monumento mt-md">Tutorial</h1>
 ```
 
 **After**:
 ```html
-<title>Body Grammar — ESPÍRITU TANGO</title>
+<title>Hands Grammar — ESPÍRITU COCINA</title>
 <p class="susurro latido">L2</p>
-<h1 class="monumento mt-md">Body Grammar</h1>
+<h1 class="monumento mt-md">Hands Grammar</h1>
 <p class="voz mt-lg">
-  No enseñamos <span class="magenta">baile</span>.<br>
-  Editamos el lenguaje del <span class="magenta">cuerpo</span>.
+  No enseñamos <span class="magenta">cocina</span>.<br>
+  Editamos el lenguaje de las <span class="magenta">manos</span>.
 </p>
-<span lang="ko" class="ko mt-sm">춤을 가르치지 않는다. 몸의 언어를 편집한다.</span>
+<span lang="ko" class="ko mt-sm">요리를 가르치지 않는다. 손의 언어를 편집한다.</span>
 ```
 
 **Key Changes**:
-- Title: Tutorial → Body Grammar
+- Title: Tutorial → Hands Grammar
 - Floor: 2F → L2
 - Message: Core philosophy 반영
 
 ---
 
-### 1.2 L3: laboratorio/ — Gesture Lab
+### 1.2 L3: laboratorio/ — Technique Lab
 
 **File**: `laboratorio/index.html`
 
 **Before**:
 ```html
-<title>Laboratorio — TANGO MAGENTA</title>
+<title>Laboratorio — COCINA MAGENTA</title>
 <p class="susurro latido">3F</p>
 <h1>Laboratorio</h1>
 ```
 
 **After**:
 ```html
-<title>Gesture Lab — ESPÍRITU TANGO</title>
+<title>Technique Lab — ESPÍRITU COCINA</title>
 <p class="susurro latido">L3</p>
-<h1 class="monumento mt-md">Gesture Lab</h1>
+<h1 class="monumento mt-md">Technique Lab</h1>
 <p class="voz mt-lg">
-  Donde los <span class="magenta">movimientos</span><br>
+  Donde las <span class="magenta">técnicas</span><br>
   se vuelven <span class="magenta">protocolo</span>.
 </p>
-<span lang="ko" class="ko mt-sm">움직임이 프로토콜이 되는 곳. 제스처를 설계한다.</span>
+<span lang="ko" class="ko mt-sm">손놀림이 프로토콜이 되는 곳. 기법을 설계한다.</span>
 ```
 
 ---
@@ -139,14 +139,14 @@
 
 **Before**:
 ```html
-<title>Control — TANGO MAGENTA</title>
+<title>Control — COCINA MAGENTA</title>
 <p class="susurro latido">4F</p>
 <h1>Control Room</h1>
 ```
 
 **After**:
 ```html
-<title>Control Room — ESPÍRITU TANGO</title>
+<title>Control Room — ESPÍRITU COCINA</title>
 <p class="susurro latido">L4</p>
 <h1 class="monumento mt-md">Control Room</h1>
 <p class="voz mt-lg">
@@ -164,21 +164,21 @@
 
 **Before**:
 ```html
-<title>Legado — TANGO MAGENTA</title>
+<title>Legado — COCINA MAGENTA</title>
 <p class="susurro latido">5F</p>
 <h1>Legado</h1>
 ```
 
 **After**:
 ```html
-<title>Legacy — ESPÍRITU TANGO</title>
+<title>Legacy — ESPÍRITU COCINA</title>
 <p class="susurro latido">L5</p>
 <h1 class="monumento mt-md">Legacy</h1>
 <p class="voz mt-lg">
-  La <span class="magenta">historia</span> del cuerpo.<br>
+  La <span class="magenta">historia</span> de las manos.<br>
   Archivos, memoria, <span class="magenta">narrativas</span>.
 </p>
-<span lang="ko" class="ko mt-sm">몸의 역사. 서사를 축적한다.</span>
+<span lang="ko" class="ko mt-sm">손의 역사. 서사를 축적한다.</span>
 ```
 
 ---
@@ -189,21 +189,21 @@
 
 **Before**:
 ```html
-<title>Academia — TANGO MAGENTA</title>
+<title>Academia — COCINA MAGENTA</title>
 <p class="susurro latido">1F</p>
 <h1 class="monumento mt-md">Academia</h1>
 ```
 
 **After**:
 ```html
-<title>Emission — ESPÍRITU TANGO · Node: Magenta</title>
+<title>Emission — ESPÍRITU COCINA · Node: Magenta</title>
 <p class="susurro latido">L1 — NODE: MAGENTA</p>
 <h1 class="monumento mt-md">Emission</h1>
 <p class="voz mt-lg">
-  Season 01: <span class="magenta">Tango Protocol</span><br>
+  Season 01: <span class="magenta">Cocina Protocol</span><br>
   Tu primera <span class="magenta">escena</span> empieza aquí.
 </p>
-<span lang="ko" class="ko mt-sm">시즌 01: 탱고 프로토콜. 당신의 첫 장면이 시작된다.</span>
+<span lang="ko" class="ko mt-sm">시즌 01: 요리 프로토콜. 당신의 첫 장면이 시작된다.</span>
 ```
 
 ---
@@ -212,16 +212,16 @@
 
 | File | Before | After |
 |------|--------|-------|
-| l1/index.html | Signature Step · 입문 정규반 | Ep.01: First Gesture · 첫 번째 몸짓 |
-| l2/index.html | Partner Mastery · 파트너 심화 | Ep.02: Two Bodies · 두 몸이 하나의 장면 |
+| l1/index.html | Signature Dish · 입문 정규반 | Ep.01: First Technique · 첫 번째 손놀림 |
+| l2/index.html | Pair Cooking · 파트너 심화 | Ep.02: Two Hands · 두 손이 하나의 장면 |
 | l3/index.html | Film · 영상 프로젝트 | Ep.03: Scene Making · 당신의 장면 촬영 |
 | l4/index.html | Buenos Aires · B.A. 투어 | Ep.04: Origin Trip · 프로토콜 원산지 |
 
 **Template**:
 ```html
-<title>Ep.01: First Gesture — Node: Magenta</title>
+<title>Ep.01: First Technique — Node: Magenta</title>
 <p class="susurro">SEASON 01 · EPISODE 01</p>
-<h1 class="tarjeta-titulo">First Gesture</h1>
+<h1 class="tarjeta-titulo">First Technique</h1>
 <p class="tarjeta-texto">
   Este no es un <span class="magenta">curso</span>.<br>
   Es el proceso de hacer tu primera <span class="magenta">escena</span>.
@@ -247,7 +247,7 @@
 **File**: `inner/index.html`
 
 ```html
-<title>Inner Portal — ESPÍRITU TANGO</title>
+<title>Inner Portal — ESPÍRITU COCINA</title>
 <!-- Gate password: 1126 -->
 ```
 
@@ -275,7 +275,7 @@ grep -r "학원\|레슨\|강습\|초급\|중급\|고급" \
 
 ```bash
 # 실행 후 다수 matches 확인
-grep -r "스튜디오\|에피소드\|프로토콜\|장면\|퍼포머" \
+grep -r "스튜디오\|에피소드\|프로토콜\|장면\|셰프" \
   --include="*.html" .
 ```
 
@@ -283,8 +283,8 @@ grep -r "스튜디오\|에피소드\|프로토콜\|장면\|퍼포머" \
 
 | Page | Title Pattern |
 |------|---------------|
-| index.html | ESPÍRITU TANGO — Performance Protocol |
-| Protocol pages | [Layer Name] — ESPÍRITU TANGO |
+| index.html | ESPÍRITU COCINA — Performance Protocol |
+| Protocol pages | [Layer Name] — ESPÍRITU COCINA |
 | Node pages | [Program] — Node: Magenta |
 
 ---
@@ -332,7 +332,7 @@ grep -r "스튜디오\|에피소드\|프로토콜\|장면\|퍼포머" \
 
 ```bash
 # Phase 1
-git commit -m "identity: Transform Protocol Layer (L2-L5) to ESPÍRITU TANGO"
+git commit -m "identity: Transform Protocol Layer (L2-L5) to ESPÍRITU COCINA"
 
 # Phase 2
 git commit -m "identity: Transform Node Layer (L1 emisión) to Episode structure"
@@ -352,7 +352,7 @@ git commit -m "chore: QA pass — terminology validation complete"
 
 | Metric | Before | After |
 |--------|--------|-------|
-| "TANGO MAGENTA" in titles | 12+ | 0 (Node pages만 허용) |
+| "COCINA MAGENTA" in titles | 12+ | 0 (Node pages만 허용) |
 | "학원/레슨" mentions | 5+ | 0 |
 | Floor numbers (1F-5F) | 5 | 0 |
 | Layer numbers (L1-L5) | 0 | 5 |
@@ -361,11 +361,11 @@ git commit -m "chore: QA pass — terminology validation complete"
 ### Identity Test
 
 ```
-Q: 이 사이트는 탱고 학원인가?
-A: No. Performance Studio OS이며, 탱고는 첫 번째 프로토콜.
+Q: 이 사이트는 요리 학원인가?
+A: No. Cooking Studio OS이며, 요리는 첫 번째 프로토콜.
 
 Q: 연화의 사업체인가?
-A: No. ESPÍRITU TANGO의 첫 번째 노드(Magenta)일 뿐.
+A: No. ESPÍRITU COCINA의 첫 번째 노드(Magenta)일 뿐.
 
 Q: 다른 도메인에 복제 가능한가?
 A: Yes. 노드만 바꾸면 빵집, 음악, 강의 전부 가능.
@@ -387,5 +387,5 @@ Overall:                   ~40% complete
 ---
 
 *Implementation Plan v1.0*
-*ESPÍRITU TANGO · Performance Protocol for Body*
+*ESPÍRITU COCINA · Cooking Protocol for Hands*
 *2026-01-26*

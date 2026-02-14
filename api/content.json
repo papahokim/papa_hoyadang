@@ -1,8 +1,8 @@
 {
-  "studio": "tango-magenta",
+  "studio": "cocina-magenta",
   "version": "2.1",
   "description": "5-Layer Studio & Broadcast System",
-  "baseUrl": "https://dtslib1979.github.io/tango-magenta",
+  "baseUrl": "https://dtslib1979.github.io/cocina-magenta",
   "lastUpdated": "2026-01-25",
   "layers": [
     { "id": "emisión", "name": "Emisión", "status": "active" },

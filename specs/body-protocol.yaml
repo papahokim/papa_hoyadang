@@ -1,8 +1,8 @@
 # Body Interaction Protocol v1.0
-# "En este sistema, el botón no es la mano. Es el peso del cuerpo moviéndose."
+# "En este sistema, el botón no es la mano. Es el peso de las manos moviéndose."
 
 version: "1.0"
-system: "tango-magenta"
+system: "cocina-magenta"
 language: "es-AR"
 
 timing:
@@ -61,7 +61,7 @@ interactions:
   swipe:
     spanish: "Girar"
     english: "Turn/Rotate"
-    description: "El swipe es un giro del cuerpo."
+    description: "El swipe es un giro de la muñeca."
     implementation: "touchstart/touchend, diff > 80px, elapsed < 500ms"
     event: "CustomEvent('girar', { detail: { direction } })"
 
@@ -96,11 +96,11 @@ entrada_ritual:
       trigger: "setTimeout(3000 + breath + beat)"
       description: "La pantalla despierta"
       css_class: "ritual-oscuridad.despierta"
-  session_skip: "sessionStorage('tango_entered')"
+  session_skip: "sessionStorage('cocina_entered')"
 
 principles:
-  - "El cuerpo es la interfaz"
+  - "Las manos son la interfaz"
   - "70 BPM. Nada más rápido."
   - "La pausa es información"
-  - "Cada transición es un paso de baile"
+  - "Cada transición es un paso de cocina"
   - "El sistema acompaña, no responde"

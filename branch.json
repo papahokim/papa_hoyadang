@@ -3,7 +3,7 @@
   "name": "好爺堂",
   "nameEn": "HOYADANG",
   "tagline": "4 Scenes from Seoul",
-  "hq": "dtslib1979/espiritu-tango",
+  "hq": "dtslib1979/espiritu-cocina",
   "version": "3.4",
   "status": "active",
   "visibility": "public",
@@ -52,7 +52,7 @@
     },
     {
       "feedId": "espiritu-sdk",
-      "publisher": "espiritu-tango",
+      "publisher": "espiritu-cocina",
       "autoSync": true,
       "target": "assets/js"
     }

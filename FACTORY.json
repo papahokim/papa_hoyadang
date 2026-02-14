@@ -5,12 +5,12 @@
 
   "identity": {
     "name": "HOYADANG",
-    "tagline": "Performance Protocol for Body",
-    "subtitle": "몸으로 장면을 만드는 퍼포먼스 프로토콜",
+    "tagline": "Performance Protocol for Hands",
+    "subtitle": "손으로 장면을 만드는 퍼포먼스 프로토콜",
     "type": "performance-studio-os",
     "domain": "dtslib1979.github.io/hoyadang.com",
     "language": "es-AR",
-    "NOT": ["website", "academy", "dance-school", "학원", "레슨"]
+    "NOT": ["website", "academy", "cooking-school", "학원", "레슨"]
   },
 
   "meta": {
@@ -26,33 +26,33 @@
   },
 
   "philosophy": {
-    "core": "춤을 가르치지 않는다. 몸의 언어를 편집한다.",
-    "coreEs": "No enseñamos baile. Editamos el lenguaje del cuerpo.",
-    "medium": "Body",
+    "core": "요리를 가르치지 않는다. 손의 언어를 편집한다.",
+    "coreEs": "No enseñamos cocina. Editamos el lenguaje de las manos.",
+    "medium": "Hands",
     "output": "Scene",
     "method": "Protocol",
-    "humanRole": "퍼포머",
+    "humanRole": "셰프",
     "systemRole": "장면을 만드는 도구",
-    "result": "일상이 무대가 된다"
+    "result": "부엌이 무대가 된다"
   },
 
   "architecture": {
     "name": "5-Layer Performance Studio OS",
     "layers": [
       { "level": 1, "id": "emisión", "name": "Emission", "purpose": "장면을 송출한다", "verb": "Transmití" },
-      { "level": 2, "id": "cuerpo", "name": "Body Grammar", "purpose": "몸의 언어를 편집한다", "verb": "Editá" },
-      { "level": 3, "id": "laboratorio", "name": "Gesture Lab", "purpose": "제스처를 설계한다", "verb": "Diseñá" },
+      { "level": 2, "id": "cuerpo", "name": "Hands Grammar", "purpose": "손의 언어를 편집한다", "verb": "Editá" },
+      { "level": 3, "id": "laboratorio", "name": "Technique Lab", "purpose": "기법을 설계한다", "verb": "Diseñá" },
       { "level": 4, "id": "control", "name": "Control Room", "purpose": "시스템을 관측한다", "verb": "Observá" },
       { "level": 5, "id": "legado", "name": "Legacy", "purpose": "서사를 축적한다", "verb": "Recordá" }
     ]
   },
 
   "protocol": {
-    "current": "tango",
+    "current": "cocina",
     "version": "1.0",
-    "description": "첫 번째 Body Protocol",
+    "description": "첫 번째 Hands Protocol",
     "expandable": true,
-    "future": ["food", "sound", "space", "craft"]
+    "future": ["dance", "sound", "space", "craft"]
   },
 
   "bodyProtocol": {

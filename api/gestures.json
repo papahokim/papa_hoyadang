@@ -1,79 +1,79 @@
 {
   "version": "1.0",
-  "engine": "gesture-engine",
+  "engine": "technique-engine",
   "bpm": 70,
   "gestures": [
     {
-      "id": "ocho",
-      "name": "Ocho",
+      "id": "amasar",
+      "name": "Amasar",
       "type": "figure",
       "beats": 4,
       "direction": ["forward", "back"],
       "pivot": true,
-      "description": "El movimiento base. Una figura infinita dibujada con los pies."
+      "description": "El movimiento base. Una figura infinita dibujada con las manos."
     },
     {
-      "id": "caminata",
-      "name": "Caminata",
+      "id": "cortar",
+      "name": "Cortar",
       "type": "locomotion",
       "beats": 2,
       "weight": "full",
-      "connection": "chest",
-      "description": "El paso consciente. No se camina para llegar. Se camina para estar."
+      "connection": "hands",
+      "description": "El corte consciente. No se corta para terminar. Se corta para sentir."
     },
     {
-      "id": "parada",
-      "name": "Parada",
+      "id": "reposar",
+      "name": "Reposar",
       "type": "interruption",
       "beats": 1,
-      "signal": "foot-block",
-      "requires": "lead",
-      "description": "Detener al otro sin fuerza. Con presencia."
+      "signal": "hand-pause",
+      "requires": "patience",
+      "description": "Detener el proceso sin fuerza. Con paciencia."
     },
     {
-      "id": "sacada",
-      "name": "Sacada",
+      "id": "rellenar",
+      "name": "Rellenar",
       "type": "displacement",
       "beats": 2,
       "energy": "transfer",
-      "contact": "leg",
-      "description": "Ocupar el espacio que el otro deja."
+      "contact": "filling",
+      "description": "Ocupar el espacio vacío con sabor."
     },
     {
-      "id": "volcada",
-      "name": "Volcada",
+      "id": "volcán",
+      "name": "Volcán",
       "type": "off-axis",
       "beats": 3,
       "axis": "shared",
       "trust": "required",
-      "description": "Caer juntos sin caerse. La confianza hecha movimiento."
+      "description": "La explosión controlada. La confianza hecha sabor."
     },
     {
-      "id": "gancho",
-      "name": "Gancho",
+      "id": "freír",
+      "name": "Freír",
       "type": "hook",
       "beats": 1,
       "energy": "explosive",
-      "contact": "leg-wrap",
-      "description": "El enganche. Rápido, preciso, íntimo."
+      "contact": "oil-wrap",
+      "description": "La inmersión. Rápido, preciso, crujiente."
     },
     {
-      "id": "boleo",
-      "name": "Boleo",
+      "id": "flamear",
+      "name": "Flamear",
       "type": "whip",
       "beats": 2,
       "momentum": "circular",
-      "origin": "hip",
-      "description": "La pierna que se suelta. Energía que se libera en el aire."
+      "origin": "wrist",
+      "description": "La llama que se suelta. Energía que se libera en el aire."
     },
     {
-      "id": "barrida",
-      "name": "Barrida",
+      "id": "emplatar",
+      "name": "Emplatar",
       "type": "sweep",
       "beats": 2,
-      "contact": "foot-to-foot",
+      "contact": "hand-to-plate",
       "force": "gentle",
-      "description": "Barrer el pie del otro. Guiar sin empujar."
+      "description": "Colocar en el plato. Guiar sin empujar."
     }
   ],
   "interactions": {

@@ -9,7 +9,7 @@
     "name": "{{display_name}}",
     "handle": "@{{handle}}",
     "tagline": "원포인트 레슨 제공자",
-    "protocol": "tango",
+    "protocol": "cocina",
     "location": {
       "city": "{{city}}",
       "flexible": true
@@ -18,8 +18,8 @@
 
   "profile": {
     "experience": "{{years}}년",
-    "style": ["salon", "nuevo", "milonguero"],
-    "role": ["leader", "follower", "both"],
+    "style": ["traditional", "nuevo", "fusion"],
+    "role": ["chef", "sous-chef", "both"],
     "languages": ["ko", "en", "es"],
     "verification": {
       "video": "{{video_url}}",
@@ -34,11 +34,11 @@
       "price": "{{price}}",
       "currency": "KRW",
       "focus": [
-        "기본 걸음",
-        "오초",
-        "히로",
-        "연결",
-        "뮤지컬리티"
+        "기본 반죽",
+        "커팅",
+        "플레이팅",
+        "식감",
+        "창의성"
       ],
       "booking": "{{booking_method}}"
     },

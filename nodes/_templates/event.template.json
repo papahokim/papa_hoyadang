@@ -8,8 +8,8 @@
   "identity": {
     "name": "{{event_name}}",
     "nameKo": "{{event_name_ko}}",
-    "type": "milonga",
-    "protocol": "tango"
+    "type": "mercado",
+    "protocol": "cocina"
   },
 
   "details": {

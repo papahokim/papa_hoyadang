@@ -1,4 +1,4 @@
-# TANGO MAGENTA — System Architecture Report
+# COCINA MAGENTA — System Architecture Report
 
 > Technical documentation for system architects.
 > Last updated: 2026-01-26
@@ -9,10 +9,10 @@
 
 | Property | Value |
 |----------|-------|
-| **Name** | TANGO MAGENTA |
+| **Name** | COCINA MAGENTA |
 | **Type** | Static PWA (Studio-Broadcast System) |
 | **Hosting** | GitHub Pages |
-| **Domain** | `dtslib1979.github.io/tango-magenta` |
+| **Domain** | `dtslib1979.github.io/cocina-magenta` |
 | **Language** | es-AR (Argentine Spanish) + ko (Korean bilingual) |
 | **Max Width** | 430px (Mobile-Only) |
 | **Service Worker** | None |
@@ -70,7 +70,7 @@
    ┌────▼────┐          ┌─────▼─────┐         ┌────▼────┐
    │ emisión │          │  cuerpo   │         │ legado  │
    │   L1    │          │    L2     │         │   L5    │
-   │Broadcast│          │Body Gram. │         │ Legacy  │
+   │Broadcast│          │Hands Gram.│         │ Legacy  │
    └────┬────┘          └───────────┘         └─────────┘
         │
    ┌────┴────────────────────────┐
@@ -82,7 +82,7 @@
    ┌────▼────┐          ┌─────────┐
    │laborat. │          │ control │
    │   L3    │          │   L4    │
-   │Gestures │          │ Console │
+   │Technique│          │ Console │
    └─────────┘          └─────────┘
 ```
 
@@ -91,8 +91,8 @@
 | Layer | ID | Purpose | Verb |
 |-------|-----|---------|------|
 | 1F | `emisión/` | Broadcast — Class programs, schedules | Sintonizá |
-| 2F | `cuerpo/` | Body Grammar — Movement tutorials | Sentí |
-| 3F | `laboratorio/` | Gesture Lab — Body protocol engine | Experimentá |
+| 2F | `cuerpo/` | Hands Grammar — Cooking interaction protocol | Sentí |
+| 3F | `laboratorio/` | Technique Lab — Hands protocol engine | Experimentá |
 | 4F | `control/` | Control Room — System console | Observá |
 | 5F | `legado/` | Legacy — Constitution, archives | Recordá |
 
@@ -101,7 +101,7 @@
 ## 4. Directory Structure
 
 ```
-tango-magenta/
+cocina-magenta/
 │
 ├── index.html                  # Entry portal (Ritual + 5-Layer navigation)
 │
@@ -114,10 +114,10 @@ tango-magenta/
 │   ├── club/index.html         # Practice club
 │   └── oneday/index.html       # One-day class
 │
-├── cuerpo/                     # L2: Body Grammar
+├── cuerpo/                     # L2: Hands Grammar
 │   └── index.html
 │
-├── laboratorio/                # L3: Gesture Lab
+├── laboratorio/                # L3: Technique Lab
 │   └── index.html
 │
 ├── control/                    # L4: Control Room
@@ -139,7 +139,7 @@ tango-magenta/
 │
 ├── api/                        # Static JSON endpoints
 │   ├── content.json            # Content manifest
-│   ├── gestures.json           # Gesture database
+│   ├── gestures.json           # Technique database
 │   └── legacy.json             # Legacy archive data
 │
 ├── specs/                      # Specifications
@@ -180,7 +180,7 @@ tango-magenta/
 --dim: rgba(240,232,236,0.45);  /* Text secondary */
 ```
 
-### 5.2 BPM Timing System (70 BPM Tango Lento)
+### 5.2 BPM Timing System (70 BPM Cocina Lenta)
 
 ```css
 --beat: 857ms;          /* 1 beat */
@@ -190,7 +190,7 @@ tango-magenta/
 --phrase: 3428ms;       /* 4 beats (musical phrase) */
 ```
 
-### 5.3 Motion Curves (Dance-Inspired)
+### 5.3 Motion Curves (Kitchen-Inspired)
 
 ```css
 --approach: cubic-bezier(0.16, 1, 0.3, 1);    /* Entrance */
@@ -211,9 +211,9 @@ tango-magenta/
 
 ---
 
-## 6. Body Interaction Protocol
+## 6. Hands Interaction Protocol
 
-> "El cuerpo es la interfaz. El tango es el protocolo."
+> "Las manos son la interfaz. La cocina es el protocolo."
 
 ### 6.1 Event Mapping
 
@@ -285,7 +285,7 @@ diffX > 80 && elapsed < 400 → navigate(direction)
 ### 8.2 Skip Logic
 
 - First visit: Full ritual plays
-- Return visit: Skipped via `sessionStorage.getItem('tango_entered')`
+- Return visit: Skipped via `sessionStorage.getItem('cocina_entered')`
 
 ---
 
@@ -295,8 +295,8 @@ diffX > 80 && elapsed < 400 → navigate(direction)
 
 ```json
 {
-  "@type": "DanceSchool",
-  "name": "탱고 마젠타",
+  "@type": "CookingSchool",
+  "name": "코치나 마젠타",
   "telephone": "+82-507-1402-3774",
   "address": "선릉로 709 B1, 강남구, 서울특별시",
   "priceRange": "₩10,000-₩80,000"
@@ -432,4 +432,4 @@ diffX > 80 && elapsed < 400 → navigate(direction)
 ---
 
 *Document generated: 2026-01-26*
-*Repository: github.com/dtslib1979/tango-magenta*
+*Repository: github.com/dtslib1979/cocina-magenta*

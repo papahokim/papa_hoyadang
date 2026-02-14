@@ -1,8 +1,8 @@
-# ESPÍRITU TANGO — Performance Studio OS
+# ESPÍRITU COCINA — Performance Studio OS
 
 ## System Architecture Report v3.0
 
-> "탱고는 목적이 아니다. 첫 번째 프로토콜이다."
+> "요리는 목적이 아니다. 첫 번째 프로토콜이다."
 
 **Author**: System Architect
 **Date**: 2026-01-26
@@ -13,15 +13,15 @@
 
 ## Executive Summary
 
-tango-magenta 레포지토리가 **espiritu-tango**로 전환됨.
+cocina-magenta 레포지토리가 **espiritu-cocina**로 전환됨.
 
-**Before**: 탱고 마젠타 (연화의 학원 웹사이트)
-**After**: ESPÍRITU TANGO (Performance Studio OS + Node System)
+**Before**: 코치나 마젠타 (연화의 학원 웹사이트)
+**After**: ESPÍRITU COCINA (Performance Studio OS + Node System)
 
 **핵심 전환**:
 ```
 연화의 학원 → 박씨의 Performance OS 원형
-탱고 = 목적 → 탱고 = 첫 번째 Protocol
+요리 = 목적 → 요리 = 첫 번째 Protocol
 마젠타 = 정체성 → 마젠타 = 첫 번째 Node
 ```
 
@@ -34,8 +34,8 @@ tango-magenta 레포지토리가 **espiritu-tango**로 전환됨.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│   ESPÍRITU TANGO                                            │
-│   Performance Protocol for Body                             │
+│   ESPÍRITU COCINA                                            │
+│   Cooking Protocol for Hands                             │
 │                                                             │
 │   Type: Protocol Layer (Meta)                               │
 │   Role: Platform Architect                                  │
@@ -44,7 +44,7 @@ tango-magenta 레포지토리가 **espiritu-tango**로 전환됨.
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │   nodes/                                                    │
-│   ├── magenta/     ← First Node (Tango Protocol)           │
+│   ├── magenta/     ← First Node (Cocina Protocol)           │
 │   │   └── Operator: 연화 (status: pending)                 │
 │   │                                                         │
 │   ├── [panaderia]  ← Reserved (Food Protocol)              │
@@ -68,16 +68,16 @@ tango-magenta 레포지토리가 **espiritu-tango**로 전환됨.
 ### 1.3 5-Layer Performance OS
 
 ```
-ESPÍRITU TANGO — 5-Layer Architecture
+ESPÍRITU COCINA — 5-Layer Architecture
 
 ┌─────────────────────────────────────────────────────────────┐
 │  L1: EMISSION          "장면을 송출한다"        Transmití   │
 │      → Node-specific content (각 노드별 프로그램)          │
 ├─────────────────────────────────────────────────────────────┤
-│  L2: BODY GRAMMAR      "몸의 언어를 편집한다"   Editá       │
+│  L2: HANDS GRAMMAR     "손의 언어를 편집한다"   Editá       │
 │      → Protocol-level (OS 공통)                            │
 ├─────────────────────────────────────────────────────────────┤
-│  L3: GESTURE LAB       "제스처를 설계한다"      Diseñá      │
+│  L3: TECHNIQUE LAB     "기법을 설계한다"        Diseñá      │
 │      → Protocol-level (OS 공통)                            │
 ├─────────────────────────────────────────────────────────────┤
 │  L4: CONTROL ROOM      "시스템을 관측한다"      Observá     │
@@ -117,8 +117,8 @@ nodes/
 {
   "id": "magenta",
   "identity": {
-    "name": "Tango Magenta",
-    "protocol": "tango",
+    "name": "Cocina Magenta",
+    "protocol": "cocina",
     "location": "Seoul Gangnam"
   },
   "content": {
@@ -149,10 +149,10 @@ nodes/
 
 | Before | After |
 |--------|-------|
-| Repo: `tango-magenta` | Repo: `espiritu-tango` |
-| Identity: 탱고 마젠타 | Identity: ESPÍRITU TANGO |
+| Repo: `cocina-magenta` | Repo: `espiritu-cocina` |
+| Identity: 코치나 마젠타 | Identity: ESPÍRITU COCINA |
 | Type: 학원 웹사이트 | Type: Performance Studio OS |
-| Tagline: El primer sistema que respira | Tagline: Performance Protocol for Body |
+| Tagline: El primer sistema que respira | Tagline: Cooking Protocol for Hands |
 
 ### 3.2 Files Changed
 
@@ -175,24 +175,24 @@ nodes/
 
 **Hero Section**
 ```
-Before: "TANGO MAGENTA — El primer sistema que respira"
-After:  "ESPÍRITU TANGO — Performance Protocol for Body"
-        "춤을 가르치지 않습니다. 몸의 언어를 편집합니다."
+Before: "COCINA MAGENTA — El primer sistema que respira"
+After:  "ESPÍRITU COCINA — Cooking Protocol for Hands"
+        "요리를 가르치지 않습니다. 손의 언어를 편집합니다."
 ```
 
 **Layer Cards**
 | Before | After |
 |--------|-------|
 | 1F — ACADEMIA | L1 — EMISSION |
-| 2F — TUTORIAL | L2 — BODY GRAMMAR |
-| 3F — GESTURE LAB | L3 — GESTURE LAB |
+| 2F — TUTORIAL | L2 — HANDS GRAMMAR |
+| 3F — TECHNIQUE LAB | L3 — TECHNIQUE LAB |
 | 4F — CONTROL | L4 — CONTROL ROOM |
 | 5F — STRATEGY | L5 — LEGACY |
 
 **Footer**
 ```
-Before: "TANGO MAGENTA © 2026"
-After:  "ESPÍRITU TANGO © 2026 Performance Protocol · Node: Magenta"
+Before: "COCINA MAGENTA © 2026"
+After:  "ESPÍRITU COCINA © 2026 Performance Protocol · Node: Magenta"
 ```
 
 ---
@@ -253,15 +253,15 @@ After (해결):
 |------|------|
 | 학원 | 스튜디오 |
 | 수업 | 에피소드 / 세션 |
-| 수강생 | 퍼포머 |
+| 수강생 | 셰프 |
 | 레벨 | 시즌 |
 | 연습 | 실험 |
 | 공연 | 장면 |
 
 ### 5.3 Core Message
 
-> "춤을 가르치지 않는다. 몸의 언어를 편집한다."
-> "No enseñamos baile. Editamos el lenguaje del cuerpo."
+> "요리를 가르치지 않는다. 손의 언어를 편집한다."
+> "No enseñamos cocina. Editamos el lenguaje de las manos."
 
 ---
 
@@ -271,7 +271,7 @@ After (해결):
 
 | Question | Expected |
 |----------|----------|
-| 이 사이트는 탱고 학원인가? | **No** |
+| 이 사이트는 요리 학원인가? | **No** |
 | 연화의 사업체인가? | **No** (Node일 뿐) |
 | 이 구조를 다른 도메인에 복제할 수 있나? | **Yes** |
 | 연화 없이 동작하나? | **Yes** |
@@ -299,7 +299,7 @@ After (해결):
 
 | 항목 | 상태 |
 |------|------|
-| Repository Rename | ✅ espiritu-tango |
+| Repository Rename | ✅ espiritu-cocina |
 | Identity Transform | ✅ Performance Protocol |
 | Node System | ✅ registry.json + magenta/node.json |
 | index.html | ✅ 전면 교체 |
@@ -315,4 +315,4 @@ After (해결):
 
 *Implemented by System Architect*
 *2026-01-26*
-*ESPÍRITU TANGO v3.0*
+*ESPÍRITU COCINA v3.0*

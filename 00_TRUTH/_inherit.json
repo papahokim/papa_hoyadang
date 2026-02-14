@@ -1,7 +1,7 @@
 {
   "repo": "hoyadang.com",
   "level": 2,
-  "parent": "espiritu-tango",
+  "parent": "espiritu-cocina",
   "type": "Studio Branch",
   "inherit": {
     "immutable": "strict",

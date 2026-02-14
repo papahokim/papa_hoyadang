@@ -9,7 +9,7 @@
     "name": "Random Join",
     "nameKo": "랜덤 조인",
     "tagline": "당구장처럼 아무나랑 한 판",
-    "description": "탱고는 교양이다. 다양한 사람과의 경험이 실력이 된다."
+    "description": "요리는 교양이다. 다양한 사람과의 경험이 실력이 된다."
   },
 
   "matchingEngine": {
@@ -33,13 +33,13 @@
       {
         "name": "history",
         "weight": 0.1,
-        "description": "안 춰본 사람 우선"
+        "description": "안 해본 사람 우선"
       }
     ]
   },
 
   "sessionRules": {
-    "type": "one-tanda",
+    "type": "one-course",
     "duration": "12min",
     "songs": "3-4",
     "commitment": "none",
@@ -50,11 +50,11 @@
   },
 
   "levels": {
-    "L0": { "name": "처음", "description": "탱고 시작한 지 3개월 미만" },
-    "L1": { "name": "입문", "description": "기본 걸음 가능" },
-    "L2": { "name": "초급", "description": "오초, 히로 가능" },
-    "L3": { "name": "중급", "description": "밀롱가 자유롭게 가능" },
-    "L4": { "name": "고급", "description": "뮤지컬리티 있음" },
+    "L0": { "name": "처음", "description": "요리 시작한 지 3개월 미만" },
+    "L1": { "name": "입문", "description": "기본 반죽 가능" },
+    "L2": { "name": "초급", "description": "커팅, 플레이팅 가능" },
+    "L3": { "name": "중급", "description": "시장에서 자유롭게 가능" },
+    "L4": { "name": "고급", "description": "창의성 있음" },
     "L5": { "name": "마스터", "description": "가르칠 수 있음" }
   },
 
@@ -66,7 +66,7 @@
   },
 
   "integration": {
-    "events": "auto-enable-at-milongas",
+    "events": "auto-enable-at-mercados",
     "studios": "hub-controlled",
     "persons": "opt-in"
   }

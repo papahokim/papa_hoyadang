@@ -1,6 +1,6 @@
 # hoyadang.com — Truth (Level 2)
 
-> Parent: `espiritu-tango`
+> Parent: `espiritu-cocina`
 
 ---
 
@@ -8,7 +8,7 @@
 
 ```
 Global (dtslib-papyrus)
-    └── espiritu-tango
+    └── espiritu-cocina
             └── hoyadang.com (here)
 ```
 

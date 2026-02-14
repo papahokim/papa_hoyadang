@@ -2,7 +2,7 @@
 # "El primer sistema que respira."
 
 version: "2.0"
-system: "tango-magenta"
+system: "cocina-magenta"
 language: "es-AR"
 
 layers:
@@ -13,7 +13,7 @@ layers:
     purpose: "La señal que sale al mundo"
     verb: "Sintonizá"
     content:
-      - "Spotify playlists (tango, ambient, experimental)"
+      - "Spotify playlists (latin, ambient, cooking)"
       - "YouTube video sessions"
       - "Audio archive"
     audio: true
@@ -22,10 +22,10 @@ layers:
     id: "cuerpo"
     name: "Cuerpo"
     english: "Body"
-    purpose: "La gramática del movimiento"
+    purpose: "La gramática de las manos"
     verb: "Sentí"
     content:
-      - "Body API documentation"
+      - "Hands API documentation"
       - "6 interaction definitions"
       - "Design principles"
       - "Hidden secrets (long press)"
@@ -34,12 +34,12 @@ layers:
     id: "laboratorio"
     name: "Laboratorio"
     english: "Laboratory"
-    purpose: "El motor de gestos"
+    purpose: "El motor de técnicas"
     verb: "Experimentá"
     content:
-      - "Gesture database (8 tango figures)"
+      - "Technique database (8 cooking techniques)"
       - "Render pipeline visualization"
-      - "Code-level gesture definitions"
+      - "Code-level technique definitions"
 
   - level: 4
     id: "control"
@@ -49,7 +49,7 @@ layers:
     verb: "Observá"
     content:
       - "System status dashboard"
-      - "Live metrics (emissions, gestures, legacy)"
+      - "Live metrics (emissions, techniques, legacy)"
       - "Architecture visualization"
       - "HQ connection status"
 
@@ -73,13 +73,13 @@ entrada:
 gate:
   location: "inner/"
   code: "1126"
-  session_storage: "tango_auth"
+  session_storage: "cocina_auth"
 
 body_protocol:
   version: "1.0"
   bpm: 70
   interactions: 6
-  philosophy: "El cuerpo es la interfaz"
+  philosophy: "Las manos son la interfaz"
 
 audio_layer:
   sources: ["spotify", "youtube"]

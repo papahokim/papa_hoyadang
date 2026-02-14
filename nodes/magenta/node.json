@@ -6,12 +6,12 @@
   "status": "flagship",
 
   "identity": {
-    "name": "Tango Magenta",
-    "nameKo": "탱고 마젠타",
+    "name": "Cocina Magenta",
+    "nameKo": "코치나 마젠타",
     "tagline": "홈베이스. 모든 실험의 시작점.",
-    "protocol": "tango",
+    "protocol": "cocina",
     "role": "flagship-studio",
-    "narrative": "내가 연화라면 — 박씨의 탱고 이야기",
+    "narrative": "내가 연화라면 — 박씨의 요리 이야기",
     "location": {
       "city": "Seoul",
       "district": "Gangnam",
@@ -51,18 +51,18 @@
 
   "programs": {
     "season01": {
-      "name": "Tango Protocol",
+      "name": "Cocina Protocol",
       "episodes": [
         {
           "id": "ep01",
-          "name": "First Gesture",
-          "nameKo": "첫 번째 몸짓",
+          "name": "First Technique",
+          "nameKo": "첫 번째 손놀림",
           "price": 29000
         },
         {
           "id": "ep02",
-          "name": "Two Bodies",
-          "nameKo": "두 몸이 하나의 장면"
+          "name": "Pair Cooking",
+          "nameKo": "두 손이 하나의 장면"
         },
         {
           "id": "ep03",
@@ -103,5 +103,5 @@
   },
 
   "created": "2026-01-26",
-  "upstream": "espiritu-tango"
+  "upstream": "espiritu-cocina"
 }

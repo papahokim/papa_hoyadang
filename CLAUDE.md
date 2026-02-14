@@ -28,7 +28,7 @@
 |------|-----|
 | **Name** | 好爺堂 (호야당) |
 | **Tier** | 3 (Branch) |
-| **Parent** | espiritu-tango (Studio HQ) |
+| **Parent** | espiritu-cocina (Studio HQ) |
 | **Type** | Physical Studio - K-Street Food IP |
 | **Domain** | hoyadang.com |
 | **Owner** | papafly.kr (멀티 벤처 오너) |
@@ -149,7 +149,7 @@ dtslib-papyrus (Tier 1 - 그룹 HQ)
     │
     ├── dtslib-branch (Tier 2 - 프랜차이즈 OS)
     │
-    └── espiritu-tango (Tier 2 - Studio Protocol HQ)
+    └── espiritu-cocina (Tier 2 - Studio Protocol HQ)
             │
             ├── hoyadang.com (Tier 3) ← 현재 위치
             └── gohsy-production (Tier 3)
@@ -965,4 +965,4 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 *Concept: 4 SCENES FROM SEOUL*
 *Philosophy: 완성*
 *Technical Limitations: 문서화*
-*Affiliation: DTSLIB HQ → espiritu-tango → papafly.kr*
+*Affiliation: DTSLIB HQ → espiritu-cocina → papafly.kr*
