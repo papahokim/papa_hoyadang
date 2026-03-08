@@ -1064,3 +1064,15 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 *Philosophy: 완성*
 *Technical Limitations: 문서화*
 *Affiliation: DTSLIB HQ → espiritu-cocina → papafly.kr*
+---
+
+## Browser Runtime
+
+> Parksy OS 2+2 매트릭스 — 이 레포 전담 브라우저
+
+| 항목 | 값 |
+|------|-----|
+| **브라우저** | Samsung Internet |
+| **이유** | 한국어 로컬 레스토랑 프로토콜 |
+| **URL** | https://github.com/dtslib1979/hoyadang.com |
+
