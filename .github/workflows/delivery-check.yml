@@ -55,45 +55,13 @@ jobs:
           [ "$B_ALIVE" = "true" ] && B_LAST="\"$NOW\"" || B_LAST=$([ "$B_LAST" = "null" ] && echo "null" || echo "\"$B_LAST\"")
           [ "$Y_ALIVE" = "true" ] && Y_LAST="\"$NOW\"" || Y_LAST=$([ "$Y_LAST" = "null" ] && echo "null" || echo "\"$Y_LAST\"")
 
-          cat > menu/delivery-status.json << 'EOJSON'
-{
-  "updated": "PLACEHOLDER_NOW",
-  "platforms": {
-    "coupang": {
-      "name": "쿠팡이츠",
-      "url": "https://web.coupangeats.com/share?storeId=550712",
-      "alive": PLACEHOLDER_C_ALIVE,
-      "lastAlive": PLACEHOLDER_C_LAST,
-      "httpStatus": PLACEHOLDER_C_HTTP
-    },
-    "baemin": {
-      "name": "배달의민족",
-      "url": "https://s.baemin.com/d2000gCVdxUak",
-      "alive": PLACEHOLDER_B_ALIVE,
-      "lastAlive": PLACEHOLDER_B_LAST,
-      "httpStatus": PLACEHOLDER_B_HTTP
-    },
-    "yogiyo": {
-      "name": "요기요",
-      "url": "https://ws.yogiyo.co.kr/jnsce1",
-      "alive": PLACEHOLDER_Y_ALIVE,
-      "lastAlive": PLACEHOLDER_Y_LAST,
-      "httpStatus": PLACEHOLDER_Y_HTTP
-    }
-  }
-}
-EOJSON
-
-          sed -i "s|PLACEHOLDER_NOW|$NOW|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_C_ALIVE|$C_ALIVE|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_C_LAST|$C_LAST|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_C_HTTP|$C_HTTP|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_B_ALIVE|$B_ALIVE|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_B_LAST|$B_LAST|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_B_HTTP|$B_HTTP|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_Y_ALIVE|$Y_ALIVE|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_Y_LAST|$Y_LAST|" menu/delivery-status.json
-          sed -i "s|PLACEHOLDER_Y_HTTP|$Y_HTTP|" menu/delivery-status.json
+          C_ALIVE_BOOL=$([ "$C_ALIVE" = "true" ] && echo "true" || echo "false")
+          B_ALIVE_BOOL=$([ "$B_ALIVE" = "true" ] && echo "true" || echo "false")
+          Y_ALIVE_BOOL=$([ "$Y_ALIVE" = "true" ] && echo "true" || echo "false")
+          C_LAST_VAL=$([ "$C_LAST" = "null" ] && echo "null" || echo "\"$C_LAST\"")
+          B_LAST_VAL=$([ "$B_LAST" = "null" ] && echo "null" || echo "\"$B_LAST\"")
+          Y_LAST_VAL=$([ "$Y_LAST" = "null" ] && echo "null" || echo "\"$Y_LAST\"")
+          printf '{"updated":"%s","platforms":{"coupang":{"name":"쿠팡이츠","url":"https://web.coupangeats.com/share?storeId=550712","alive":%s,"lastAlive":%s,"httpStatus":"%s"},"baemin":{"name":"배달의민족","url":"https://s.baemin.com/d2000gCVdxUak","alive":%s,"lastAlive":%s,"httpStatus":"%s"},"yogiyo":{"name":"요기요","url":"https://ws.yogiyo.co.kr/jnsce1","alive":%s,"lastAlive":%s,"httpStatus":"%s"}}}\n' "$NOW" "$C_ALIVE_BOOL" "$C_LAST_VAL" "$C_HTTP" "$B_ALIVE_BOOL" "$B_LAST_VAL" "$B_HTTP" "$Y_ALIVE_BOOL" "$Y_LAST_VAL" "$Y_HTTP" > menu/delivery-status.json
 
           echo "=== Results ==="
           echo "쿠팡이츠: alive=$C_ALIVE http=$C_HTTP"
