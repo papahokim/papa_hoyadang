@@ -13,10 +13,11 @@
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <!-- Fonts -->
+  <!-- Fonts: non-blocking (preload trick) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@300;400;500;600&display=swap"></noscript>
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2306,11 +2307,15 @@
 
     // ═══ PRELOADER ═══
     const preloader = document.getElementById('preloader');
+    function hidePreloader() {
+      preloader.classList.add('done');
+      document.body.style.overflow = '';
+    }
+    // 최대 4초 하드 타임아웃 — 느린 네트워크에서도 반드시 열림
+    const preloaderTimeout = setTimeout(hidePreloader, 4000);
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        preloader.classList.add('done');
-        document.body.style.overflow = '';
-      }, 2500);
+      clearTimeout(preloaderTimeout);
+      setTimeout(hidePreloader, 800);
     });
     document.body.style.overflow = 'hidden';
 
