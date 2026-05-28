@@ -1,8 +1,8 @@
 {
   "repo": "hoyadang.com",
   "level": 2,
-  "parent": "espiritu-cocina",
-  "type": "Studio Branch",
+  "parent": "dtslib-papyrus",
+  "type": "studio-branch",
   "inherit": {
     "immutable": "strict",
     "defaults": "override-allowed"
