@@ -2,23 +2,24 @@
   "name": "호야당 - 好爺堂",
   "short_name": "호야당",
   "description": "20년 장인의 손맛, 안양 호야당 베이커리",
-  "start_url": "/",
+  "start_url": "/papa_hoyadang/",
+  "scope": "/papa_hoyadang/",
   "display": "browser",
   "background_color": "#042711",
   "theme_color": "#042711",
   "icons": [
     {
-      "src": "/assets/icons/icon-192.png",
+      "src": "assets/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/icons/icon-512.png",
+      "src": "assets/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/assets/icons/apple-touch-icon.png",
+      "src": "assets/icons/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
