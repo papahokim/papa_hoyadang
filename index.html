@@ -882,6 +882,13 @@
       transition: transform 0.5s ease;
     }
 
+    .menu-card--wine {
+      background: #4a1220;
+      background-image:
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
+        linear-gradient(180deg, #6b1e2e 0%, #3a0b14 100%);
+    }
+
     .menu-card::before {
       content: '';
       position: absolute;
@@ -1986,24 +1993,24 @@
     </div>
 
     <div class="menu-gallery" id="menuGallery">
-      <a href="/menu/#pasta" class="menu-card" data-chalk>
+      <a href="/menu/#pasta" class="menu-card menu-card--wine" data-chalk>
         <div class="menu-card-visual">
           <div class="menu-card-header">
             <span class="menu-card-num">🍝</span>
-            <span class="menu-card-tag">9,000원~</span>
+            <span class="menu-card-tag">₩9,000~</span>
           </div>
           <div class="chalk-menu">
-            <div class="chalk-title">파스타</div>
+            <div class="chalk-title">PASTA</div>
             <div class="chalk-divider"></div>
-            <div class="chalk-item">뇨끼 (감자)</div>
-            <div class="chalk-item">우삼겹 알리오올리오</div>
-            <div class="chalk-item">해산물 로제</div>
-            <div class="chalk-item">크림 파스타</div>
+            <div class="chalk-item">Gnocchi (Potato)</div>
+            <div class="chalk-item">Beef Aglio e Olio</div>
+            <div class="chalk-item">Seafood Rosé</div>
+            <div class="chalk-item">Cream Pasta</div>
           </div>
         </div>
         <div class="menu-card-info">
           <h3 class="menu-card-name">PASTA</h3>
-          <p class="menu-card-desc">20가지 이상의 파스타</p>
+          <p class="menu-card-desc">20+ kinds of pasta</p>
         </div>
       </a>
 
